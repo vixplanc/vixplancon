@@ -2160,9 +2160,47 @@ module.exports = {
 /*!*****************************!*\
   !*** ./resources/js/app.js ***!
   \*****************************/
-/***/ ((__unused_webpack_module, __unused_webpack_exports, __webpack_require__) => {
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+Object(function webpackMissingModule() { var e = new Error("Cannot find module 'vue'"); e.code = 'MODULE_NOT_FOUND'; throw e; }());
+Object(function webpackMissingModule() { var e = new Error("Cannot find module '@inertiajs/inertia-vue3'"); e.code = 'MODULE_NOT_FOUND'; throw e; }());
+Object(function webpackMissingModule() { var e = new Error("Cannot find module '@inertiajs/progress'"); e.code = 'MODULE_NOT_FOUND'; throw e; }());
+var _window$document$getE;
 
 __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
+
+
+
+
+var appName = ((_window$document$getE = window.document.getElementsByTagName('title')[0]) === null || _window$document$getE === void 0 ? void 0 : _window$document$getE.innerText) || 'Laravel';
+Object(function webpackMissingModule() { var e = new Error("Cannot find module '@inertiajs/inertia-vue3'"); e.code = 'MODULE_NOT_FOUND'; throw e; }())({
+  title: function title(_title) {
+    return "".concat(_title, " - ").concat(appName);
+  },
+  resolve: function resolve(name) {
+    return __webpack_require__("./resources/js/Pages sync recursive ^\\.\\/.*\\.vue$")("./".concat(name, ".vue"));
+  },
+  setup: function setup(_ref) {
+    var el = _ref.el,
+        app = _ref.app,
+        props = _ref.props,
+        plugin = _ref.plugin;
+    return Object(function webpackMissingModule() { var e = new Error("Cannot find module 'vue'"); e.code = 'MODULE_NOT_FOUND'; throw e; }())({
+      render: function render() {
+        return Object(function webpackMissingModule() { var e = new Error("Cannot find module 'vue'"); e.code = 'MODULE_NOT_FOUND'; throw e; }())(app, props);
+      }
+    }).use(plugin).mixin({
+      methods: {
+        route: route
+      }
+    }).mount(el);
+  }
+});
+Object(function webpackMissingModule() { var e = new Error("Cannot find module '@inertiajs/progress'"); e.code = 'MODULE_NOT_FOUND'; throw e; }())({
+  color: '#4B5563'
+});
 
 /***/ }),
 
@@ -19413,12 +19451,9 @@ var __WEBPACK_AMD_DEFINE_RESULT__;/**
 /*!*******************************!*\
   !*** ./resources/css/app.css ***!
   \*******************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+/***/ (() => {
 
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-// extracted by mini-css-extract-plugin
-
+throw new Error("Module build failed (from ./node_modules/mini-css-extract-plugin/dist/loader.js):\nModuleBuildError: Module build failed (from ./node_modules/css-loader/dist/cjs.js):\nError: Can't resolve 'tailwindcss/base' in 'C:\\Users\\Luan\\Documents\\startweb\\administrador-leads\\resources\\css'\n    at finishWithoutResolve (C:\\Users\\Luan\\Documents\\startweb\\administrador-leads\\node_modules\\enhanced-resolve\\lib\\Resolver.js:309:18)\n    at C:\\Users\\Luan\\Documents\\startweb\\administrador-leads\\node_modules\\enhanced-resolve\\lib\\Resolver.js:386:15\n    at C:\\Users\\Luan\\Documents\\startweb\\administrador-leads\\node_modules\\enhanced-resolve\\lib\\Resolver.js:435:5\n    at eval (eval at create (C:\\Users\\Luan\\Documents\\startweb\\administrador-leads\\node_modules\\tapable\\lib\\HookCodeFactory.js:33:10), <anonymous>:16:1)\n    at C:\\Users\\Luan\\Documents\\startweb\\administrador-leads\\node_modules\\enhanced-resolve\\lib\\Resolver.js:435:5\n    at eval (eval at create (C:\\Users\\Luan\\Documents\\startweb\\administrador-leads\\node_modules\\tapable\\lib\\HookCodeFactory.js:33:10), <anonymous>:27:1)\n    at C:\\Users\\Luan\\Documents\\startweb\\administrador-leads\\node_modules\\enhanced-resolve\\lib\\DescriptionFilePlugin.js:87:43\n    at C:\\Users\\Luan\\Documents\\startweb\\administrador-leads\\node_modules\\enhanced-resolve\\lib\\Resolver.js:435:5\n    at eval (eval at create (C:\\Users\\Luan\\Documents\\startweb\\administrador-leads\\node_modules\\tapable\\lib\\HookCodeFactory.js:33:10), <anonymous>:15:1)\n    at C:\\Users\\Luan\\Documents\\startweb\\administrador-leads\\node_modules\\enhanced-resolve\\lib\\Resolver.js:435:5\n    at processResult (C:\\Users\\Luan\\Documents\\startweb\\administrador-leads\\node_modules\\webpack\\lib\\NormalModule.js:758:19)\n    at C:\\Users\\Luan\\Documents\\startweb\\administrador-leads\\node_modules\\webpack\\lib\\NormalModule.js:860:5\n    at C:\\Users\\Luan\\Documents\\startweb\\administrador-leads\\node_modules\\loader-runner\\lib\\LoaderRunner.js:400:11\n    at C:\\Users\\Luan\\Documents\\startweb\\administrador-leads\\node_modules\\loader-runner\\lib\\LoaderRunner.js:252:18\n    at context.callback (C:\\Users\\Luan\\Documents\\startweb\\administrador-leads\\node_modules\\loader-runner\\lib\\LoaderRunner.js:124:13)\n    at Object.loader (C:\\Users\\Luan\\Documents\\startweb\\administrador-leads\\node_modules\\css-loader\\dist\\index.js:155:5)\n    at processTicksAndRejections (node:internal/process/task_queues:96:5)");
 
 /***/ }),
 
@@ -19614,6 +19649,312 @@ process.chdir = function (dir) {
 process.umask = function() { return 0; };
 
 
+/***/ }),
+
+/***/ "./resources/js/Pages/API/Index.vue":
+/*!******************************************!*\
+  !*** ./resources/js/Pages/API/Index.vue ***!
+  \******************************************/
+/***/ (() => {
+
+throw new Error("Module parse failed: Unexpected token (1:0)\nYou may need an appropriate loader to handle this file type, currently no loaders are configured to process this file. See https://webpack.js.org/concepts#loaders\n> <script setup>\n| import ApiTokenManager from '@/Pages/API/Partials/ApiTokenManager.vue';\n| import AppLayout from '@/Layouts/AppLayout.vue';");
+
+/***/ }),
+
+/***/ "./resources/js/Pages/API/Partials/ApiTokenManager.vue":
+/*!*************************************************************!*\
+  !*** ./resources/js/Pages/API/Partials/ApiTokenManager.vue ***!
+  \*************************************************************/
+/***/ (() => {
+
+throw new Error("Module parse failed: Unexpected token (1:0)\nYou may need an appropriate loader to handle this file type, currently no loaders are configured to process this file. See https://webpack.js.org/concepts#loaders\n> <script setup>\n| import { ref } from 'vue';\n| import { useForm } from '@inertiajs/inertia-vue3';");
+
+/***/ }),
+
+/***/ "./resources/js/Pages/Auth/ConfirmPassword.vue":
+/*!*****************************************************!*\
+  !*** ./resources/js/Pages/Auth/ConfirmPassword.vue ***!
+  \*****************************************************/
+/***/ (() => {
+
+throw new Error("Module parse failed: Unexpected token (1:0)\nYou may need an appropriate loader to handle this file type, currently no loaders are configured to process this file. See https://webpack.js.org/concepts#loaders\n> <script setup>\n| import { ref } from 'vue';\n| import { Head, useForm } from '@inertiajs/inertia-vue3';");
+
+/***/ }),
+
+/***/ "./resources/js/Pages/Auth/ForgotPassword.vue":
+/*!****************************************************!*\
+  !*** ./resources/js/Pages/Auth/ForgotPassword.vue ***!
+  \****************************************************/
+/***/ (() => {
+
+throw new Error("Module parse failed: Unexpected token (1:0)\nYou may need an appropriate loader to handle this file type, currently no loaders are configured to process this file. See https://webpack.js.org/concepts#loaders\n> <script setup>\n| import { Head, useForm } from '@inertiajs/inertia-vue3';\n| import JetAuthenticationCard from '@/Jetstream/AuthenticationCard.vue';");
+
+/***/ }),
+
+/***/ "./resources/js/Pages/Auth/Login.vue":
+/*!*******************************************!*\
+  !*** ./resources/js/Pages/Auth/Login.vue ***!
+  \*******************************************/
+/***/ (() => {
+
+throw new Error("Module parse failed: Unexpected token (1:0)\nYou may need an appropriate loader to handle this file type, currently no loaders are configured to process this file. See https://webpack.js.org/concepts#loaders\n> <script setup>\n| import { Head, Link, useForm } from '@inertiajs/inertia-vue3';\n| import JetAuthenticationCard from '@/Jetstream/AuthenticationCard.vue';");
+
+/***/ }),
+
+/***/ "./resources/js/Pages/Auth/Register.vue":
+/*!**********************************************!*\
+  !*** ./resources/js/Pages/Auth/Register.vue ***!
+  \**********************************************/
+/***/ (() => {
+
+throw new Error("Module parse failed: Unexpected token (1:0)\nYou may need an appropriate loader to handle this file type, currently no loaders are configured to process this file. See https://webpack.js.org/concepts#loaders\n> <script setup>\n| import { Head, Link, useForm } from '@inertiajs/inertia-vue3';\n| import JetAuthenticationCard from '@/Jetstream/AuthenticationCard.vue';");
+
+/***/ }),
+
+/***/ "./resources/js/Pages/Auth/ResetPassword.vue":
+/*!***************************************************!*\
+  !*** ./resources/js/Pages/Auth/ResetPassword.vue ***!
+  \***************************************************/
+/***/ (() => {
+
+throw new Error("Module parse failed: Unexpected token (1:0)\nYou may need an appropriate loader to handle this file type, currently no loaders are configured to process this file. See https://webpack.js.org/concepts#loaders\n> <script setup>\n| import { Head, useForm } from '@inertiajs/inertia-vue3';\n| import JetAuthenticationCard from '@/Jetstream/AuthenticationCard.vue';");
+
+/***/ }),
+
+/***/ "./resources/js/Pages/Auth/TwoFactorChallenge.vue":
+/*!********************************************************!*\
+  !*** ./resources/js/Pages/Auth/TwoFactorChallenge.vue ***!
+  \********************************************************/
+/***/ (() => {
+
+throw new Error("Module parse failed: Unexpected token (1:0)\nYou may need an appropriate loader to handle this file type, currently no loaders are configured to process this file. See https://webpack.js.org/concepts#loaders\n> <script setup>\n| import { nextTick, ref } from 'vue';\n| import { Head, useForm } from '@inertiajs/inertia-vue3';");
+
+/***/ }),
+
+/***/ "./resources/js/Pages/Auth/VerifyEmail.vue":
+/*!*************************************************!*\
+  !*** ./resources/js/Pages/Auth/VerifyEmail.vue ***!
+  \*************************************************/
+/***/ (() => {
+
+throw new Error("Module parse failed: Unexpected token (1:0)\nYou may need an appropriate loader to handle this file type, currently no loaders are configured to process this file. See https://webpack.js.org/concepts#loaders\n> <script setup>\n| import { computed } from 'vue';\n| import { Head, Link, useForm } from '@inertiajs/inertia-vue3';");
+
+/***/ }),
+
+/***/ "./resources/js/Pages/Dashboard.vue":
+/*!******************************************!*\
+  !*** ./resources/js/Pages/Dashboard.vue ***!
+  \******************************************/
+/***/ (() => {
+
+throw new Error("Module parse failed: Unexpected token (1:0)\nYou may need an appropriate loader to handle this file type, currently no loaders are configured to process this file. See https://webpack.js.org/concepts#loaders\n> <script setup>\n| import AppLayout from '@/Layouts/AppLayout.vue';\n| import Welcome from '@/Jetstream/Welcome.vue';");
+
+/***/ }),
+
+/***/ "./resources/js/Pages/PrivacyPolicy.vue":
+/*!**********************************************!*\
+  !*** ./resources/js/Pages/PrivacyPolicy.vue ***!
+  \**********************************************/
+/***/ (() => {
+
+throw new Error("Module parse failed: Unexpected token (1:0)\nYou may need an appropriate loader to handle this file type, currently no loaders are configured to process this file. See https://webpack.js.org/concepts#loaders\n> <script setup>\n| import { Head } from '@inertiajs/inertia-vue3';\n| import JetAuthenticationCardLogo from '@/Jetstream/AuthenticationCardLogo.vue';");
+
+/***/ }),
+
+/***/ "./resources/js/Pages/Profile/Partials/DeleteUserForm.vue":
+/*!****************************************************************!*\
+  !*** ./resources/js/Pages/Profile/Partials/DeleteUserForm.vue ***!
+  \****************************************************************/
+/***/ (() => {
+
+throw new Error("Module parse failed: Unexpected token (1:0)\nYou may need an appropriate loader to handle this file type, currently no loaders are configured to process this file. See https://webpack.js.org/concepts#loaders\n> <script setup>\n| import { ref } from 'vue';\n| import { useForm } from '@inertiajs/inertia-vue3';");
+
+/***/ }),
+
+/***/ "./resources/js/Pages/Profile/Partials/LogoutOtherBrowserSessionsForm.vue":
+/*!********************************************************************************!*\
+  !*** ./resources/js/Pages/Profile/Partials/LogoutOtherBrowserSessionsForm.vue ***!
+  \********************************************************************************/
+/***/ (() => {
+
+throw new Error("Module parse failed: Unexpected token (1:0)\nYou may need an appropriate loader to handle this file type, currently no loaders are configured to process this file. See https://webpack.js.org/concepts#loaders\n> <script setup>\n| import { ref } from 'vue';\n| import { useForm } from '@inertiajs/inertia-vue3';");
+
+/***/ }),
+
+/***/ "./resources/js/Pages/Profile/Partials/TwoFactorAuthenticationForm.vue":
+/*!*****************************************************************************!*\
+  !*** ./resources/js/Pages/Profile/Partials/TwoFactorAuthenticationForm.vue ***!
+  \*****************************************************************************/
+/***/ (() => {
+
+throw new Error("Module parse failed: Unexpected token (1:0)\nYou may need an appropriate loader to handle this file type, currently no loaders are configured to process this file. See https://webpack.js.org/concepts#loaders\n> <script setup>\n| import { ref, computed, watch } from 'vue';\n| import { Inertia } from '@inertiajs/inertia';");
+
+/***/ }),
+
+/***/ "./resources/js/Pages/Profile/Partials/UpdatePasswordForm.vue":
+/*!********************************************************************!*\
+  !*** ./resources/js/Pages/Profile/Partials/UpdatePasswordForm.vue ***!
+  \********************************************************************/
+/***/ (() => {
+
+throw new Error("Module parse failed: Unexpected token (1:0)\nYou may need an appropriate loader to handle this file type, currently no loaders are configured to process this file. See https://webpack.js.org/concepts#loaders\n> <script setup>\n| import { ref } from 'vue';\n| import { useForm } from '@inertiajs/inertia-vue3';");
+
+/***/ }),
+
+/***/ "./resources/js/Pages/Profile/Partials/UpdateProfileInformationForm.vue":
+/*!******************************************************************************!*\
+  !*** ./resources/js/Pages/Profile/Partials/UpdateProfileInformationForm.vue ***!
+  \******************************************************************************/
+/***/ (() => {
+
+throw new Error("Module parse failed: Unexpected token (1:0)\nYou may need an appropriate loader to handle this file type, currently no loaders are configured to process this file. See https://webpack.js.org/concepts#loaders\n> <script setup>\n| import { ref } from 'vue';\n| import { Inertia } from '@inertiajs/inertia';");
+
+/***/ }),
+
+/***/ "./resources/js/Pages/Profile/Show.vue":
+/*!*********************************************!*\
+  !*** ./resources/js/Pages/Profile/Show.vue ***!
+  \*********************************************/
+/***/ (() => {
+
+throw new Error("Module parse failed: Unexpected token (1:0)\nYou may need an appropriate loader to handle this file type, currently no loaders are configured to process this file. See https://webpack.js.org/concepts#loaders\n> <script setup>\n| import AppLayout from '@/Layouts/AppLayout.vue';\n| import DeleteUserForm from '@/Pages/Profile/Partials/DeleteUserForm.vue';");
+
+/***/ }),
+
+/***/ "./resources/js/Pages/Teams/Create.vue":
+/*!*********************************************!*\
+  !*** ./resources/js/Pages/Teams/Create.vue ***!
+  \*********************************************/
+/***/ (() => {
+
+throw new Error("Module parse failed: Unexpected token (1:0)\nYou may need an appropriate loader to handle this file type, currently no loaders are configured to process this file. See https://webpack.js.org/concepts#loaders\n> <script setup>\n| import AppLayout from '@/Layouts/AppLayout.vue';\n| import CreateTeamForm from '@/Pages/Teams/Partials/CreateTeamForm.vue';");
+
+/***/ }),
+
+/***/ "./resources/js/Pages/Teams/Partials/CreateTeamForm.vue":
+/*!**************************************************************!*\
+  !*** ./resources/js/Pages/Teams/Partials/CreateTeamForm.vue ***!
+  \**************************************************************/
+/***/ (() => {
+
+throw new Error("Module parse failed: Unexpected token (1:0)\nYou may need an appropriate loader to handle this file type, currently no loaders are configured to process this file. See https://webpack.js.org/concepts#loaders\n> <script setup>\n| import { useForm } from '@inertiajs/inertia-vue3';\n| import JetButton from '@/Jetstream/Button.vue';");
+
+/***/ }),
+
+/***/ "./resources/js/Pages/Teams/Partials/DeleteTeamForm.vue":
+/*!**************************************************************!*\
+  !*** ./resources/js/Pages/Teams/Partials/DeleteTeamForm.vue ***!
+  \**************************************************************/
+/***/ (() => {
+
+throw new Error("Module parse failed: Unexpected token (1:0)\nYou may need an appropriate loader to handle this file type, currently no loaders are configured to process this file. See https://webpack.js.org/concepts#loaders\n> <script setup>\n| import { ref } from 'vue';\n| import { useForm } from '@inertiajs/inertia-vue3';");
+
+/***/ }),
+
+/***/ "./resources/js/Pages/Teams/Partials/TeamMemberManager.vue":
+/*!*****************************************************************!*\
+  !*** ./resources/js/Pages/Teams/Partials/TeamMemberManager.vue ***!
+  \*****************************************************************/
+/***/ (() => {
+
+throw new Error("Module parse failed: Unexpected token (1:0)\nYou may need an appropriate loader to handle this file type, currently no loaders are configured to process this file. See https://webpack.js.org/concepts#loaders\n> <script setup>\n| import { ref } from 'vue';\n| import { Inertia } from '@inertiajs/inertia';");
+
+/***/ }),
+
+/***/ "./resources/js/Pages/Teams/Partials/UpdateTeamNameForm.vue":
+/*!******************************************************************!*\
+  !*** ./resources/js/Pages/Teams/Partials/UpdateTeamNameForm.vue ***!
+  \******************************************************************/
+/***/ (() => {
+
+throw new Error("Module parse failed: Unexpected token (1:0)\nYou may need an appropriate loader to handle this file type, currently no loaders are configured to process this file. See https://webpack.js.org/concepts#loaders\n> <script setup>\n| import { useForm } from '@inertiajs/inertia-vue3';\n| import JetActionMessage from '@/Jetstream/ActionMessage';");
+
+/***/ }),
+
+/***/ "./resources/js/Pages/Teams/Show.vue":
+/*!*******************************************!*\
+  !*** ./resources/js/Pages/Teams/Show.vue ***!
+  \*******************************************/
+/***/ (() => {
+
+throw new Error("Module parse failed: Unexpected token (1:0)\nYou may need an appropriate loader to handle this file type, currently no loaders are configured to process this file. See https://webpack.js.org/concepts#loaders\n> <script setup>\n| import AppLayout from '@/Layouts/AppLayout.vue';\n| import DeleteTeamForm from '@/Pages/Teams/Partials/DeleteTeamForm.vue';");
+
+/***/ }),
+
+/***/ "./resources/js/Pages/TermsOfService.vue":
+/*!***********************************************!*\
+  !*** ./resources/js/Pages/TermsOfService.vue ***!
+  \***********************************************/
+/***/ (() => {
+
+throw new Error("Module parse failed: Unexpected token (1:0)\nYou may need an appropriate loader to handle this file type, currently no loaders are configured to process this file. See https://webpack.js.org/concepts#loaders\n> <script setup>\n| import { Head } from '@inertiajs/inertia-vue3';\n| import JetAuthenticationCardLogo from '@/Jetstream/AuthenticationCardLogo.vue';");
+
+/***/ }),
+
+/***/ "./resources/js/Pages/Welcome.vue":
+/*!****************************************!*\
+  !*** ./resources/js/Pages/Welcome.vue ***!
+  \****************************************/
+/***/ (() => {
+
+throw new Error("Module parse failed: Unexpected token (1:0)\nYou may need an appropriate loader to handle this file type, currently no loaders are configured to process this file. See https://webpack.js.org/concepts#loaders\n> <script setup>\n| import { Head, Link } from '@inertiajs/inertia-vue3';\n| ");
+
+/***/ }),
+
+/***/ "./resources/js/Pages sync recursive ^\\.\\/.*\\.vue$":
+/*!************************************************!*\
+  !*** ./resources/js/Pages/ sync ^\.\/.*\.vue$ ***!
+  \************************************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+var map = {
+	"./API/Index.vue": "./resources/js/Pages/API/Index.vue",
+	"./API/Partials/ApiTokenManager.vue": "./resources/js/Pages/API/Partials/ApiTokenManager.vue",
+	"./Auth/ConfirmPassword.vue": "./resources/js/Pages/Auth/ConfirmPassword.vue",
+	"./Auth/ForgotPassword.vue": "./resources/js/Pages/Auth/ForgotPassword.vue",
+	"./Auth/Login.vue": "./resources/js/Pages/Auth/Login.vue",
+	"./Auth/Register.vue": "./resources/js/Pages/Auth/Register.vue",
+	"./Auth/ResetPassword.vue": "./resources/js/Pages/Auth/ResetPassword.vue",
+	"./Auth/TwoFactorChallenge.vue": "./resources/js/Pages/Auth/TwoFactorChallenge.vue",
+	"./Auth/VerifyEmail.vue": "./resources/js/Pages/Auth/VerifyEmail.vue",
+	"./Dashboard.vue": "./resources/js/Pages/Dashboard.vue",
+	"./PrivacyPolicy.vue": "./resources/js/Pages/PrivacyPolicy.vue",
+	"./Profile/Partials/DeleteUserForm.vue": "./resources/js/Pages/Profile/Partials/DeleteUserForm.vue",
+	"./Profile/Partials/LogoutOtherBrowserSessionsForm.vue": "./resources/js/Pages/Profile/Partials/LogoutOtherBrowserSessionsForm.vue",
+	"./Profile/Partials/TwoFactorAuthenticationForm.vue": "./resources/js/Pages/Profile/Partials/TwoFactorAuthenticationForm.vue",
+	"./Profile/Partials/UpdatePasswordForm.vue": "./resources/js/Pages/Profile/Partials/UpdatePasswordForm.vue",
+	"./Profile/Partials/UpdateProfileInformationForm.vue": "./resources/js/Pages/Profile/Partials/UpdateProfileInformationForm.vue",
+	"./Profile/Show.vue": "./resources/js/Pages/Profile/Show.vue",
+	"./Teams/Create.vue": "./resources/js/Pages/Teams/Create.vue",
+	"./Teams/Partials/CreateTeamForm.vue": "./resources/js/Pages/Teams/Partials/CreateTeamForm.vue",
+	"./Teams/Partials/DeleteTeamForm.vue": "./resources/js/Pages/Teams/Partials/DeleteTeamForm.vue",
+	"./Teams/Partials/TeamMemberManager.vue": "./resources/js/Pages/Teams/Partials/TeamMemberManager.vue",
+	"./Teams/Partials/UpdateTeamNameForm.vue": "./resources/js/Pages/Teams/Partials/UpdateTeamNameForm.vue",
+	"./Teams/Show.vue": "./resources/js/Pages/Teams/Show.vue",
+	"./TermsOfService.vue": "./resources/js/Pages/TermsOfService.vue",
+	"./Welcome.vue": "./resources/js/Pages/Welcome.vue"
+};
+
+
+function webpackContext(req) {
+	var id = webpackContextResolve(req);
+	return __webpack_require__(id);
+}
+function webpackContextResolve(req) {
+	if(!__webpack_require__.o(map, req)) {
+		var e = new Error("Cannot find module '" + req + "'");
+		e.code = 'MODULE_NOT_FOUND';
+		throw e;
+	}
+	return map[req];
+}
+webpackContext.keys = function webpackContextKeys() {
+	return Object.keys(map);
+};
+webpackContext.resolve = webpackContextResolve;
+module.exports = webpackContext;
+webpackContext.id = "./resources/js/Pages sync recursive ^\\.\\/.*\\.vue$";
+
 /***/ })
 
 /******/ 	});
@@ -19645,42 +19986,7 @@ process.umask = function() { return 0; };
 /******/ 		return module.exports;
 /******/ 	}
 /******/ 	
-/******/ 	// expose the modules object (__webpack_modules__)
-/******/ 	__webpack_require__.m = __webpack_modules__;
-/******/ 	
 /************************************************************************/
-/******/ 	/* webpack/runtime/chunk loaded */
-/******/ 	(() => {
-/******/ 		var deferred = [];
-/******/ 		__webpack_require__.O = (result, chunkIds, fn, priority) => {
-/******/ 			if(chunkIds) {
-/******/ 				priority = priority || 0;
-/******/ 				for(var i = deferred.length; i > 0 && deferred[i - 1][2] > priority; i--) deferred[i] = deferred[i - 1];
-/******/ 				deferred[i] = [chunkIds, fn, priority];
-/******/ 				return;
-/******/ 			}
-/******/ 			var notFulfilled = Infinity;
-/******/ 			for (var i = 0; i < deferred.length; i++) {
-/******/ 				var [chunkIds, fn, priority] = deferred[i];
-/******/ 				var fulfilled = true;
-/******/ 				for (var j = 0; j < chunkIds.length; j++) {
-/******/ 					if ((priority & 1 === 0 || notFulfilled >= priority) && Object.keys(__webpack_require__.O).every((key) => (__webpack_require__.O[key](chunkIds[j])))) {
-/******/ 						chunkIds.splice(j--, 1);
-/******/ 					} else {
-/******/ 						fulfilled = false;
-/******/ 						if(priority < notFulfilled) notFulfilled = priority;
-/******/ 					}
-/******/ 				}
-/******/ 				if(fulfilled) {
-/******/ 					deferred.splice(i--, 1)
-/******/ 					var r = fn();
-/******/ 					if (r !== undefined) result = r;
-/******/ 				}
-/******/ 			}
-/******/ 			return result;
-/******/ 		};
-/******/ 	})();
-/******/ 	
 /******/ 	/* webpack/runtime/global */
 /******/ 	(() => {
 /******/ 		__webpack_require__.g = (function() {
@@ -19718,68 +20024,13 @@ process.umask = function() { return 0; };
 /******/ 		};
 /******/ 	})();
 /******/ 	
-/******/ 	/* webpack/runtime/jsonp chunk loading */
-/******/ 	(() => {
-/******/ 		// no baseURI
-/******/ 		
-/******/ 		// object to store loaded and loading chunks
-/******/ 		// undefined = chunk not loaded, null = chunk preloaded/prefetched
-/******/ 		// [resolve, reject, Promise] = chunk loading, 0 = chunk loaded
-/******/ 		var installedChunks = {
-/******/ 			"/js/app": 0,
-/******/ 			"css/app": 0
-/******/ 		};
-/******/ 		
-/******/ 		// no chunk on demand loading
-/******/ 		
-/******/ 		// no prefetching
-/******/ 		
-/******/ 		// no preloaded
-/******/ 		
-/******/ 		// no HMR
-/******/ 		
-/******/ 		// no HMR manifest
-/******/ 		
-/******/ 		__webpack_require__.O.j = (chunkId) => (installedChunks[chunkId] === 0);
-/******/ 		
-/******/ 		// install a JSONP callback for chunk loading
-/******/ 		var webpackJsonpCallback = (parentChunkLoadingFunction, data) => {
-/******/ 			var [chunkIds, moreModules, runtime] = data;
-/******/ 			// add "moreModules" to the modules object,
-/******/ 			// then flag all "chunkIds" as loaded and fire callback
-/******/ 			var moduleId, chunkId, i = 0;
-/******/ 			if(chunkIds.some((id) => (installedChunks[id] !== 0))) {
-/******/ 				for(moduleId in moreModules) {
-/******/ 					if(__webpack_require__.o(moreModules, moduleId)) {
-/******/ 						__webpack_require__.m[moduleId] = moreModules[moduleId];
-/******/ 					}
-/******/ 				}
-/******/ 				if(runtime) var result = runtime(__webpack_require__);
-/******/ 			}
-/******/ 			if(parentChunkLoadingFunction) parentChunkLoadingFunction(data);
-/******/ 			for(;i < chunkIds.length; i++) {
-/******/ 				chunkId = chunkIds[i];
-/******/ 				if(__webpack_require__.o(installedChunks, chunkId) && installedChunks[chunkId]) {
-/******/ 					installedChunks[chunkId][0]();
-/******/ 				}
-/******/ 				installedChunks[chunkId] = 0;
-/******/ 			}
-/******/ 			return __webpack_require__.O(result);
-/******/ 		}
-/******/ 		
-/******/ 		var chunkLoadingGlobal = self["webpackChunk"] = self["webpackChunk"] || [];
-/******/ 		chunkLoadingGlobal.forEach(webpackJsonpCallback.bind(null, 0));
-/******/ 		chunkLoadingGlobal.push = webpackJsonpCallback.bind(null, chunkLoadingGlobal.push.bind(chunkLoadingGlobal));
-/******/ 	})();
-/******/ 	
 /************************************************************************/
 /******/ 	
 /******/ 	// startup
 /******/ 	// Load entry module and return exports
-/******/ 	// This entry module depends on other loaded chunks and execution need to be delayed
-/******/ 	__webpack_require__.O(undefined, ["css/app"], () => (__webpack_require__("./resources/js/app.js")))
-/******/ 	var __webpack_exports__ = __webpack_require__.O(undefined, ["css/app"], () => (__webpack_require__("./resources/css/app.css")))
-/******/ 	__webpack_exports__ = __webpack_require__.O(__webpack_exports__);
+/******/ 	__webpack_require__("./resources/js/app.js");
+/******/ 	// This entry module doesn't tell about it's top-level declarations so it can't be inlined
+/******/ 	var __webpack_exports__ = __webpack_require__("./resources/css/app.css");
 /******/ 	
 /******/ })()
 ;
