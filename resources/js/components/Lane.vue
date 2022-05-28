@@ -72,7 +72,7 @@ const scene = {
   }))
 }
 export default {
-  components: { Container, Draggable, Card, HandIcon, CodeIcon},
+  components: { Container, Draggable, Card, HandIcon, CodeIcon },
   data () {
     return {
       scene,
