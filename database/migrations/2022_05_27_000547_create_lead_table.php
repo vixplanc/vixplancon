@@ -15,12 +15,14 @@ return new class extends Migration
     {
         Schema::create('lead', function (Blueprint $table) {
             $table->id();
-            // $table->foreignId(column:'lane_id')
+            $table->foreignId(column:'lane_id')
+            ->constrained()
+            ->nullable()
+            ;
+            // $table->foreignId(column:'status')
             // ->constrained()
-            // ->onDelete("CASCADE")
-            // ->onUpdate("CASCADE")
+            // ->nullable()
             // ;
-            // $table->foreignId(column:'status');
 
             $table->string(column:'name');
             $table->text(column:'description')->nullable();
