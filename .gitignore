@@ -13,3 +13,7 @@ yarn-error.log
 /.idea
 /.vscode
 .editorconfig
+yarn.lock
+composer.lock
+composer.lock
+package-lock.json
