@@ -13,24 +13,14 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('lead', function (Blueprint $table) {
+        Schema::create('lanes', function (Blueprint $table) {
             $table->id();
-            $table->foreignId(column:'lane_id')
+            $table->foreignId(column:'board_id')
             ->constrained()
             ->nullable()
             ;
-            // $table->foreignId(column:'status')
-            // ->constrained()
-            // ->nullable()
-            // ;
 
             $table->string(column:'name');
-            $table->text(column:'description')->nullable();
-            $table->string(column:'email')->nullable();
-            $table->string(column:'wapp')->nullable();
-            $table->string(column:'fbook')->nullable();
-            $table->string(column:'phone')->nullable();
-
 
             $table->timestamps();
         });
@@ -43,6 +33,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('lead');
+        Schema::dropIfExists('lanes');
     }
 };
