@@ -1,7 +1,7 @@
 <template>
   <Draggable v-if="item">
     <div
-      class="cursor-grab my-1 mx-2 shadow-md bg-gray-100 dark:bg-gray-800 hover:border-2 border-primary"
+      class="cursor-grab my-1 mx-2 shadow-md bg-gray-100 dark:bg-gray-800 hover:border-2 border-primary rounded-lg"
     >
       <div
         v-if="item.loading"

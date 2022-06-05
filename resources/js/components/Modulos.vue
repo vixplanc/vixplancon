@@ -29,7 +29,7 @@
         />
       </figure>
       <div class="card-body items-center text-center">
-        <h2 class="card-title">Shoes!</h2>
+        <h2 class="card-title">Título do Módulo</h2>
         <p>Pequeno texto descritivo sobre o módulo</p>
         <div class="card-actions">
           <button class="btn">Entrar</button>
@@ -45,7 +45,7 @@
         />
       </figure>
       <div class="card-body items-center text-center">
-        <h2 class="card-title">Shoes!</h2>
+        <h2 class="card-title">Título do Módulo</h2>
         <p>Pequeno texto descritivo sobre o módulo</p>
         <div class="card-actions">
           <button class="btn">Entrar</button>
@@ -61,7 +61,7 @@
         />
       </figure>
       <div class="card-body items-center text-center">
-        <h2 class="card-title">Shoes!</h2>
+        <h2 class="card-title">Título do Módulo</h2>
         <p>Pequeno texto descritivo sobre o módulo</p>
         <div class="card-actions">
           <button class="btn">Entrar</button>
@@ -77,7 +77,7 @@
         />
       </figure>
       <div class="card-body items-center text-center">
-        <h2 class="card-title">Shoes!</h2>
+        <h2 class="card-title">Título do Módulo</h2>
         <p>Pequeno texto descritivo sobre o módulo</p>
         <div class="card-actions">
           <button class="btn">Entrar</button>
@@ -93,7 +93,7 @@
         />
       </figure>
       <div class="card-body items-center text-center">
-        <h2 class="card-title">Shoes!</h2>
+        <h2 class="card-title">Título do Módulo</h2>
         <p>Pequeno texto descritivo sobre o módulo</p>
         <div class="card-actions">
           <button class="btn">Entrar</button>

@@ -5,12 +5,12 @@
     tag="div"
     orientation="horizontal"
     @drop="onColumnDrop($event)">
-    <Draggable class="bg-gray-200 dark:bg-gray-700  h-full w-72 flex-shrink-0 shadow-xl"
+    <Draggable class="bg-gray-200 dark:bg-gray-700 rounded-lg h-full w-72 flex-shrink-0 shadow-xl"
       v-for="column in scene.children" :key="column.id">
       <div class="h-full flex flex-col">
 
         <!-- header-->
-        <div class="cursor-grab p-1 justify-center  bg-primary text-white flex space-x-2">
+        <div class="cursor-grab rounded-t-lg p-1 justify-center  bg-gray-900 dark:bg-gray-700 text-white flex space-x-2">
           <span class="text-lg">{{ column.name }}</span>
         </div>
         <!-- column -->

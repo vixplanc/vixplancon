@@ -35,4 +35,7 @@ Route::middleware([
     Route::get('/leads', function () {
         return Inertia::render('LeadsManage');
     })->name('leads');
+    Route::get('/home', function () {
+        return Inertia::render('Home');
+    })->name('home');
 });
