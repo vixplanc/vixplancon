@@ -31,8 +31,7 @@
       </div>
       <div class="p-2 space-y-2">
         <div
-          class="rounded-lg bg-primary p-2 w-max h-max inline-block box-content"
-        >
+          class="rounded-lg bg-primary p-2 w-max h-max inline-block box-content">
           {{ emoji }}
         </div>
         <p class="text-sm">{{ item.data }}</p>

@@ -1,8 +1,8 @@
 import { createRouter, createWebHistory } from "vue-router";
 
 // Views Components
-import LeadsManage from '@/pages/LeadsManage.vue'
-import PageNotFound from '@/pages/PageNotFound.vue'
+import LeadsManage from '@/Pages/LeadsManage.vue'
+import PageNotFound from '@/Pages/PageNotFound.vue'
 
 
 const routes = [

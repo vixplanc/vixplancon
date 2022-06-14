@@ -2,26 +2,26 @@
 
 <template>
   <div
-    class="flex flex-wrap gap-6 dark:bg-gray-900 dark:text-gray-900 justify-center min-w-[30%]"
+    class="flex flex-wrap gap-4 dark:bg-gray-900 dark:text-gray-900 justify-center min-w-[30%]"
   >
     <div
       v-for="card in cards"
       :key="id"
-      class="card w-80 bg-base-100 shadow-xl"
+      class="card w-96 bg-base-100 shadow-xl"
     >
-      <figure class="px-4 pt-6">
+      <figure class="px-10 pt-10">
         <img
           :src="`../../images/` + card.img"
           alt="Shoes"
-          class="rounded-lg h-40"
+          class="rounded-lg h-52"
         />
       </figure>
       <div class="card-body items-center text-center">
         <h2 class="card-title">{{ card.name }}</h2>
         <p>{{ card.description }}</p>
         <div class="card-actions">
-          <button class="btn btn-sm btn-outline hover:bg-lime-400 hover:text-gray-900 w-full">
-           <span class="mx-4">Indicadores</span>
+          <button class="btn btn-outline w-full">
+           Indicadores
             <svg
               xmlns="http://www.w3.org/2000/svg"
               class="h-6 w-6"
@@ -37,8 +37,8 @@
               />
             </svg>
           </button>
-          <button class="btn btn-sm hover:bg-lime-400 hover:text-gray-900 w-full">
-            <span class="mx-4">Entrar</span>
+          <button class="btn w-full">
+            Entrar
             <svg
               xmlns="http://www.w3.org/2000/svg"
               class="h-6 w-6"

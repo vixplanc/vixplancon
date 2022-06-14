@@ -9,7 +9,7 @@ import JetDropdownLink from "@/Jetstream/DropdownLink.vue";
 import JetNavLink from "@/Jetstream/NavLink.vue";
 import JetResponsiveNavLink from "@/Jetstream/ResponsiveNavLink.vue";
 import ThemeMode from "../Components/ThemeMode.vue";
-import Sidebars from "../Components/Sidebars.vue";
+import { HandIcon, CodeIcon } from '@heroicons/vue/outline'
 
 defineProps({
   title: String,
@@ -40,7 +40,7 @@ const logout = () => {
 
     <JetBanner />
 
-    <div class="min-h-screen bg-gray-100 dark:bg-gray-900">
+    <div class="h-4/5 bg-gray-100 dark:bg-gray-900">
       <nav class="bg-gray-900 border-gray-100 dark:bg-gray-900">
         <!-- Primary Navigation Menu -->
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -62,12 +62,20 @@ const logout = () => {
                   Home
                 </JetNavLink>
               </div>
-              <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+              <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex ">
                 <JetNavLink
                   :href="route('leads')"
                   :active="route().current('leads')"
                 >
                   Leads
+                </JetNavLink>
+              </div>
+              <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex ">
+                <JetNavLink
+                  :href="route('frota')"
+                  :active="route().current('frota')"
+                >
+                  Frota
                 </JetNavLink>
               </div>
             </div>
@@ -290,7 +298,7 @@ const logout = () => {
               :href="route('dashboard')"
               :active="route().current('dashboard')"
             >
-              Dashboard
+              <label for="btn">Clique</label>
             </JetResponsiveNavLink>
           </div>
 
@@ -413,15 +421,61 @@ const logout = () => {
 
       <!-- Page Content -->
       <main>
-        <Sidebars>
-          <ul class="menu bg-base-100 w-56 p-2 rounded-box">
-            <li><a>Item 1</a></li>
-            <li><a>Item 2</a></li>
-            <li><a>Item 3</a></li>
-          </ul>
-        </Sidebars>
-        <slot />
+        <div class="sidebar-drawer ">
+          <input id="my-drawer" type="checkbox" class="drawer-toggle" />
+          <div class="drawer-content">
+            <label
+              for="my-drawer"
+              class="btn btn-sm btn-circle m-1 drawer-button mt-1 absolute"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                class="h-6 w-6"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+                stroke-width="2"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4"
+                />
+              </svg>
+            </label>
+            <slot />
+          </div>
+          <div class="drawer-side ">
+            <label for="my-drawer" class="drawer-overlay"></label>
+            <ul
+              class="menu p-4 overflow-y-auto w-60 bg-base-100 dark:bg-gray-700 dark:text-gray-200 text-base-content"
+            >
+              <!-- Sidebar content here -->
+              <li class="dark:hover:text-lime-300 "><a><HandIcon class="h-6 w-6"></HandIcon> Configurações</a></li>
+              <li class="dark:hover:text-lime-300 "><a><CodeIcon class="h-6 w-6"></CodeIcon>Adicionar Planilha</a></li>
+            </ul>
+          </div>
+        </div>
       </main>
     </div>
   </div>
 </template>
+
+<style>
+.sidebar-drawer {
+    display: grid;
+    width: 100%;
+    overflow: hidden;
+    height: 80vh !important;
+}
+
+.drawer-toggled ~ .drawer-contents {
+    z-index: 0;
+    grid-column-start: 1;
+    grid-row-start: 1;
+    transition-property: all;
+    transition-duration: 300ms;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+</style>

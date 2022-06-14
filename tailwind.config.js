@@ -11,7 +11,7 @@ module.exports = {
   ],
   theme: {
     colors: {
-      primary: colors.blue[500],
+      primary: colors.lime[500],
       secondary: colors.blue[800],
       transparent: "transparent",
       current: "currentColor",

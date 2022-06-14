@@ -1,13 +1,13 @@
 <script setup>
 import AppLayout from "@/Layouts/AppLayout.vue";
-import Modulos from "@/Components/Modulos.vue";
+import Modulos from "@/Modulos/Frota/Components/Modulos.vue";
 </script>
 
 <template>
   <AppLayout title="Dashboard">
     <template #header>
       <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
-        Módulos
+        Gestão de Frota
       </h2>
     </template>
 

@@ -1,11 +1,11 @@
 <template>
   <Container
-    class="h-full flex overflow-x-auto gap-2  p-8"
+    class="h-full flex overflow-x-auto gap-2  p-2"
     group-name="cols"
     tag="div"
     orientation="horizontal"
     @drop="onColumnDrop($event)">
-    <Draggable class="bg-gray-200 dark:bg-gray-700 rounded-lg h-full w-72 flex-shrink-0 shadow-xl"
+    <Draggable class="bg-gray-300 dark:bg-gray-700 rounded-lg h-full w-72 flex-shrink-0 shadow-xl"
       v-for="column in scene.children" :key="column.id">
       <div class="h-full flex flex-col">
 
@@ -48,7 +48,7 @@
 import { Container, Draggable } from 'vue3-smooth-dnd'
 import { HandIcon, CodeIcon } from '@heroicons/vue/outline'
 import { applyDrag, generateItems, generateWords } from '../helpers/index'
-import Card from '../components/Card.vue'
+import Card from '../Components/Card.vue'
 
 // mock
 const scene = {
