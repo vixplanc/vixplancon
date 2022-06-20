@@ -11,6 +11,7 @@ module.exports = {
   ],
   theme: {
     colors: {
+      predominante: "#a7b32b",
       primary: colors.lime[500],
       secondary: colors.blue[800],
       transparent: "transparent",
@@ -30,6 +31,7 @@ module.exports = {
       colors: {
         primary: colors.blue[500],
         secondary: colors.blue[800],
+        predominante: "#a7b32b",
       },
       fontFamily: {
         sans: ["Nunito", ...defaultTheme.fontFamily.sans],

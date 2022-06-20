@@ -9,7 +9,7 @@ import JetDropdownLink from "@/Jetstream/DropdownLink.vue";
 import JetNavLink from "@/Jetstream/NavLink.vue";
 import JetResponsiveNavLink from "@/Jetstream/ResponsiveNavLink.vue";
 import ThemeMode from "../Components/ThemeMode.vue";
-import { HandIcon, CodeIcon } from '@heroicons/vue/outline'
+import { HandIcon, CodeIcon } from "@heroicons/vue/outline";
 
 defineProps({
   title: String,
@@ -62,7 +62,7 @@ const logout = () => {
                   Home
                 </JetNavLink>
               </div>
-              <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex ">
+              <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
                 <JetNavLink
                   :href="route('leads')"
                   :active="route().current('leads')"
@@ -70,7 +70,7 @@ const logout = () => {
                   Leads
                 </JetNavLink>
               </div>
-              <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex ">
+              <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
                 <JetNavLink
                   :href="route('frota')"
                   :active="route().current('frota')"
@@ -413,7 +413,7 @@ const logout = () => {
       </nav>
 
       <!-- Page Heading -->
-      <header v-if="$slots.header" class="bg-white shadow dark:bg-gray-900">
+      <header v-if="$slots.header" class="bg-predominante shadow">
         <div class="max-w-7xl mx-auto py-2 px-4 sm:px-6 lg:px-8">
           <slot name="header" />
         </div>
@@ -421,7 +421,7 @@ const logout = () => {
 
       <!-- Page Content -->
       <main>
-        <div class="sidebar-drawer ">
+        <div class="sidebar-drawer">
           <input id="my-drawer" type="checkbox" class="drawer-toggle" />
           <div class="drawer-content">
             <label
@@ -430,29 +430,31 @@ const logout = () => {
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
-                class="h-6 w-6"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-                stroke-width="2"
+                class="h-5 w-5"
+                viewBox="0 0 20 20"
+                fill="currentColor"
               >
                 <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4"
+                  fill-rule="evenodd"
+                  d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z"
+                  clip-rule="evenodd"
                 />
               </svg>
             </label>
             <slot />
           </div>
-          <div class="drawer-side ">
+          <div class="drawer-side">
             <label for="my-drawer" class="drawer-overlay"></label>
             <ul
               class="menu p-4 overflow-y-auto w-60 bg-base-100 dark:bg-gray-700 dark:text-gray-200 text-base-content"
             >
               <!-- Sidebar content here -->
-              <li class="dark:hover:text-lime-300 "><a><HandIcon class="h-6 w-6"></HandIcon> Configurações</a></li>
-              <li class="dark:hover:text-lime-300 "><a><CodeIcon class="h-6 w-6"></CodeIcon>Adicionar Planilha</a></li>
+              <li class="dark:hover:text-lime-300">
+                <a><HandIcon class="h-6 w-6"></HandIcon> Configurações</a>
+              </li>
+              <li class="dark:hover:text-lime-300">
+                <a><CodeIcon class="h-6 w-6"></CodeIcon>Adicionar Planilha</a>
+              </li>
             </ul>
           </div>
         </div>
@@ -463,19 +465,18 @@ const logout = () => {
 
 <style>
 .sidebar-drawer {
-    display: grid;
-    width: 100%;
-    overflow: hidden;
-    height: 80vh !important;
+  display: grid;
+  width: 100%;
+  overflow: hidden;
+  height: 80vh !important;
 }
 
 .drawer-toggled ~ .drawer-contents {
-    z-index: 0;
-    grid-column-start: 1;
-    grid-row-start: 1;
-    transition-property: all;
-    transition-duration: 300ms;
-    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  z-index: 0;
+  grid-column-start: 1;
+  grid-row-start: 1;
+  transition-property: all;
+  transition-duration: 300ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
-
 </style>
