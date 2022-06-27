@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\EquipamentoController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
@@ -35,4 +36,20 @@ Route::middleware([
     Route::get('/home', function () {
         return Inertia::render('Home');
     })->name('home');
+});
+
+Route::middleware([
+    'auth:sanctum',
+    config('jetstream.auth_session'),
+    'verified',
+])->group(function () {
+
+    Route::controller(EquipamentoController::class)->group(function () {
+        Route::get('equipamentos/', 'index');
+        Route::get('equipamento/{equipamento}', 'show');
+        Route::post('equipamento/', 'store');
+        Route::put('equipamento/', 'update');
+        Route::delete('equipamento/', 'destroy');
+    });
+
 });
