@@ -2,12 +2,12 @@
 
 <template>
   <div
-    class="flex flex-wrap gap-6 dark:bg-gray-900 dark:text-gray-900 justify-center min-w-[30%]"
+    class="flex flex-wrap gap-6  dark:bg-gray-900 dark:text-gray-900 justify-center min-w-[30%]"
   >
     <div
       v-for="card in cards"
       :key="id"
-      class="card w-80 bg-base-100 shadow-xl"
+      class="card w-80 bg-gradient-to-b from-transparent to-gray-100 bg-base-100 shadow-xl"
     >
       <figure class="px-4 pt-6">
         <img
