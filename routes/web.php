@@ -54,7 +54,7 @@ Route::middleware([
         Route::get('equipamento/', 'index');
         Route::get('equipamento/{equipamento}', 'show');
         Route::post('equipamento/', 'store');
-        Route::put('equipamento/', 'update');
+        Route::put('equipamento/{equipamento}', 'update');
         Route::delete('equipamento/', 'destroy');
     });
 
@@ -62,23 +62,23 @@ Route::middleware([
         Route::get('modelo/', 'index');
         Route::get('modelo/{modelo}', 'show');
         Route::post('modelo/', 'store');
-        Route::put('modelo/', 'update');
+        Route::put('modelo/{modelo}', 'update');
         Route::delete('modelo/', 'destroy');
     });
 
     Route::controller(ContratoController::class)->group(function () {
         Route::get('contrato/', 'index');
-        Route::get('contrato/{modelo}', 'show');
+        Route::get('contrato/{contrato}', 'show');
         Route::post('contrato/', 'store');
-        Route::put('contrato/', 'update');
+        Route::put('contrato/{contrato}', 'update');
         Route::delete('contrato/', 'destroy');
     });
 
     Route::controller(PerfilController::class)->group(function () {
         Route::get('perfil/', 'index');
-        Route::get('perfil/{modelo}', 'show');
+        Route::get('perfil/{perfil}', 'show');
         Route::post('perfil/', 'store');
-        Route::put('perfil/', 'update');
+        Route::put('perfil/{perfil}', 'update');
         Route::delete('perfil/', 'destroy');
     });
 
