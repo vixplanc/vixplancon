@@ -42,7 +42,9 @@ Route::middleware([
     'auth:sanctum',
     config('jetstream.auth_session'),
     'verified',
-])->group(function () {
+])
+->prefix("api")
+->group(function () {
 
     Route::controller(EquipamentoController::class)->group(function () {
         Route::get('equipamentos/', 'index');
