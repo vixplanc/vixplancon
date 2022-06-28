@@ -51,7 +51,7 @@ Route::middleware([
 ->group(function () {
 
     Route::controller(EquipamentoController::class)->group(function () {
-        Route::get('equipamentos/', 'index');
+        Route::get('equipamento/', 'index');
         Route::get('equipamento/{equipamento}', 'show');
         Route::post('equipamento/', 'store');
         Route::put('equipamento/', 'update');
@@ -59,7 +59,7 @@ Route::middleware([
     });
 
     Route::controller(ModeloController::class)->group(function () {
-        Route::get('modelos/', 'index');
+        Route::get('modelo/', 'index');
         Route::get('modelo/{modelo}', 'show');
         Route::post('modelo/', 'store');
         Route::put('modelo/', 'update');
@@ -67,7 +67,7 @@ Route::middleware([
     });
 
     Route::controller(ContratoController::class)->group(function () {
-        Route::get('contratos/', 'index');
+        Route::get('contrato/', 'index');
         Route::get('contrato/{modelo}', 'show');
         Route::post('contrato/', 'store');
         Route::put('contrato/', 'update');
@@ -75,7 +75,7 @@ Route::middleware([
     });
 
     Route::controller(PerfilController::class)->group(function () {
-        Route::get('perfis/', 'index');
+        Route::get('perfil/', 'index');
         Route::get('perfil/{modelo}', 'show');
         Route::post('perfil/', 'store');
         Route::put('perfil/', 'update');
