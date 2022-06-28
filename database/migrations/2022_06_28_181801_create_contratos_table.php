@@ -13,12 +13,13 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('equipamentos', function (Blueprint $table) {
+        Schema::create('contratos', function (Blueprint $table) {
             $table->id();
-            $table->foreign('modelo_id')->references('id')->on('modelos');
-            $table->string(column:'denominacao');
-            $table->string(column:'placa');
-            $table->string(column:'chassi');
+            $table->foreign('perfil_id')->references('id')->on('perfils');
+            $table->string(column:'descricao');
+            $table->string(column:'centro_custo');
+            $table->date(column:'data_inicio');
+            $table->date(column:'data_fim');
             $table->timestamps();
         });
     }
@@ -30,6 +31,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('equipamentos');
+        Schema::dropIfExists('contratos');
     }
 };

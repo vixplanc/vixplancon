@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Equipamento;
+use App\Models\Contrato;
 use Illuminate\Http\Request;
 
-class EquipamentoController extends Controller
+class ContratoController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,7 +14,7 @@ class EquipamentoController extends Controller
      */
     public function index()
     {
-        return Equipamento::all();
+        return Contrato::all();
     }
 
     /**
@@ -27,13 +27,14 @@ class EquipamentoController extends Controller
     {
         $request->validate(
             rules: [
-                'modelo_id' => "required",
-                'denominacao' => "required",
-                'placa' => "required",
-                'chassi' => "required",
+                'perfil_id' => "required",
+                'descricao' => "required",
+                'centro_custo' => "required",
+                'data_inicio' => "required",
+                'data_fim' => "required",
             ]
         );
-        return Equipamento::create(
+        return Contrato::create(
             $request->all()
         );
     }
@@ -41,45 +42,46 @@ class EquipamentoController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Equipamento  $equipamento
+     * @param  \App\Models\Contrato  $contrato
      * @return \Illuminate\Http\Response
      */
-    public function show(Equipamento $equipamento)
+    public function show(Contrato $contrato)
     {
-        return $equipamento;
+        return $contrato;
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Equipamento  $equipamento
+     * @param  \App\Models\Contrato  $contrato
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Equipamento $equipamento)
+    public function update(Request $request, Contrato $contrato)
     {
         $request->validate(
             rules: [
-                'modelo_id' => "required",
-                'denominacao' => "required",
-                'placa' => "required",
-                'chassi' => "required",
+                'perfil_id' => "required",
+                'descricao' => "required",
+                'centro_custo' => "required",
+                'data_inicio' => "required",
+                'data_fim' => "required",
             ]
         );
-        $equipamento->update(
+        $contrato->update(
             $request->all()
         );
-        return $equipamento;
+        return $contrato;
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Equipamento  $equipamento
+     * @param  \App\Models\Contrato  $contrato
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Equipamento $equipamento)
+    public function destroy(Contrato $contrato)
     {
-        return $equipamento->delete();
+        return $contrato->delete();
     }
 }
