@@ -55,7 +55,7 @@ Route::middleware([
         Route::get('equipamento/{equipamento}', 'show');
         Route::post('equipamento/', 'store');
         Route::put('equipamento/{equipamento}', 'update');
-        Route::delete('equipamento/', 'destroy');
+        Route::delete('equipamento/{equipamento}', 'destroy');
     });
 
     Route::controller(ModeloController::class)->group(function () {
@@ -63,7 +63,7 @@ Route::middleware([
         Route::get('modelo/{modelo}', 'show');
         Route::post('modelo/', 'store');
         Route::put('modelo/{modelo}', 'update');
-        Route::delete('modelo/', 'destroy');
+        Route::delete('modelo/{modelo}', 'destroy');
     });
 
     Route::controller(ContratoController::class)->group(function () {
@@ -71,7 +71,7 @@ Route::middleware([
         Route::get('contrato/{contrato}', 'show');
         Route::post('contrato/', 'store');
         Route::put('contrato/{contrato}', 'update');
-        Route::delete('contrato/', 'destroy');
+        Route::delete('contrato/{contrato}', 'destroy');
     });
 
     Route::controller(PerfilController::class)->group(function () {
@@ -79,7 +79,7 @@ Route::middleware([
         Route::get('perfil/{perfil}', 'show');
         Route::post('perfil/', 'store');
         Route::put('perfil/{perfil}', 'update');
-        Route::delete('perfil/', 'destroy');
+        Route::delete('perfil/{perfil}', 'destroy');
     });
 
 });
