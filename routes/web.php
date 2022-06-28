@@ -1,6 +1,9 @@
 <?php
 
+use App\Http\Controllers\ContratoController;
 use App\Http\Controllers\EquipamentoController;
+use App\Http\Controllers\ModeloController;
+use App\Models\Modelo;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
@@ -52,6 +55,22 @@ Route::middleware([
         Route::post('equipamento/', 'store');
         Route::put('equipamento/', 'update');
         Route::delete('equipamento/', 'destroy');
+    });
+
+    Route::controller(ModeloController::class)->group(function () {
+        Route::get('modelos/', 'index');
+        Route::get('modelo/{modelo}', 'show');
+        Route::post('modelo/', 'store');
+        Route::put('modelo/', 'update');
+        Route::delete('modelo/', 'destroy');
+    });
+
+    Route::controller(ContratoController::class)->group(function () {
+        Route::get('contratos/', 'index');
+        Route::get('contrato/{modelo}', 'show');
+        Route::post('contrato/', 'store');
+        Route::put('contrato/', 'update');
+        Route::delete('contrato/', 'destroy');
     });
 
 });

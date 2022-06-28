@@ -13,12 +13,13 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('modelos', function (Blueprint $table) {
+        Schema::create('contratos', function (Blueprint $table) {
             $table->id();
+            $table->foreign('perfil_id')->references('id')->on('perfils');
             $table->string(column:'descricao');
-            $table->float(column:'capacidade');
-            $table->string(column:'tipo');
-            $table->string(column:'subtipo');
+            $table->string(column:'centro_custo');
+            $table->date(column:'data_inicio');
+            $table->date(column:'data_fim');
             $table->timestamps();
         });
     }
@@ -30,6 +31,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('modelos');
+        Schema::dropIfExists('contratos');
     }
 };

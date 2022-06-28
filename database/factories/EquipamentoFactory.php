@@ -25,13 +25,7 @@ class EquipamentoFactory extends Factory
     public function definition()
     {
         [
-            'placa_cavalo' => $this->faker->name(),
-            'prefixo_cavalo' => Str::random(10),
-            'placa_semi_reboque' => Str::random(10),
-            'tipo_conjunto' => Str::random(10),
-            'contrato' => Str::random(10),
-            'regime' => Str::random(10),
-            'cod_sap' => Str::random(10),
+
         ];
     }
 }
