@@ -3,6 +3,7 @@
 use App\Http\Controllers\ContratoController;
 use App\Http\Controllers\EquipamentoController;
 use App\Http\Controllers\ModeloController;
+use App\Http\Controllers\PerfilController;
 use App\Models\Modelo;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
@@ -71,6 +72,14 @@ Route::middleware([
         Route::post('contrato/', 'store');
         Route::put('contrato/', 'update');
         Route::delete('contrato/', 'destroy');
+    });
+
+    Route::controller(PerfilController::class)->group(function () {
+        Route::get('perfis/', 'index');
+        Route::get('perfil/{modelo}', 'show');
+        Route::post('perfil/', 'store');
+        Route::put('perfil/', 'update');
+        Route::delete('perfil/', 'destroy');
     });
 
 });
