@@ -1,9 +1,13 @@
 <script setup>
 import Modal from "../Jetstream/Modal";
+import EquipamentosAPI from "../Services/equipamentos"
 import { ref, reactive } from "vue";
 const moduleManage = ref(false);
 const emit = defineEmits(["close"]);
 const processing = ref(false)
+
+const res = EquipamentosAPI.show()
+console.log(res);
 
 defineProps({
     show: {
