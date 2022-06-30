@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ColaboradorController;
 use App\Http\Controllers\ContratoController;
 use App\Http\Controllers\EquipamentoController;
 use App\Http\Controllers\FuncaoController;
@@ -89,6 +90,14 @@ Route::middleware([
         Route::post('funcao/', 'store');
         Route::put('funcao/{funcao}', 'update');
         Route::delete('funcao/{funcao}', 'destroy');
+    });
+
+    Route::controller(ColaboradorController::class)->group(function () {
+        Route::get('colaborador/', 'index');
+        Route::get('colaborador/{colaboradorphp}', 'show');
+        Route::post('colaborador/', 'store');
+        Route::put('colaborador/{colaborador}', 'update');
+        Route::delete('colaborador/{colaborador}', 'destroy');
     });
 
 });
