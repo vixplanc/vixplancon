@@ -1,7 +1,9 @@
 <?php
 
+use App\Http\Controllers\ColaboradorController;
 use App\Http\Controllers\ContratoController;
 use App\Http\Controllers\EquipamentoController;
+use App\Http\Controllers\FuncaoController;
 use App\Http\Controllers\ModeloController;
 use App\Http\Controllers\PerfilController;
 use App\Models\Modelo;
@@ -83,6 +85,22 @@ Route::middleware([
         Route::post('perfil/', 'store');
         Route::put('perfil/{perfil}', 'update');
         Route::delete('perfil/{perfil}', 'destroy');
+    });
+
+    Route::controller(FuncaoController::class)->group(function () {
+        Route::get('funcao/', 'index');
+        Route::get('funcao/{funcao}', 'show');
+        Route::post('funcao/', 'store');
+        Route::put('funcao/{funcao}', 'update');
+        Route::delete('funcao/{funcao}', 'destroy');
+    });
+
+    Route::controller(ColaboradorController::class)->group(function () {
+        Route::get('colaborador/', 'index');
+        Route::get('colaborador/{colaboradorphp}', 'show');
+        Route::post('colaborador/', 'store');
+        Route::put('colaborador/{colaborador}', 'update');
+        Route::delete('colaborador/{colaborador}', 'destroy');
     });
 
 });
