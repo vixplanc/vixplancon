@@ -40,6 +40,9 @@ Route::middleware([
     Route::get('/home', function () {
         return Inertia::render('Home');
     })->name('home');
+    Route::get('/frota', function () {
+        return Inertia::render('Frota');
+    })->name('frota');
 });
 
 Route::middleware([
