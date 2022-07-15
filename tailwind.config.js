@@ -2,6 +2,7 @@ const colors = require("tailwindcss/colors");
 const defaultTheme = require("tailwindcss/defaultTheme");
 
 module.exports = {
+important: true,
   content: [
     "./vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php",
     "./vendor/laravel/jetstream/**/*.blade.php",
@@ -40,5 +41,5 @@ module.exports = {
   },
 
   darkMode: "class",
-  plugins: [require("@tailwindcss/forms"), require("@tailwindcss/typography"), require("daisyui")],
+  plugins: [require("@tailwindcss/typography"), require("daisyui")],
 };

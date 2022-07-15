@@ -1,3 +1,5 @@
+import { env } from "process";
+
 export class API {
     constructor(url){
         this.url = url

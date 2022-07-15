@@ -42,9 +42,24 @@ Route::middleware([
     Route::get('/home', function () {
         return Inertia::render('Home');
     })->name('home');
-    Route::get('/frota', function () {
-        return Inertia::render('Frota');
-    })->name('frota');
+    Route::get('equipamento', function () {
+        return Inertia::render('Equipamento');
+    })->name('equipamento');
+    Route::get('contrato', function () {
+        return Inertia::render('Contrato');
+    })->name('contrato');
+    Route::get('perfil', function () {
+        return Inertia::render('Perfil');
+    })->name('perfil');
+    Route::get('modelo', function () {
+        return Inertia::render('ModeloEquipamento');
+    })->name('modelo');
+    Route::get('funcao', function () {
+        return Inertia::render('Funcao');
+    })->name('funcao');
+    Route::get('colaborador', function () {
+        return Inertia::render('Colaborador');
+    })->name('colaborador');
 });
 
 Route::middleware([
