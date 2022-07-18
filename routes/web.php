@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ColaboradorController;
+use App\Http\Controllers\ConsolidadoController;
 use App\Http\Controllers\ContratoController;
 use App\Http\Controllers\EquipamentoController;
 use App\Http\Controllers\FuncaoController;
@@ -60,6 +61,9 @@ Route::middleware([
     Route::get('colaborador', function () {
         return Inertia::render('Colaborador');
     })->name('colaborador');
+    Route::get('consolidado', function () {
+        return Inertia::render('Consolidado');
+    })->name('consolidado');
 });
 
 Route::middleware([
@@ -112,10 +116,18 @@ Route::middleware([
 
     Route::controller(ColaboradorController::class)->group(function () {
         Route::get('colaborador/', 'index');
-        Route::get('colaborador/{colaboradorphp}', 'show');
+        Route::get('colaborador/{colaborador}', 'show');
         Route::post('colaborador/', 'store');
         Route::put('colaborador/{colaborador}', 'update');
         Route::delete('colaborador/{colaborador}', 'destroy');
+    });
+
+    Route::controller(ConsolidadoController::class)->group(function () {
+        Route::get('consolidado/', 'index');
+        Route::get('consolidado/{consolidado}', 'show');
+        Route::post('consolidado/', 'store');
+        Route::put('consolidado/{consolidado}', 'update');
+        Route::delete('consolidado/{consolidado}', 'destroy');
     });
 
 });

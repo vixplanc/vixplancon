@@ -24,7 +24,7 @@ const maxWidthClass = computed(() => {
     md: "sm:max-w-md",
     lg: "sm:max-w-lg",
     xl: "sm:max-w-xl",
-    "2xl": "sm:max-w-2xl",
+    xxl: "sm:max-w-2xl",
   }[props.maxWidth];
 });
 
@@ -78,6 +78,13 @@ watch(
     } else {
       document.body.style.overflow = null;
     }
+  }
+);
+
+watch(
+  () => props.formSchema,
+  () => {
+    schema.value = props.formSchema;
   }
 );
 
