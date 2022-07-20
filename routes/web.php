@@ -64,6 +64,9 @@ Route::middleware([
     Route::get('consolidado', function () {
         return Inertia::render('Consolidado');
     })->name('consolidado');
+    Route::get('frota', function () {
+        return Inertia::render('Frota');
+    })->name('frota');
 });
 
 Route::middleware([
