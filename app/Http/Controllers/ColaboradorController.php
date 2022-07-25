@@ -17,6 +17,17 @@ class ColaboradorController extends Controller
         return Colaborador::all();
     }
 
+
+    /**
+     * Display a listing of the resource with all relationships.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function index_full()
+    {
+        return Colaborador::all()->load(['funcao', 'contrato', 'centro_custo', 'usuario']);
+    }
+
     /**
      * Display a listing of the resource to a front select.
      *
@@ -60,6 +71,19 @@ class ColaboradorController extends Controller
         return $colaborador;
     }
 
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  \App\Models\Colaborador  $colaborador
+     * @return \Illuminate\Http\Response
+     */
+    public function show_full(Colaborador $colaborador)
+    {
+        return $colaborador->load(['funcao', 'contrato', 'centro_custo', 'usuario']);
+    }
+
+
     /**
      * Update the specified resource in storage.
      *
@@ -67,6 +91,8 @@ class ColaboradorController extends Controller
      * @param  \App\Models\Colaborador  $colaborador
      * @return \Illuminate\Http\Response
      */
+
+
     public function update(Request $request, Colaborador $colaborador)
     {
         $request->validate(

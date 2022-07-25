@@ -131,8 +131,12 @@ Route::middleware([
     });
 
     Route::controller(ColaboradorController::class)->group(function () {
-        Route::get('colaborador/', 'index');
+        Route::get('colaborador/full', 'index_full');
+        Route::get('colaborador/full/{colaborador}', 'show_full');
         Route::get('colaborador/select', 'front_select');
+
+
+        Route::get('colaborador/', 'index');
         Route::get('colaborador/{colaborador}', 'show');
         Route::post('colaborador/', 'store');
         Route::put('colaborador/{colaborador}', 'update');

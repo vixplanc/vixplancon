@@ -12,4 +12,9 @@ class Funcao extends Model
     protected $fillable = [
         'descricao',
     ];
+
+    public function employees()
+    {
+        return $this->hasMany(Colaborador::class);
+    }
 }

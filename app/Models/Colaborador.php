@@ -16,4 +16,38 @@ class Colaborador extends Model
         'user',
         'nome',
     ];
+
+    public function funcao()
+    {
+        return $this->belongsTo(
+            Funcao::class,
+            'funcao',
+        );
+    }
+
+    public function contrato()
+    {
+        return $this->belongsTo(
+            Contrato::class,
+            'contrato'
+        );
+    }
+
+    public function centro_custo()
+    {
+        return $this->belongsTo(
+            Contrato::class,
+            'contrato_centro_custo'
+        );
+    }
+
+    public function usuario()
+    {
+        return $this->belongsTo(
+            User::class,
+            'user'
+        );
+    }
+
+
 }
