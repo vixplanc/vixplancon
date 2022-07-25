@@ -97,14 +97,16 @@ Route::middleware([
     });
 
     Route::controller(ContratoController::class)->group(function () {
+        Route::get('contrato/full', 'index_full');
+        Route::get('contrato/full/{contrato}', 'show_full');
+        Route::get('contrato/select', 'front_select');
+
+
         Route::get('contrato/', 'index');
         Route::get('contrato/{contrato}', 'show');
         Route::post('contrato/', 'store');
         Route::put('contrato/{contrato}', 'update');
         Route::delete('contrato/{contrato}', 'destroy');
-
-        Route::get('contrato/full', 'index_full');
-        Route::get('contrato/select', 'front_select');
     });
 
     Route::controller(PerfilController::class)->group(function () {

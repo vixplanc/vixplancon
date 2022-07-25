@@ -71,6 +71,19 @@ class ContratoController extends Controller
         return $contrato;
     }
 
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  \App\Models\Contrato  $contrato
+     * @return \Illuminate\Http\Response
+     */
+    public function show_full(Contrato $contrato)
+    {
+        return $contrato->load('perfil');
+    }
+
+
     /**
      * Update the specified resource in storage.
      *
