@@ -88,8 +88,8 @@ Route::middleware([
     });
 
     Route::controller(ModeloController::class)->group(function () {
-        Route::get('modelo/', 'index');
         Route::get('modelo/select', 'front_select');
+        Route::get('modelo/', 'index');
         Route::get('modelo/{modelo}', 'show');
         Route::post('modelo/', 'store');
         Route::put('modelo/{modelo}', 'update');
