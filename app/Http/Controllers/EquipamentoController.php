@@ -24,7 +24,7 @@ class EquipamentoController extends Controller
      */
     public function front_select()
     {
-        return Equipamento::all(['id','denominacao']);
+        return Equipamento::all(['id as value','denominacao as text']);
     }
 
     /**
