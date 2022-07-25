@@ -17,6 +17,16 @@ class EquipamentoController extends Controller
         return Equipamento::all();
     }
 
+        /**
+     * Display a listing of the resource to a front select.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function front_select()
+    {
+        return Equipamento::all(['id','denominacao']);
+    }
+
     /**
      * Store a newly created resource in storage.
      *
@@ -48,6 +58,8 @@ class EquipamentoController extends Controller
     {
         return $equipamento;
     }
+
+
 
     /**
      * Update the specified resource in storage.

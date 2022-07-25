@@ -18,6 +18,16 @@ class ContratoController extends Controller
     }
 
     /**
+     * Display a listing of the resource to a front select.
+     *
+     * @return \Illuminate\Http\Response
+    */
+    public function front_select()
+    {
+        return Contrato::all(['id as value','descricao as text']);
+    }
+
+    /**
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request

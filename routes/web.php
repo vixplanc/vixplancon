@@ -78,8 +78,10 @@ Route::middleware([
 ->group(function () {
 
     Route::controller(EquipamentoController::class)->group(function () {
+        Route::get('equipamento/select', 'front_select');
         Route::get('equipamento/', 'index');
         Route::get('equipamento/{equipamento}', 'show');
+
         Route::post('equipamento/', 'store');
         Route::put('equipamento/{equipamento}', 'update');
         Route::delete('equipamento/{equipamento}', 'destroy');
@@ -87,6 +89,7 @@ Route::middleware([
 
     Route::controller(ModeloController::class)->group(function () {
         Route::get('modelo/', 'index');
+        Route::get('modelo/select', 'front_select');
         Route::get('modelo/{modelo}', 'show');
         Route::post('modelo/', 'store');
         Route::put('modelo/{modelo}', 'update');
@@ -95,6 +98,7 @@ Route::middleware([
 
     Route::controller(ContratoController::class)->group(function () {
         Route::get('contrato/', 'index');
+        Route::get('contrato/select', 'front_select');
         Route::get('contrato/{contrato}', 'show');
         Route::post('contrato/', 'store');
         Route::put('contrato/{contrato}', 'update');
@@ -103,6 +107,7 @@ Route::middleware([
 
     Route::controller(PerfilController::class)->group(function () {
         Route::get('perfil/', 'index');
+        Route::get('perfil/select', 'front_select');
         Route::get('perfil/{perfil}', 'show');
         Route::post('perfil/', 'store');
         Route::put('perfil/{perfil}', 'update');
@@ -111,6 +116,7 @@ Route::middleware([
 
     Route::controller(FuncaoController::class)->group(function () {
         Route::get('funcao/', 'index');
+        Route::get('funcao/select', 'front_select');
         Route::get('funcao/{funcao}', 'show');
         Route::post('funcao/', 'store');
         Route::put('funcao/{funcao}', 'update');
@@ -119,6 +125,7 @@ Route::middleware([
 
     Route::controller(ColaboradorController::class)->group(function () {
         Route::get('colaborador/', 'index');
+        Route::get('colaborador/select', 'front_select');
         Route::get('colaborador/{colaborador}', 'show');
         Route::post('colaborador/', 'store');
         Route::put('colaborador/{colaborador}', 'update');
@@ -127,6 +134,7 @@ Route::middleware([
 
     Route::controller(ConsolidadoController::class)->group(function () {
         Route::get('consolidado/', 'index');
+        Route::get('consolidado/select', 'front_select');
         Route::get('consolidado/{consolidado}', 'show');
         Route::post('consolidado/', 'store');
         Route::put('consolidado/{consolidado}', 'update');

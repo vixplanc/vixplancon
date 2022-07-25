@@ -17,6 +17,17 @@ class PerfilController extends Controller
         return Perfil::all();
     }
 
+
+    /**
+     * Display a listing of the resource to a front select.
+     *
+     * @return \Illuminate\Http\Response
+    */
+    public function front_select()
+    {
+        return Perfil::all(['id as value','descricao as text']);
+    }
+
     /**
      * Store a newly created resource in storage.
      *
