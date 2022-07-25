@@ -78,10 +78,13 @@ Route::middleware([
 ->group(function () {
 
     Route::controller(EquipamentoController::class)->group(function () {
+        Route::get('equipamento/full', 'index_full');
+        Route::get('equipamento/full/{equipamento}', 'show_full');
         Route::get('equipamento/select', 'front_select');
+
+
         Route::get('equipamento/', 'index');
         Route::get('equipamento/{equipamento}', 'show');
-
         Route::post('equipamento/', 'store');
         Route::put('equipamento/{equipamento}', 'update');
         Route::delete('equipamento/{equipamento}', 'destroy');

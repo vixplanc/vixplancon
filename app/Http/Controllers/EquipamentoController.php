@@ -17,7 +17,19 @@ class EquipamentoController extends Controller
         return Equipamento::all();
     }
 
-        /**
+
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function index_full()
+    {
+        return Equipamento::all()->load('modelo');
+    }
+
+
+    /**
      * Display a listing of the resource to a front select.
      *
      * @return \Illuminate\Http\Response
@@ -57,6 +69,17 @@ class EquipamentoController extends Controller
     public function show(Equipamento $equipamento)
     {
         return $equipamento;
+    }
+
+    /**
+     * Display the specified resource with all relationships.
+     *
+     * @param  \App\Models\Equipamento  $equipamento
+     * @return \Illuminate\Http\Response
+     */
+    public function show_full(Equipamento $equipamento)
+    {
+        return $equipamento->load('modelo');
     }
 
 
