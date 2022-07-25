@@ -15,4 +15,9 @@ class Equipamento extends Model
         'placa',
         'chassi',
     ];
+
+    public function modelo()
+    {
+        return $this->belongsTo(Modelo::class);
+    }
 }

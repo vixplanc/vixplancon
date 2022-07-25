@@ -15,4 +15,9 @@ class Modelo extends Model
         'tipo',
         'subtipo',
     ];
+
+    public function equipment()
+    {
+        return $this->hasMany(Equipamento::class);
+    }
 }
