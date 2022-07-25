@@ -16,4 +16,9 @@ class Contrato extends Model
         'data_inicio',
         'data_fim',
     ];
+
+    public function perfil()
+    {
+        return $this->belongsTo(Perfil::class);
+    }
 }

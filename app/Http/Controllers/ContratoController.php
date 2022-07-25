@@ -17,6 +17,17 @@ class ContratoController extends Controller
         return Contrato::all();
     }
 
+
+    /**
+     * Display a listing of the resource with all relationships.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function index_full()
+    {
+        return Contrato::all()->load('perfil');
+    }
+
     /**
      * Display a listing of the resource to a front select.
      *

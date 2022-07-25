@@ -12,4 +12,9 @@ class Perfil extends Model
     protected $fillable = [
         'descricao',
     ];
+
+    public function contracts()
+    {
+        return $this->hasMany(Contrato::class);
+    }
 }
