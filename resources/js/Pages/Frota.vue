@@ -1,6 +1,6 @@
 <script setup>
   import AppLayout from "@/Layouts/AppLayout.vue";
-  import Card from "@/Components/Frota/Card.vue";
+  import EquipamentoForm from "@/Components/Frota/ConcluirForm.vue";
 </script>
 
 <template>
@@ -11,7 +11,7 @@
 
     <div class="py-10 bg-grey-900">
       <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-        <Card />
+        <EquipamentoForm />
       </div>
     </div>
   </AppLayout>

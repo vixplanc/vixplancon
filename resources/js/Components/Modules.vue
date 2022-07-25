@@ -62,6 +62,6 @@
 </template>
 
 <script setup>
-import { ref } from "vue";
-import { cards } from "../helpers/modulos.js";
+  import { ref } from "vue";
+  import { cards } from "../helpers/modulos.js";
 </script>

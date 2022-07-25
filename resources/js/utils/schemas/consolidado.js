@@ -127,8 +127,6 @@ function createOption(){
     select.appendChild(option);
 }
 
-
-
 async function getOptions(url){
     await axios.get(url).then((response) => {
         return {nao:"nao", sim:"sim"}

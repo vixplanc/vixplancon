@@ -39,18 +39,26 @@
 </script>
 
 <template>
-  <div class="flex flex-col w-full lg:flex-row">
-    <div class="m-3 w-full">
-      <span class="text-lg m-2">Minhas solicitações</span>
-      <button class="btn bg-lime-400 text-lime-900">Adicionar</button>
-      <div v-for="card in cards" :key="id" class="card glass m-1 cursor-pointer">
-        <div class="card-body p-2 text-center">
-          <div class="card-title">{{ `ID: ${card.id}` }}</div>
-          <div class="flex flex-wrap space-x-4">
-            <span>{{ `DATA SOLICITAÇÃO: ${card.data_solicitacao}` }}</span>
-            <span>{{ `DATA NECESSIDADE: ${card.data_necessidade}` }}</span>
-            <div v-for="(item, index) in card.equipamentos" :key="index">
-              <span>{{ item }}</span>
+  <div class="flex w-full">
+    <div class="relative w-full">
+      <div class="grid m-4">
+        <span class="text-lg">Minhas solicitações</span>
+        <button
+          class="btn bg-lime-400 text-lime-900 absolute inset-y-0 right-0 hover:scale-110 hover:bg-lime-500"
+        >
+          Adicionar
+        </button>
+      </div>
+      <div>
+        <div v-for="card in cards" :key="id" class="card my-2 glass cursor-pointer">
+          <div class="card-body p-2 text-center">
+            <div class="card-title">{{ `ID: ${card.id}` }}</div>
+            <div class="flex flex-wrap space-x-4">
+              <span>{{ `DATA SOLICITAÇÃO: ${card.data_solicitacao}` }}</span>
+              <span>{{ `DATA NECESSIDADE: ${card.data_necessidade}` }}</span>
+              <div v-for="(item, index) in card.equipamentos" :key="index">
+                <span>{{ item }}</span>
+              </div>
             </div>
           </div>
         </div>
