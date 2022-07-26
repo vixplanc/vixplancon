@@ -2,13 +2,13 @@
   import AppLayout from "@/Layouts/AppLayout.vue";
   import Repository from "@/Components/CRUD/Repository.vue";
   import RepositoryModal from "@/Components/CRUD/RepositoryModal";
-  import formSchema from "@/Utils/Schemas/perfil";
-  import API from "../Services/api";
+  import formSchema from "@/Utils/Schemas/colaborador";
+  import API from "@/Services/api";
   import { ref, reactive, onMounted } from "vue";
 
   const processing = ref(false);
 
-  const api = new API("api/perfis");
+  const api = new API("api/colaboradores");
 
   const tableProps = reactive({
     rows: [],
@@ -18,8 +18,24 @@
         title: "ID",
       },
       {
-        name: "descricao",
-        title: "Descrição",
+        name: "funcao",
+        title: "Função",
+      },
+      {
+        name: "contrato",
+        title: "Contrato",
+      },
+      {
+        name: "centro_custo",
+        title: "Centro de Custo",
+      },
+      {
+        name: "user",
+        title: "Usuário",
+      },
+      {
+        name: "nome",
+        title: "Nome",
       },
       {
         name: "created_at",
@@ -30,12 +46,15 @@
         title: "Data Atualização",
       },
     ],
-    title: "Perfis de Contrato",
+    title: "Colaboradores",
   });
 
   const formInitialize = {
-    id: "",
-    descricao: "",
+    funcao: "",
+    contrato: "",
+    centro_custo: "",
+    user: "",
+    nome: "",
   };
 
   const modalProps = reactive({

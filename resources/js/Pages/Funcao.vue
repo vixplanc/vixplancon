@@ -8,7 +8,7 @@
 
   const processing = ref(false);
 
-  const api = new API("api/perfil");
+  const api = new API("api/funcoes");
 
   const tableProps = reactive({
     rows: [],

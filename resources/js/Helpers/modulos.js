@@ -32,7 +32,7 @@ export const cards = [{
     uri_crud: "manutencao",
     uri_app: "app/manutencao",
     img:"manutencao.jpg",
-    disabled: true
+    disabled: false
 },
 {
     id:5,
@@ -41,7 +41,7 @@ export const cards = [{
     uri_crud: "usuarios",
     uri_app: "app/usuarios",
     img:"usuarios.jpg",
-    disabled: true
+    disabled: false
 },
 {
     id:6,
@@ -77,7 +77,7 @@ export const cards = [{
     uri_crud: "colaboradores",
     uri_app: "app/colaboradores",
     img:"contratos.jpg",
-    disabled: true
+    disabled: false
 },
 {
     id:10,

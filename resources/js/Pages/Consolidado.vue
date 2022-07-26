@@ -8,7 +8,7 @@
 
   const processing = ref(false);
 
-  const api = new API("api/consolidado");
+  const api = new API("api/consolidados");
 
   const tableProps = reactive({
     rows: [],

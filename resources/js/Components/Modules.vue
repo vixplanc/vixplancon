@@ -15,9 +15,26 @@
       <figure class="px-4 pt-6">
         <img :src="`../../images/` + card.img" alt="Shoes" class="rounded-lg h-40" />
       </figure>
+
       <div class="card-body items-center text-center">
-        <h2 class="card-title">{{ card.name }}</h2>
+        <span class="card-title p-0 m-0">
+          {{ card.name }}
+          <span v-if="card.disabled" class="badge badge-md badge-success">✓</span>
+        </span>
         <p>{{ card.description }}</p>
+        <div class="rating flex justify-center">
+          <input type="radio" name="rating-4" class="mask mask-star-2 bg-gray-300" />
+          <input
+            type="radio"
+            name="rating-4"
+            class="mask mask-star-2 bg-gray-300"
+            checked
+          />
+          <input type="radio" name="rating-4" class="mask mask-star-2 bg-gray-300" />
+          <input type="radio" name="rating-4" class="mask mask-star-2 bg-gray-300" />
+          <input type="radio" name="rating-4" class="mask mask-star-2 bg-gray-300" />
+        </div>
+
         <div class="card-actions">
           <a
             class="btn btn-sm btn-outline hover:bg-lime-400 hover:text-gray-900 w-full"
