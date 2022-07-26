@@ -1,7 +1,7 @@
 import './bootstrap';
 
 import { createApp, h } from 'vue';
-import { createInertiaApp, Link } from '@inertiajs/inertia-vue3';
+import { createInertiaApp, Link as InertiaLink } from '@inertiajs/inertia-vue3';
 import { InertiaProgress } from '@inertiajs/progress';
 import ElementPlus from 'element-plus';
 import * as ElementPlusIconsVue from '@element-plus/icons-vue'
@@ -19,7 +19,7 @@ createInertiaApp({
     setup({ el, app, props, plugin }) {
         return createApp({ render: () => h(app, props) })
             .use(store)
-            .use(Link)
+            .use(InertiaLink)
             .use(plugin)
             .use(ElementPlus)
             .use(ElementPlusIconsVue)
