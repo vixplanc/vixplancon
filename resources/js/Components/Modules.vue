@@ -15,29 +15,33 @@
       <figure class="px-4 pt-6">
         <img :src="`../../images/` + card.img" alt="Shoes" class="rounded-lg h-40" />
       </figure>
+
       <div class="card-body items-center text-center">
-        <h2 class="card-title">{{ card.name }}</h2>
+        <span class="card-title p-0 m-0">
+          {{ card.name }}
+          <span v-if="card.disabled" class="badge badge-md badge-success">✓</span>
+        </span>
         <p>{{ card.description }}</p>
+        <div class="rating flex justify-center">
+          <input type="radio" name="rating-4" class="mask mask-star-2 bg-gray-300" />
+          <input
+            type="radio"
+            name="rating-4"
+            class="mask mask-star-2 bg-gray-300"
+            checked
+          />
+          <input type="radio" name="rating-4" class="mask mask-star-2 bg-gray-300" />
+          <input type="radio" name="rating-4" class="mask mask-star-2 bg-gray-300" />
+          <input type="radio" name="rating-4" class="mask mask-star-2 bg-gray-300" />
+        </div>
+
         <div class="card-actions">
-          <button
+          <a
             class="btn btn-sm btn-outline hover:bg-lime-400 hover:text-gray-900 w-full"
+            :href="`${url}/${card.uri_crud}`"
           >
-            <span class="mx-4">Indicadores</span>
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              class="h-6 w-6"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-              stroke-width="2"
-            >
-              <path
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                d="M7 12l3-3 3 3 4-4M8 21l4-4 4 4M3 4h18M4 4h16v12a1 1 0 01-1 1H5a1 1 0 01-1-1V4z"
-              />
-            </svg>
-          </button>
+            <span class="mx-4">Painel de Gerenciamento</span>
+          </a>
           <button class="btn btn-sm hover:bg-lime-400 hover:text-gray-900 w-full">
             <span class="mx-4">Entrar</span>
             <svg
@@ -64,4 +68,5 @@
 <script setup>
   import { ref } from "vue";
   import { cards } from "../helpers/modulos.js";
+  const url = ref("http://localhost:8000");
 </script>

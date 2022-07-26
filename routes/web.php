@@ -43,25 +43,25 @@ Route::middleware([
     Route::get('/home', function () {
         return Inertia::render('Home');
     })->name('home');
-    Route::get('equipamento', function () {
+    Route::get('equipamentos', function () {
         return Inertia::render('Equipamento');
     })->name('equipamento');
-    Route::get('contrato', function () {
+    Route::get('contratos', function () {
         return Inertia::render('Contrato');
     })->name('contrato');
-    Route::get('perfil', function () {
+    Route::get('perfis', function () {
         return Inertia::render('Perfil');
     })->name('perfil');
-    Route::get('modelo', function () {
+    Route::get('modelos', function () {
         return Inertia::render('ModeloEquipamento');
     })->name('modelo');
-    Route::get('funcao', function () {
+    Route::get('funcoes', function () {
         return Inertia::render('Funcao');
     })->name('funcao');
-    Route::get('colaborador', function () {
+    Route::get('colaboradores', function () {
         return Inertia::render('Colaborador');
     })->name('colaborador');
-    Route::get('consolidado', function () {
+    Route::get('consolidados', function () {
         return Inertia::render('Consolidado');
     })->name('consolidado');
     Route::get('frota', function () {
@@ -78,81 +78,81 @@ Route::middleware([
 ->group(function () {
 
     Route::controller(EquipamentoController::class)->group(function () {
-        Route::get('equipamento/full', 'index_full');
-        Route::get('equipamento/full/{equipamento}', 'show_full');
-        Route::get('equipamento/select', 'front_select');
+        Route::get('equipamentos/full', 'index_full');
+        Route::get('equipamentos/full/{equipamento}', 'show_full');
+        Route::get('equipamentos/select', 'front_select');
 
 
-        Route::get('equipamento/', 'index');
-        Route::get('equipamento/{equipamento}', 'show');
-        Route::post('equipamento/', 'store');
-        Route::put('equipamento/{equipamento}', 'update');
-        Route::delete('equipamento/{equipamento}', 'destroy');
+        Route::get('equipamentos/', 'index');
+        Route::get('equipamentos/{equipamento}', 'show');
+        Route::post('equipamentos/', 'store');
+        Route::put('equipamentos/{equipamento}', 'update');
+        Route::delete('equipamentos/{equipamento}', 'destroy');
     });
 
     Route::controller(ModeloController::class)->group(function () {
-        Route::get('modelo/select', 'front_select');
-        Route::get('modelo/', 'index');
-        Route::get('modelo/{modelo}', 'show');
-        Route::post('modelo/', 'store');
-        Route::put('modelo/{modelo}', 'update');
-        Route::delete('modelo/{modelo}', 'destroy');
+        Route::get('modelos/select', 'front_select');
+        Route::get('modelos/', 'index');
+        Route::get('modelos/{modelo}', 'show');
+        Route::post('modelos/', 'store');
+        Route::put('modelos/{modelo}', 'update');
+        Route::delete('modelos/{modelo}', 'destroy');
     });
 
     Route::controller(ContratoController::class)->group(function () {
-        Route::get('contrato/full', 'index_full');
-        Route::get('contrato/full/{contrato}', 'show_full');
-        Route::get('contrato/select', 'front_select');
+        Route::get('contratos/full', 'index_full');
+        Route::get('contratos/full/{contrato}', 'show_full');
+        Route::get('contratos/select', 'front_select');
 
 
-        Route::get('contrato/', 'index');
-        Route::get('contrato/{contrato}', 'show');
-        Route::post('contrato/', 'store');
-        Route::put('contrato/{contrato}', 'update');
-        Route::delete('contrato/{contrato}', 'destroy');
+        Route::get('contratos/', 'index');
+        Route::get('contratos/{contrato}', 'show');
+        Route::post('contratos/', 'store');
+        Route::put('contratos/{contrato}', 'update');
+        Route::delete('contratos/{contrato}', 'destroy');
     });
 
     Route::controller(PerfilController::class)->group(function () {
-        Route::get('perfil/', 'index');
-        Route::get('perfil/select', 'front_select');
-        Route::get('perfil/{perfil}', 'show');
-        Route::post('perfil/', 'store');
-        Route::put('perfil/{perfil}', 'update');
-        Route::delete('perfil/{perfil}', 'destroy');
+        Route::get('perfis/', 'index');
+        Route::get('perfis/select', 'front_select');
+        Route::get('perfis/{perfil}', 'show');
+        Route::post('perfis/', 'store');
+        Route::put('perfis/{perfil}', 'update');
+        Route::delete('perfis/{perfil}', 'destroy');
     });
 
     Route::controller(FuncaoController::class)->group(function () {
-        Route::get('funcao/', 'index');
-        Route::get('funcao/select', 'front_select');
-        Route::get('funcao/{funcao}', 'show');
-        Route::post('funcao/', 'store');
-        Route::put('funcao/{funcao}', 'update');
-        Route::delete('funcao/{funcao}', 'destroy');
+        Route::get('funcoes/', 'index');
+        Route::get('funcoes/select', 'front_select');
+        Route::get('funcoes/{funcao}', 'show');
+        Route::post('funcoes/', 'store');
+        Route::put('funcoes/{funcao}', 'update');
+        Route::delete('funcoes/{funcao}', 'destroy');
     });
 
     Route::controller(ColaboradorController::class)->group(function () {
-        Route::get('colaborador/full', 'index_full');
-        Route::get('colaborador/full/{colaborador}', 'show_full');
-        Route::get('colaborador/select', 'front_select');
+        Route::get('colaboradores/full', 'index_full');
+        Route::get('colaboradores/full/{colaborador}', 'show_full');
+        Route::get('colaboradores/select', 'front_select');
 
 
-        Route::get('colaborador/', 'index');
-        Route::get('colaborador/{colaborador}', 'show');
-        Route::post('colaborador/', 'store');
-        Route::put('colaborador/{colaborador}', 'update');
-        Route::delete('colaborador/{colaborador}', 'destroy');
+        Route::get('colaboradores/', 'index');
+        Route::get('colaboradores/{colaborador}', 'show');
+        Route::post('colaboradores/', 'store');
+        Route::put('colaboradores/{colaborador}', 'update');
+        Route::delete('colaboradores/{colaborador}', 'destroy');
     });
 
     Route::controller(ConsolidadoController::class)->group(function () {
-        Route::get('consolidado/full', 'index_full');
-        Route::get('consolidado/full/{consolidado}', 'show_full');
-        Route::get('consolidado/select', 'front_select');
+        Route::get('consolidados/full', 'index_full');
+        Route::get('consolidados/full/{consolidado}', 'show_full');
+        Route::get('consolidados/select', 'front_select');
 
-        Route::get('consolidado/', 'index');
-        Route::get('consolidado/{consolidado}', 'show');
-        Route::post('consolidado/', 'store');
-        Route::put('consolidado/{consolidado}', 'update');
-        Route::delete('consolidado/{consolidado}', 'destroy');
+        Route::get('consolidados/', 'index');
+        Route::get('consolidados/{consolidado}', 'show');
+        Route::post('consolidados/', 'store');
+        Route::put('consolidados/{consolidado}', 'update');
+        Route::delete('consolidados/{consolidado}', 'destroy');
     });
 
 });
