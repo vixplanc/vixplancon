@@ -144,8 +144,11 @@ Route::middleware([
     });
 
     Route::controller(ConsolidadoController::class)->group(function () {
-        Route::get('consolidados/', 'index');
+        Route::get('consolidados/full', 'index_full');
+        Route::get('consolidados/full/{consolidado}', 'show_full');
         Route::get('consolidados/select', 'front_select');
+
+        Route::get('consolidados/', 'index');
         Route::get('consolidados/{consolidado}', 'show');
         Route::post('consolidados/', 'store');
         Route::put('consolidados/{consolidado}', 'update');

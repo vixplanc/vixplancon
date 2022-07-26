@@ -17,6 +17,17 @@ class ConsolidadoController extends Controller
         return Consolidado::all();
     }
 
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function index_full()
+    {
+        return Consolidado::all()->load(['modelo', 'contrato', 'centro_custo', 'equipamento']);
+    }
+
+
         /**
      * Display a listing of the resource to a front select.
      *
@@ -62,6 +73,18 @@ class ConsolidadoController extends Controller
     public function show(Consolidado $consolidado)
     {
         return $consolidado;
+    }
+
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  \App\Models\Consolidado  $consolidado
+     * @return \Illuminate\Http\Response
+     */
+    public function show_full(Consolidado $consolidado)
+    {
+        return $consolidado->load(['modelo', 'contrato', 'centro_custo', 'equipamento']);
     }
 
     /**
