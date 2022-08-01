@@ -26,6 +26,7 @@ return new class extends Migration
             $table->foreign('user')->references('id')->on('users');
 
             $table->string(column:'nome');
+            $table->boolean(column:'ativo');
 
             $table->timestamps();
         });

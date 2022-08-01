@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Consolidado;
+use Illuminate\Support\Facades\Gate;
 use Illuminate\Http\Request;
 
 class ConsolidadoController extends Controller
@@ -14,6 +15,9 @@ class ConsolidadoController extends Controller
      */
     public function index()
     {
+        if (! Gate::allows('view')) {
+            abort(403);
+        }
         return Consolidado::all();
     }
 
@@ -24,6 +28,9 @@ class ConsolidadoController extends Controller
      */
     public function index_full()
     {
+        if (! Gate::allows('view')) {
+            abort(403);
+        }
         return Consolidado::all()->load(['modelo', 'contrato', 'centro_custo', 'equipamento']);
     }
 
@@ -46,6 +53,9 @@ class ConsolidadoController extends Controller
      */
     public function store(Request $request)
     {
+        if (! Gate::allows('create')) {
+            abort(403);
+        }
         $request->validate(
             rules: [
                 'modelo'=> 'required',
@@ -53,14 +63,17 @@ class ConsolidadoController extends Controller
                 'contrato_centro_custo'=> 'required',
                 'equipamento'=> '',
                 'status'=> 'required',
-                'contratual'=> 'required',
+                'contratual'=> '',
                 'prefixo'=> 'required',
                 'regime'=> 'required',
                 'codigo_sap'=> 'required',
             ]
         );
+        $input = $request->all();
+        $input['contratual'] = true;
+        // dd($input);
         return Consolidado::create(
-            $request->all()
+            $input
         );
     }
 
@@ -72,6 +85,9 @@ class ConsolidadoController extends Controller
      */
     public function show(Consolidado $consolidado)
     {
+        if (! Gate::allows('viewAny', $consolidado)) {
+            abort(403);
+        }
         return $consolidado;
     }
 
@@ -84,6 +100,9 @@ class ConsolidadoController extends Controller
      */
     public function show_full(Consolidado $consolidado)
     {
+        if (! Gate::allows('viewAny', $consolidado)) {
+            abort(403);
+        }
         return $consolidado->load(['modelo', 'contrato', 'centro_custo', 'equipamento']);
     }
 
@@ -96,6 +115,9 @@ class ConsolidadoController extends Controller
      */
     public function update(Request $request, Consolidado $consolidado)
     {
+        if (! Gate::allows('update', $consolidado)) {
+            abort(403);
+        }
         $request->validate(
             rules: [
                 'modelo'=> 'required',
@@ -123,6 +145,9 @@ class ConsolidadoController extends Controller
      */
     public function destroy(Consolidado $consolidado)
     {
+        if (! Gate::allows('delete', $consolidado)) {
+            abort(403);
+        }
         $consolidado->delete();
     }
 }

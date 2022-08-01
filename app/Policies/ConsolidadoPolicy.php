@@ -5,6 +5,7 @@ namespace App\Policies;
 use App\Models\Consolidado;
 use App\Models\User;
 use Illuminate\Auth\Access\HandlesAuthorization;
+use Illuminate\Auth\Access\Response;
 
 class ConsolidadoPolicy
 {
@@ -18,7 +19,18 @@ class ConsolidadoPolicy
      */
     public function viewAny(User $user)
     {
-        //
+        foreach ($user->Colaboradores as $colaborador) {
+            if($colaborador->ativo){
+                foreach($colaborador->autorizados as $autorizacao){
+                    if(
+                        $autorizacao->tipo == "view-any-consolidado" or $autorizacao->tipo == "all-consolidado"
+                    ){
+                        return Response::allow();
+                    }
+                }
+            }
+        }
+        return Response::deny(message:'comando invalido');
     }
 
     /**
@@ -30,7 +42,18 @@ class ConsolidadoPolicy
      */
     public function view(User $user, Consolidado $consolidado)
     {
-        //
+        foreach ($user->Colaboradores as $colaborador) {
+            if($colaborador->ativo){
+                foreach($colaborador->autorizados as $autorizacao){
+                    if(
+                        $autorizacao->tipo == "view-consolidado" or $autorizacao->tipo == "all-consolidado"
+                    ){
+                        return Response::allow();
+                    }
+                }
+            }
+        }
+        return Response::deny(message:'comando invalido');
     }
 
     /**
@@ -41,7 +64,18 @@ class ConsolidadoPolicy
      */
     public function create(User $user)
     {
-        //
+        foreach ($user->Colaboradores as $colaborador) {
+            if($colaborador->ativo){
+                foreach($colaborador->autorizados as $autorizacao){
+                    if(
+                        $autorizacao->tipo == "create-consolidado" or $autorizacao->tipo == "all-consolidado"
+                    ){
+                        return Response::allow();
+                    }
+                }
+            }
+        }
+        return Response::deny(message:'comando invalido');
     }
 
     /**
@@ -53,8 +87,21 @@ class ConsolidadoPolicy
      */
     public function update(User $user, Consolidado $consolidado)
     {
-        //
+        foreach ($user->Colaboradores as $colaborador) {
+            if($colaborador->ativo){
+                foreach($colaborador->autorizados as $autorizacao){
+                    if(
+                        $autorizacao->tipo == "update-consolidado" or $autorizacao->tipo == "all-consolidado"
+                    ){
+                        return Response::allow();
+                    }
+                }
+            }
+        }
+        return Response::deny(message:'comando invalido');
     }
+
+
 
     /**
      * Determine whether the user can delete the model.
@@ -65,7 +112,18 @@ class ConsolidadoPolicy
      */
     public function delete(User $user, Consolidado $consolidado)
     {
-        //
+        foreach ($user->Colaboradores as $colaborador) {
+            if($colaborador->ativo){
+                foreach($colaborador->autorizados as $autorizacao){
+                    if(
+                        $autorizacao->tipo == "delete-consolidado" or $autorizacao->tipo == "all-consolidado"
+                    ){
+                        return Response::allow();
+                    }
+                }
+            }
+        }
+        return Response::deny(message:'comando invalido');
     }
 
     /**
@@ -77,7 +135,18 @@ class ConsolidadoPolicy
      */
     public function restore(User $user, Consolidado $consolidado)
     {
-        //
+        foreach ($user->Colaboradores as $colaborador) {
+            if($colaborador->ativo){
+                foreach($colaborador->autorizados as $autorizacao){
+                    if(
+                        $autorizacao->tipo == "restore-consolidado" or $autorizacao->tipo == "all-consolidado"
+                    ){
+                        return Response::allow();
+                    }
+                }
+            }
+        }
+        return Response::deny(message:'comando invalido');
     }
 
     /**
@@ -89,6 +158,17 @@ class ConsolidadoPolicy
      */
     public function forceDelete(User $user, Consolidado $consolidado)
     {
-        //
+        foreach ($user->Colaboradores as $colaborador) {
+            if($colaborador->ativo){
+                foreach($colaborador->autorizados as $autorizacao){
+                    if(
+                        $autorizacao->tipo == "force-delete-consolidado" or $autorizacao->tipo == "all-consolidado"
+                    ){
+                        return Response::allow();
+                    }
+                }
+            }
+        }
+        return Response::deny(message:'comando invalido');
     }
 }

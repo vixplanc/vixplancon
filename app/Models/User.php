@@ -61,6 +61,9 @@ class User extends Authenticatable
 
     public function Colaboradores()
     {
-        return $this->hasMany(Colaborador::class);
+        return $this->hasMany(
+            Colaborador::class,
+            'user'
+        );
     }
 }

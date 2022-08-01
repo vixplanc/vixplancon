@@ -15,6 +15,7 @@ class Colaborador extends Model
         'contrato_centro_custo',
         'user',
         'nome',
+        'ativo',
     ];
 
     public function funcao()
@@ -45,8 +46,14 @@ class Colaborador extends Model
     {
         return $this->belongsTo(
             User::class,
+            'id',
             'user'
         );
+    }
+
+    public function Autorizados()
+    {
+        return $this->hasMany(Autorizado::class, foreignKey:'colaborador');
     }
 
 

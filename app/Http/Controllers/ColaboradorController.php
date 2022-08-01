@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Colaborador;
 use Illuminate\Http\Request;
+use phpDocumentor\Reflection\PseudoTypes\True_;
 
 class ColaboradorController extends Controller
 {
@@ -50,13 +51,19 @@ class ColaboradorController extends Controller
             rules: [
                 'funcao'=> "required",
                 'contrato'=> "required",
-                'contrato_centro_custo'=> "required",
+                'centro_custo'=> "required",
                 'user'=> "",
                 'nome' => "required",
+                'ativo' => "nullable",
             ]
         );
+        $input = $request->all();
+
+        $input['contrato_centro_custo'] = $input['centro_custo'];
+        $input['ativo'] = 1;
+        // dd($input);
         return Colaborador::create(
-            $request->all()
+            $input
         );
     }
 
