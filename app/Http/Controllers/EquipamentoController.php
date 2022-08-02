@@ -45,7 +45,7 @@ class EquipamentoController extends Controller
      */
     public function show(Equipamento $equipamento)
     {
-        if (! Gate::allows('show-equipamento')) {
+        if (! Gate::allows('show-equipamento', $equipamento)) {
             abort(403);
         }
         return $equipamento;
@@ -60,7 +60,7 @@ class EquipamentoController extends Controller
      */
     public function show_full(Equipamento $equipamento)
     {
-        if (! Gate::allows('show-equipamento')) {
+        if (! Gate::allows('show-equipamento', $equipamento)) {
             abort(403);
         }
         return $equipamento->load('modelo');
@@ -102,7 +102,7 @@ class EquipamentoController extends Controller
      */
     public function update(Request $request, Equipamento $equipamento)
     {
-        if (! Gate::allows('update-equipamento')) {
+        if (! Gate::allows('update-equipamento', $equipamento)) {
             abort(403);
         }
         $request->validate(
@@ -128,7 +128,7 @@ class EquipamentoController extends Controller
      */
     public function destroy(Equipamento $equipamento)
     {
-        if (! Gate::allows('delete-equipamento')) {
+        if (! Gate::allows('delete-equipamento', $equipamento)) {
             abort(403);
         }
         return $equipamento->delete();

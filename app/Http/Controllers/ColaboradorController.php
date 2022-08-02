@@ -53,17 +53,19 @@ class ColaboradorController extends Controller
                 'contrato'=> "required",
                 'centro_custo'=> "required",
                 'user'=> "",
+
                 'nome' => "required",
                 'ativo' => "nullable",
             ]
         );
-        $input = $request->all();
 
-        $input['contrato_centro_custo'] = $input['centro_custo'];
-        $input['ativo'] = 1;
+        // $input = $request->all();
+        // $input['contrato_centro_custo'] = $input['centro_custo'];
+        // $input['ativo'] = 1;
         // dd($input);
         return Colaborador::create(
-            $input
+            // $input
+            $request->all()
         );
     }
 

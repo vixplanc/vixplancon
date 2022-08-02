@@ -86,18 +86,18 @@ class ConsolidadoController extends Controller
                 'contrato_centro_custo'=> 'required',
                 'equipamento'=> '',
                 'status'=> 'required',
-                'contratual'=> '',
-                // 'contratual'=> 'required',
+                // 'contratual'=> '',
+                'contratual'=> 'required',
                 'prefixo'=> 'required',
                 'regime'=> 'required',
                 'codigo_sap'=> 'required',
             ]
         );
-        $input = $request->all();
-        $input['contratual'] = true;
+        // $input = $request->all();
+        // $input['contratual'] = true;
         return Consolidado::create(
-            $input
-            // $request->all()
+            // $input
+            $request->all()
         );
     }
 
