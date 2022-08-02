@@ -35,7 +35,7 @@ class ConsolidadoController extends Controller
     */
     public function front_select()
     {
-        return Consolidado::all(['id as value','prefixo as text']);
+        return Consolidado::all(['id as value','prefixo as label']);
     }
 
     /**

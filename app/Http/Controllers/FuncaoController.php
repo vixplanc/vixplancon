@@ -25,7 +25,7 @@ class FuncaoController extends Controller
     */
     public function front_select()
     {
-        return Funcao::all(['id as value','descricao as text']);
+        return Funcao::all(['id as value','descricao as label']);
     }
 
     /**

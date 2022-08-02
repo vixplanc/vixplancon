@@ -24,7 +24,7 @@ class ModeloController extends Controller
      */
     public function front_select()
     {
-        return Modelo::all(['id as value','descricao as text']);
+        return Modelo::all(['id as value','descricao as label']);
     }
 
     /**

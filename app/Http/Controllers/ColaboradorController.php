@@ -35,7 +35,7 @@ class ColaboradorController extends Controller
     */
     public function front_select()
     {
-        return Colaborador::all(['id as value','nome as text']);
+        return Colaborador::all(['id as value','nome as label']);
     }
 
     /**

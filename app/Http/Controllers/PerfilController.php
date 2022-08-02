@@ -25,7 +25,7 @@ class PerfilController extends Controller
     */
     public function front_select()
     {
-        return Perfil::all(['id as value','descricao as text']);
+        return Perfil::all(['id as value','descricao as label']);
     }
 
     /**

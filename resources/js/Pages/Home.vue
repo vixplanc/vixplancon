@@ -4,9 +4,9 @@ import Modules from "@/Components/Modules.vue";
 </script>
 
 <template>
-  <AppLayout title="Dashboard">
+  <AppLayout title="Home">
     <template #header>
-      <h2 class="font-bold text-xl text-lime-900 leading-tight">
+      <h2 class="font-bold text-xl text-white leading-tight">
         Módulos
       </h2>
     </template>

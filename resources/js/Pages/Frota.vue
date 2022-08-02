@@ -4,9 +4,9 @@
 </script>
 
 <template>
-  <AppLayout title="Dashboard">
+  <AppLayout title="Frota">
     <template #header>
-      <h2 class="font-bold text-xl text-lime-900 leading-tight">Frota</h2>
+      <h2 class="font-bold text-xl text-white leading-tight">Frota</h2>
     </template>
 
     <div class="py-10 bg-grey-900">

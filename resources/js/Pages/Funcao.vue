@@ -151,9 +151,9 @@
     @save="handleModalConfirm"
   >
   </RepositoryModal>
-  <AppLayout title="Dashboard">
+  <AppLayout title="Funcao">
     <template #header>
-      <h2 class="font-bold text-xl text-lime-900 leading-tight">Gestão Módulos</h2>
+      <h2 class="font-bold text-xl text-white leading-tight">Gestão de Funções</h2>
     </template>
 
     <div class="py-10">

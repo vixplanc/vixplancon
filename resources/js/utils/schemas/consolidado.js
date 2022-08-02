@@ -1,29 +1,15 @@
 import axios from "axios";
-import {ref, onMounted} from "vue"
-
-getOptions("api/modelo").then((response) => {
-    schema.value.filter((e) => {
-        if(e.$formkit == "select"){
-            e.options = [
-                {
-                    label:"Sim", value:"sim"
-                }
-            ]
-        }
-    })
-    console.log(schema);
-})
-
-
+import {ref} from "vue"
 
 const schema = ref([
     {
-        $formkit: "text",
+        $formkit: "select",
         label: "Modelo",
         validation: "required",
-        id: "modelo",
-        name: "modelo",
-        placeholder: "Informe o modelo",
+        id: "modelo_id",
+        name: "modelo_id",
+        placeholder: "Selecione um modelo",
+        url: 'api/modelos/select',
         classes: {
             wrapper: "max-w-full",
         },
@@ -119,18 +105,17 @@ const schema = ref([
     },
 ])
 
-function createOption(){
-    var option = document.createElement("option");
-    option.text = "Text";
-    option.value = "myvalue";
-    var select = document.getElementById("id-to-my-select-box");
-    select.appendChild(option);
-}
-
 async function getOptions(url){
     await axios.get(url).then((response) => {
-        return {nao:"nao", sim:"sim"}
-    });
+    schema.value.filter((e) => {
+        if(e.id == "contratual"){
+            console.log(response);
+            e.options = response.data
+        }
+    })
+})
 };
+
+getOptions("api/modelos/select")
 
 export default schema;
