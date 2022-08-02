@@ -6,6 +6,7 @@ use App\Models\Consolidado;
 use App\Models\Equipamento;
 use App\Models\User;
 use App\Policies\ConsolidadoPolicy;
+use App\Policies\ContratoPolicy;
 use App\Policies\EquipamentoPolicy;
 use App\Policies\FuncaoPolicy;
 use Illuminate\Auth\Access\Response;
