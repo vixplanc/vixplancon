@@ -51,5 +51,12 @@ class AuthServiceProvider extends ServiceProvider
         Gate::define('create-contrato', [ContratoPolicy::class, 'create']);
         Gate::define('update-contrato', [ContratoPolicy::class, 'update']);
         Gate::define('delete-contrato', [ContratoPolicy::class, 'delete']);
+
+
+        Gate::define('index-funcao', [FuncaoPolicy::class, 'viewAny']);
+        Gate::define('show-funcao', [FuncaoPolicy::class, 'view']);
+        Gate::define('create-funcao', [FuncaoPolicy::class, 'create']);
+        Gate::define('update-funcao', [FuncaoPolicy::class, 'update']);
+        Gate::define('delete-funcao', [FuncaoPolicy::class, 'delete']);
     }
 }
