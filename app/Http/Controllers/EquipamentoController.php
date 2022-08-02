@@ -4,9 +4,11 @@ namespace App\Http\Controllers;
 
 use App\Models\Equipamento;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Gate;
 
 class EquipamentoController extends Controller
 {
+
     /**
      * Display a listing of the resource.
      *
@@ -14,6 +16,9 @@ class EquipamentoController extends Controller
      */
     public function index()
     {
+        if (! Gate::allows('index-equipamento')) {
+            abort(403);
+        }
         return Equipamento::all();
     }
 
@@ -25,19 +30,43 @@ class EquipamentoController extends Controller
      */
     public function index_full()
     {
+        if (! Gate::allows('index-equipamento')) {
+            abort(403);
+        }
         return Equipamento::all()->load('modelo');
     }
 
 
     /**
-     * Display a listing of the resource to a front select.
+     * Display the specified resource.
      *
+     * @param  \App\Models\Equipamento  $equipamento
      * @return \Illuminate\Http\Response
      */
-    public function front_select()
+    public function show(Equipamento $equipamento)
     {
-        return Equipamento::all(['id as value','denominacao as label']);
+        if (! Gate::allows('show-equipamento', $equipamento)) {
+            abort(403);
+        }
+        return $equipamento;
     }
+
+
+    /**
+     * Display the specified resource with all relationships.
+     *
+     * @param  \App\Models\Equipamento  $equipamento
+     * @return \Illuminate\Http\Response
+     */
+    public function show_full(Equipamento $equipamento)
+    {
+        if (! Gate::allows('show-equipamento', $equipamento)) {
+            abort(403);
+        }
+        return $equipamento->load('modelo');
+    }
+
+
 
     /**
      * Store a newly created resource in storage.
@@ -47,6 +76,9 @@ class EquipamentoController extends Controller
      */
     public function store(Request $request)
     {
+        if (! Gate::allows('create-equipamento')) {
+            abort(403);
+        }
         $request->validate(
             rules: [
                 'modelo_id' => "required",
@@ -60,29 +92,6 @@ class EquipamentoController extends Controller
         );
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Equipamento  $equipamento
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Equipamento $equipamento)
-    {
-        return $equipamento;
-    }
-
-    /**
-     * Display the specified resource with all relationships.
-     *
-     * @param  \App\Models\Equipamento  $equipamento
-     * @return \Illuminate\Http\Response
-     */
-    public function show_full(Equipamento $equipamento)
-    {
-        return $equipamento->load('modelo');
-    }
-
-
 
     /**
      * Update the specified resource in storage.
@@ -93,6 +102,9 @@ class EquipamentoController extends Controller
      */
     public function update(Request $request, Equipamento $equipamento)
     {
+        if (! Gate::allows('update-equipamento', $equipamento)) {
+            abort(403);
+        }
         $request->validate(
             rules: [
                 'modelo_id' => "required",
@@ -107,6 +119,7 @@ class EquipamentoController extends Controller
         return $equipamento;
     }
 
+
     /**
      * Remove the specified resource from storage.
      *
@@ -115,6 +128,23 @@ class EquipamentoController extends Controller
      */
     public function destroy(Equipamento $equipamento)
     {
+        if (! Gate::allows('delete-equipamento', $equipamento)) {
+            abort(403);
+        }
         return $equipamento->delete();
+    }
+
+
+    /**
+     * Display a listing of the resource to a front select.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function front_select()
+    {
+        if (! Gate::allows('index-equipamento')) {
+            abort(403);
+        }
+        return Equipamento::all(['id as value','denominacao as text']);
     }
 }
