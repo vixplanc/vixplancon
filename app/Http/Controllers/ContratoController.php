@@ -4,9 +4,11 @@ namespace App\Http\Controllers;
 
 use App\Models\Contrato;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Gate;
 
 class ContratoController extends Controller
 {
+
     /**
      * Display a listing of the resource.
      *
@@ -14,6 +16,9 @@ class ContratoController extends Controller
      */
     public function index()
     {
+        if (! Gate::allows('index-contrato')) {
+            abort(403);
+        }
         return Contrato::all();
     }
 
@@ -25,18 +30,43 @@ class ContratoController extends Controller
      */
     public function index_full()
     {
+        if (! Gate::allows('index-contrato')) {
+            abort(403);
+        }
         return Contrato::all()->load('perfil');
     }
 
+
     /**
-     * Display a listing of the resource to a front select.
+     * Display the specified resource.
      *
+     * @param  \App\Models\Contrato  $contrato
      * @return \Illuminate\Http\Response
-    */
-    public function front_select()
+     */
+    public function show(Contrato $contrato)
     {
-        return Contrato::all(['id as value','descricao as text']);
+        if (! Gate::allows('show-contrato', $contrato)) {
+            abort(403);
+        }
+        return $contrato;
     }
+
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  \App\Models\Contrato  $contrato
+     * @return \Illuminate\Http\Response
+     */
+    public function show_full(Contrato $contrato)
+    {
+        if (! Gate::allows('show-contrato', $contrato)) {
+            abort(403);
+        }
+        return $contrato->load('perfil');
+    }
+
+
 
     /**
      * Store a newly created resource in storage.
@@ -46,6 +76,9 @@ class ContratoController extends Controller
      */
     public function store(Request $request)
     {
+        if (! Gate::allows('create-contrato')) {
+            abort(403);
+        }
         $request->validate(
             rules: [
                 'perfil_id' => "required",
@@ -60,29 +93,6 @@ class ContratoController extends Controller
         );
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Contrato  $contrato
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Contrato $contrato)
-    {
-        return $contrato;
-    }
-
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Contrato  $contrato
-     * @return \Illuminate\Http\Response
-     */
-    public function show_full(Contrato $contrato)
-    {
-        return $contrato->load('perfil');
-    }
-
 
     /**
      * Update the specified resource in storage.
@@ -93,6 +103,9 @@ class ContratoController extends Controller
      */
     public function update(Request $request, Contrato $contrato)
     {
+        if (! Gate::allows('update-contrato', $contrato)) {
+            abort(403);
+        }
         $request->validate(
             rules: [
                 'perfil_id' => "required",
@@ -108,6 +121,7 @@ class ContratoController extends Controller
         return $contrato;
     }
 
+
     /**
      * Remove the specified resource from storage.
      *
@@ -116,6 +130,20 @@ class ContratoController extends Controller
      */
     public function destroy(Contrato $contrato)
     {
+        if (! Gate::allows('delete-contrato', $contrato)) {
+            abort(403);
+        }
         return $contrato->delete();
+    }
+
+
+    /**
+     * Display a listing of the resource to a front select.
+     *
+     * @return \Illuminate\Http\Response
+    */
+    public function front_select()
+    {
+        return Contrato::all(['id as value','descricao as text']);
     }
 }
