@@ -2,9 +2,11 @@
   import AppLayout from "@/Layouts/AppLayout.vue";
   import Repository from "@/Components/CRUD/Repository.vue";
   import RepositoryModal from "@/Components/CRUD/RepositoryModal";
-  import formSchema from "@/Utils/Schemas/funcao";
+//   import formSchema from "@/Utils/Schemas/funcao";
   import API from "../Services/api";
   import { ref, reactive, onMounted } from "vue";
+import { useEmployeeRole } from "@/utils/schemas/useEmployeeRole.js";
+const { schema } = useEmployeeRole();
 
   const processing = ref(false);
 
@@ -146,7 +148,7 @@
     :show="modalProps.isOpen"
     :formData="modalProps.formDataToUpdate"
     :mode="modalProps.operationType"
-    :formSchema="formSchema"
+    :formSchema="schema"
     @close="closeModal"
     @save="handleModalConfirm"
   >

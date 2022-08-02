@@ -2,24 +2,26 @@ import axios from "axios";
 import { ref, onMounted } from "vue";
 
 let schema = ref([
-    {
-        $formkit: "text",
+     {
+        $formkit: "select",
         label: "Funcao",
         validation: "required",
         id: "funcao",
         name: "funcao",
-        placeholder: "Informe a funcao do funcionário",
+        placeholder: "Selecione a função do Colaborador",
+        url: "api/funcoes/select",
         classes: {
             wrapper: "max-w-full",
         },
     },
-    {
-        $formkit: "text",
+     {
+        $formkit: "select",
         label: "Contrato",
         validation: "required",
         id: "contrato",
         name: "contrato",
         placeholder: "Informe o contrato",
+        url: "api/contratos/select",
         classes: {
             wrapper: "max-w-full",
         },
@@ -36,27 +38,28 @@ let schema = ref([
         },
     },
     {
-        $formkit: "text",
-        label: "User",
+        $formkit: "select",
+        label: "Usuário",
         validation: "required",
-        id: "user",
-        name: "user",
-        placeholder: "Informe o Usuário",
+        id: "usuario",
+        name: "usuario",
+        placeholder: "Informe o usuário",
+        url: "api/usuarios/select",
         classes: {
             wrapper: "max-w-full",
         },
     },
-    {
-        $formkit: "text",
-        label: "Nome",
-        validation: "required",
-        id: "nome",
-        name: "nome",
-        placeholder: "Informe o Nome",
-        classes: {
-            wrapper: "max-w-full",
-        },
-    },
+    // {
+    //     $formkit: "text",
+    //     label: "Nome",
+    //     validation: "required",
+    //     id: "nome",
+    //     name: "nome",
+    //     placeholder: "Informe o Nome",
+    //     classes: {
+    //         wrapper: "max-w-full",
+    //     },
+    // },
 ]);
 
 export function useEmployee() {

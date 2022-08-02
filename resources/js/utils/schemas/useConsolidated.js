@@ -37,13 +37,14 @@ let schema = ref([
             wrapper: "max-w-full",
         },
     },
-    {
-        $formkit: "text",
+   {
+        $formkit: "select",
         label: "Equipamento",
         validation: "required",
         id: "equipamento",
         name: "equipamento",
-        placeholder: "Informe o Equipamento",
+        placeholder: "Selecione um equipamento",
+        url: 'api/equipamentos/select',
         classes: {
             wrapper: "max-w-full",
         },

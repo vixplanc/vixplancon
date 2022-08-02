@@ -2,9 +2,10 @@
   import AppLayout from "@/Layouts/AppLayout.vue";
   import Repository from "@/Components/CRUD/Repository.vue";
   import RepositoryModal from "@/Components/CRUD/RepositoryModal";
-  import formSchema from "@/Utils/Schemas/perfil";
   import API from "../Services/api";
   import { ref, reactive, onMounted } from "vue";
+import { useContractProfile } from "@/utils/schemas/useContractProfile.js";
+const { schema } = useContractProfile();
 
   const processing = ref(false);
 
@@ -146,7 +147,7 @@
     :show="modalProps.isOpen"
     :formData="modalProps.formDataToUpdate"
     :mode="modalProps.operationType"
-    :formSchema="formSchema"
+    :formSchema="schema"
     @close="closeModal"
     @save="handleModalConfirm"
   >

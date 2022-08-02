@@ -8,14 +8,14 @@ let schema = ref([
     validation: "required",
     id: "descricao",
     name: "descricao",
-    placeholder: "Informe a descrição da função",
+    placeholder: "Informe a descrição do Perfil",
     classes: {
       wrapper: "max-w-full",
     },
   },
 ]);
 
-export function useEmployeeRole() {
+export function useContractProfile() {
     const selectsOptionsPopulator = () => {
         schema.value.filter((e) => {
             if (e.$formkit === 'select') {

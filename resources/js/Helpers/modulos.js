@@ -58,7 +58,7 @@ export const cards = [{
     description: "Gestão de Modelos de Equipamento",
     uri_crud: "modelos",
     uri_app: "app/modelos",
-    img:"contratos.jpg",
+    img:"manutencao.jpg",
     disabled: true
 },
 {
@@ -67,7 +67,7 @@ export const cards = [{
     description: "Gestão de Perfis de Contrato",
     uri_crud: "perfis",
     uri_app: "app/perfis",
-    img:"contratos.jpg",
+    img:"equipamentos.jpg",
     disabled: true
 },
 {
@@ -77,7 +77,7 @@ export const cards = [{
     uri_crud: "colaboradores",
     uri_app: "app/colaboradores",
     img:"contratos.jpg",
-    disabled: false
+    disabled: true
 },
 {
     id:10,
@@ -85,7 +85,7 @@ export const cards = [{
     description: "Gestão de Consolidados",
     uri_crud: "consolidados",
     uri_app: "app/consolidados",
-    img:"contratos.jpg",
+    img:"usuarios.jpg",
     disabled: true
 },
 {
@@ -94,7 +94,7 @@ export const cards = [{
     description: "Gestão de Funções",
     uri_crud: "funcoes",
     uri_app: "app/funcoes",
-    img:"contratos.jpg",
+    img:"frotas.jpg",
     disabled: true
 },
 ]
