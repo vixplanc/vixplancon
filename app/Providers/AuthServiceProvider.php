@@ -18,7 +18,7 @@ class AuthServiceProvider extends ServiceProvider
      */
     protected $policies = [
         // 'App\Models\Model' => 'App\Policies\ModelPolicy',
-        Consolidado::class => ConsolidadoPolicy::class,
+        // Consolidado::class => ConsolidadoPolicy::class,
     ];
 
     /**
@@ -46,7 +46,13 @@ class AuthServiceProvider extends ServiceProvider
         //     }
         //     return false;
         // });
-        // Gate::define('update', [ConsolidadoPolicy::class, 'update']);
-        // Gate::define('delete', [ConsolidadoPolicy::class, 'delete']);
+        //
+        //
+
+        Gate::define('index-consolidado', [ConsolidadoPolicy::class, 'viewAny']);
+        Gate::define('show-consolidado', [ConsolidadoPolicy::class, 'view']);
+        Gate::define('create-consolidado', [ConsolidadoPolicy::class, 'create']);
+        Gate::define('update-consolidado', [ConsolidadoPolicy::class, 'update']);
+        Gate::define('delete-consolidado', [ConsolidadoPolicy::class, 'delete']);
     }
 }

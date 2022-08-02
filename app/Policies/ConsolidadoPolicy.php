@@ -11,6 +11,25 @@ class ConsolidadoPolicy
 {
     use HandlesAuthorization;
 
+    public const AUTORIZACAO_EXTRA = [
+        "viewAny"=>[
+
+        ],
+        "view"=>[
+
+        ],
+        "create"=>[
+
+        ],
+        "update"=>[
+
+        ],
+        "delete"=>[
+
+        ],
+
+    ];
+
     /**
      * Determine whether the user can view any models.
      *
@@ -23,15 +42,23 @@ class ConsolidadoPolicy
             if($colaborador->ativo){
                 foreach($colaborador->autorizados as $autorizacao){
                     if(
-                        $autorizacao->tipo == "view-any-consolidado" or $autorizacao->tipo == "all-consolidado"
+                           $autorizacao->tipo == "index-consolidado"
+                        or $autorizacao->tipo == "all-consolidado"
+
                     ){
-                        return Response::allow();
+                        return true;
+                    }
+                    foreach (ConsolidadoPolicy::AUTORIZACAO_EXTRA['viewAny'] as $autorizacao_extra) {
+                        if ($autorizacao->tipo == $autorizacao_extra) {
+                            return true;
+                        }
                     }
                 }
             }
         }
-        return Response::deny(message:'comando invalido');
+        return false;
     }
+
 
     /**
      * Determine whether the user can view the model.
@@ -46,15 +73,22 @@ class ConsolidadoPolicy
             if($colaborador->ativo){
                 foreach($colaborador->autorizados as $autorizacao){
                     if(
-                        $autorizacao->tipo == "view-consolidado" or $autorizacao->tipo == "all-consolidado"
+                           $autorizacao->tipo == "show-consolidado"
+                        or $autorizacao->tipo == "all-consolidado"
                     ){
-                        return Response::allow();
+                        return true;
+                    }
+                    foreach (ConsolidadoPolicy::AUTORIZACAO_EXTRA['view'] as $autorizacao_extra) {
+                        if ($autorizacao->tipo == $autorizacao_extra) {
+                            return true;
+                        }
                     }
                 }
             }
         }
-        return Response::deny(message:'comando invalido');
+        return false;
     }
+
 
     /**
      * Determine whether the user can create models.
@@ -68,15 +102,22 @@ class ConsolidadoPolicy
             if($colaborador->ativo){
                 foreach($colaborador->autorizados as $autorizacao){
                     if(
-                        $autorizacao->tipo == "create-consolidado" or $autorizacao->tipo == "all-consolidado"
+                           $autorizacao->tipo == "create-consolidado"
+                        or $autorizacao->tipo == "all-consolidado"
                     ){
-                        return Response::allow();
+                        return true;
+                    }
+                    foreach (ConsolidadoPolicy::AUTORIZACAO_EXTRA['create'] as $autorizacao_extra) {
+                        if ($autorizacao->tipo == $autorizacao_extra) {
+                            return true;
+                        }
                     }
                 }
             }
         }
-        return Response::deny(message:'comando invalido');
+        return false;
     }
+
 
     /**
      * Determine whether the user can update the model.
@@ -91,16 +132,21 @@ class ConsolidadoPolicy
             if($colaborador->ativo){
                 foreach($colaborador->autorizados as $autorizacao){
                     if(
-                        $autorizacao->tipo == "update-consolidado" or $autorizacao->tipo == "all-consolidado"
+                           $autorizacao->tipo == "update-consolidado"
+                        or $autorizacao->tipo == "all-consolidado"
                     ){
-                        return Response::allow();
+                        return true;
+                    }
+                    foreach (ConsolidadoPolicy::AUTORIZACAO_EXTRA['update'] as $autorizacao_extra) {
+                        if ($autorizacao->tipo == $autorizacao_extra) {
+                            return true;
+                        }
                     }
                 }
             }
         }
-        return Response::deny(message:'comando invalido');
+        return false;
     }
-
 
 
     /**
@@ -116,14 +162,20 @@ class ConsolidadoPolicy
             if($colaborador->ativo){
                 foreach($colaborador->autorizados as $autorizacao){
                     if(
-                        $autorizacao->tipo == "delete-consolidado" or $autorizacao->tipo == "all-consolidado"
+                           $autorizacao->tipo == "delete-consolidado"
+                        or $autorizacao->tipo == "all-consolidado"
                     ){
-                        return Response::allow();
+                        return true;
+                    }
+                    foreach (ConsolidadoPolicy::AUTORIZACAO_EXTRA['delete'] as $autorizacao_extra) {
+                        if ($autorizacao->tipo == $autorizacao_extra) {
+                            return true;
+                        }
                     }
                 }
             }
         }
-        return Response::deny(message:'comando invalido');
+        return false;
     }
 
     /**
@@ -135,6 +187,7 @@ class ConsolidadoPolicy
      */
     public function restore(User $user, Consolidado $consolidado)
     {
+        return true;
         foreach ($user->Colaboradores as $colaborador) {
             if($colaborador->ativo){
                 foreach($colaborador->autorizados as $autorizacao){
@@ -158,6 +211,7 @@ class ConsolidadoPolicy
      */
     public function forceDelete(User $user, Consolidado $consolidado)
     {
+        return true;
         foreach ($user->Colaboradores as $colaborador) {
             if($colaborador->ativo){
                 foreach($colaborador->autorizados as $autorizacao){
