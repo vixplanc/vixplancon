@@ -3,8 +3,10 @@
 namespace App\Providers;
 
 use App\Models\Consolidado;
+use App\Models\Equipamento;
 use App\Models\User;
 use App\Policies\ConsolidadoPolicy;
+use App\Policies\EquipamentoPolicy;
 use Illuminate\Auth\Access\Response;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
 use Illuminate\Support\Facades\Gate;
@@ -17,8 +19,8 @@ class AuthServiceProvider extends ServiceProvider
      * @var array<class-string, class-string>
      */
     protected $policies = [
-        // 'App\Models\Model' => 'App\Policies\ModelPolicy',
         // Consolidado::class => ConsolidadoPolicy::class,
+        // Equipamento::class => EquipamentoPolicy::class,
     ];
 
     /**
@@ -30,29 +32,17 @@ class AuthServiceProvider extends ServiceProvider
     {
         $this->registerPolicies();
 
-        // Gate::define(ability:'update', callback:function (User $user, Consolidado $consolidado){
-        //     // dd("ola mundo");
-        //     foreach ($user->Colaboradores as $colaborador) {
-        //         if($colaborador->ativo){
-        //             foreach($colaborador->autorizados as $autorizacao){
-        //                 if(
-        //                     $autorizacao->modulo->nome == 'Consolidado'
-        //                     and ($autorizacao->tipo == "viewany" or $autorizacao->tipo == "all")
-        //                 ){
-        //                     return true;
-        //                 }
-        //             }
-        //         }
-        //     }
-        //     return false;
-        // });
-        //
-        //
-
         Gate::define('index-consolidado', [ConsolidadoPolicy::class, 'viewAny']);
         Gate::define('show-consolidado', [ConsolidadoPolicy::class, 'view']);
         Gate::define('create-consolidado', [ConsolidadoPolicy::class, 'create']);
         Gate::define('update-consolidado', [ConsolidadoPolicy::class, 'update']);
         Gate::define('delete-consolidado', [ConsolidadoPolicy::class, 'delete']);
+
+
+        Gate::define('index-equipamento', [EquipamentoPolicy::class, 'viewAny']);
+        Gate::define('show-equipamento', [EquipamentoPolicy::class, 'view']);
+        Gate::define('create-equipamento', [EquipamentoPolicy::class, 'create']);
+        Gate::define('update-equipamento', [EquipamentoPolicy::class, 'update']);
+        Gate::define('delete-equipamento', [EquipamentoPolicy::class, 'delete']);
     }
 }

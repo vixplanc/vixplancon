@@ -156,6 +156,9 @@ class ConsolidadoController extends Controller
      */
     public function front_select()
     {
+        if (! Gate::allows('index-consolidado')) {
+            abort(403);
+        }
         return Consolidado::all(['id as value','prefixo as text']);
     }
 }
