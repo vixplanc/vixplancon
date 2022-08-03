@@ -10,6 +10,7 @@ use App\Policies\ConsolidadoPolicy;
 use App\Policies\ContratoPolicy;
 use App\Policies\EquipamentoPolicy;
 use App\Policies\FuncaoPolicy;
+use App\Policies\ModuloPolicy;
 use App\Policies\PerfilPolicy;
 use Illuminate\Auth\Access\Response;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
@@ -76,5 +77,12 @@ class AuthServiceProvider extends ServiceProvider
         Gate::define('create-perfil', [PerfilPolicy::class, 'create']);
         Gate::define('update-perfil', [PerfilPolicy::class, 'update']);
         Gate::define('delete-perfil', [PerfilPolicy::class, 'delete']);
+
+
+        Gate::define('index-modulo', [ModuloPolicy::class, 'viewAny']);
+        Gate::define('show-modulo', [ModuloPolicy::class, 'view']);
+        Gate::define('create-modulo', [ModuloPolicy::class, 'create']);
+        Gate::define('update-modulo', [ModuloPolicy::class, 'update']);
+        Gate::define('delete-modulo', [ModuloPolicy::class, 'delete']);
     }
 }
