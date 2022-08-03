@@ -7,9 +7,31 @@ use App\Models\User;
 use Illuminate\Auth\Access\HandlesAuthorization;
 use Illuminate\Auth\Access\Response;
 
-class PerfilPolicy
+class NoPolicy
 {
     use HandlesAuthorization;
+
+    static public function autorizacao(User $user,string $tipo, string $admin_access, Array $extra=null)
+    {
+        foreach ($user->Colaboradores as $colaborador) {
+            if($colaborador->ativo){
+                foreach($colaborador->autorizados as $autorizacao){
+                    if(
+                              $autorizacao->tipo == $tipo
+                           or $autorizacao->tipo == $admin_access
+                    ){
+                        return true;
+                    }
+                    foreach ($extra as $autorizacao_extra) {
+                        if ($autorizacao->tipo == $autorizacao_extra) {
+                            return true;
+                        }
+                    }
+                }
+            }
+        }
+        return false;
+    }
 
     public const AUTORIZACAO_EXTRA = [
         "viewAny"=>[
@@ -38,10 +60,7 @@ class PerfilPolicy
      */
     public function viewAny(User $user)
     {
-        if(NoPolicy::autorizacao($user, "index-perfil", "all-perfil", PerfilPolicy::AUTORIZACAO_EXTRA['viewAny'])){
-            return true;
-        }
-        return false;
+        return true;
     }
 
 
@@ -54,10 +73,7 @@ class PerfilPolicy
      */
     public function view(User $user, Perfil $perfil)
     {
-        if(NoPolicy::autorizacao($user, "show-perfil", "all-perfil", PerfilPolicy::AUTORIZACAO_EXTRA['view'])){
-            return true;
-        }
-        return false;
+        return true;
     }
 
 
@@ -69,10 +85,7 @@ class PerfilPolicy
      */
     public function create(User $user)
     {
-        if(NoPolicy::autorizacao($user, "create-perfil", "all-perfil", PerfilPolicy::AUTORIZACAO_EXTRA['create'])){
-            return true;
-        }
-        return false;
+        return true;
     }
 
 
@@ -85,10 +98,7 @@ class PerfilPolicy
      */
     public function update(User $user, Perfil $perfil)
     {
-        if(NoPolicy::autorizacao($user, "update-perfil", "all-perfil", PerfilPolicy::AUTORIZACAO_EXTRA['update'])){
-            return true;
-        }
-        return false;
+        return true;
     }
 
 
@@ -101,10 +111,7 @@ class PerfilPolicy
      */
     public function delete(User $user, Perfil $perfil)
     {
-        if(NoPolicy::autorizacao($user, "delete-perfil", "all-perfil", PerfilPolicy::AUTORIZACAO_EXTRA['delete'])){
-            return true;
-        }
-        return false;
+        return true;
     }
 
 
