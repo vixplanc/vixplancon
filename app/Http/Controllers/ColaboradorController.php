@@ -4,10 +4,11 @@ namespace App\Http\Controllers;
 
 use App\Models\Colaborador;
 use Illuminate\Http\Request;
-use phpDocumentor\Reflection\PseudoTypes\True_;
+use Illuminate\Support\Facades\Gate;
 
 class ColaboradorController extends Controller
 {
+
     /**
      * Display a listing of the resource.
      *
@@ -15,6 +16,9 @@ class ColaboradorController extends Controller
      */
     public function index()
     {
+        if (! Gate::allows('index-colaborador')) {
+            abort(403);
+        }
         return Colaborador::all();
     }
 
@@ -26,48 +30,12 @@ class ColaboradorController extends Controller
      */
     public function index_full()
     {
-        return Colaborador::all()->load(['funcao', 'contrato', 'centro_custo', 'usuario']);
+        if (! Gate::allows('index-colaborador')) {
+            abort(403);
+        }
+        return Colaborador::all()->load('perfil');
     }
 
-    /**
-     * Display a listing of the resource to a front select.
-     *
-     * @return \Illuminate\Http\Response
-    */
-    public function front_select()
-    {
-        return Colaborador::all(['id as value','nome as label']);
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        $request->validate(
-            rules: [
-                'funcao'=> "required",
-                'contrato'=> "required",
-                'centro_custo'=> "required",
-                'user'=> "",
-
-                'nome' => "required",
-                'ativo' => "nullable",
-            ]
-        );
-
-        // $input = $request->all();
-        // $input['contrato_centro_custo'] = $input['centro_custo'];
-        // $input['ativo'] = 1;
-        // dd($input);
-        return Colaborador::create(
-            // $input
-            $request->all()
-        );
-    }
 
     /**
      * Display the specified resource.
@@ -77,6 +45,9 @@ class ColaboradorController extends Controller
      */
     public function show(Colaborador $colaborador)
     {
+        if (! Gate::allows('show-colaborador', $colaborador)) {
+            abort(403);
+        }
         return $colaborador;
     }
 
@@ -89,7 +60,39 @@ class ColaboradorController extends Controller
      */
     public function show_full(Colaborador $colaborador)
     {
-        return $colaborador->load(['funcao', 'contrato', 'centro_custo', 'usuario']);
+        if (! Gate::allows('show-colaborador', $colaborador)) {
+            abort(403);
+        }
+        return $colaborador->load('perfil');
+    }
+
+
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function store(Request $request)
+    {
+        if (! Gate::allows('create-colaborador')) {
+            abort(403);
+        }
+        $request->validate(
+            rules: [
+                'funcao'=> "required",
+                'contrato'=> "required",
+                'centro_custo'=> "required",
+                'user'=> "",
+
+                'nome' => "required",
+                'ativo' => "nullable",
+            ]
+        );
+        return Colaborador::create(
+            $request->all()
+        );
     }
 
 
@@ -100,17 +103,20 @@ class ColaboradorController extends Controller
      * @param  \App\Models\Colaborador  $colaborador
      * @return \Illuminate\Http\Response
      */
-
-
     public function update(Request $request, Colaborador $colaborador)
     {
+        if (! Gate::allows('update-colaborador', $colaborador)) {
+            abort(403);
+        }
         $request->validate(
             rules: [
                 'funcao'=> "required",
                 'contrato'=> "required",
-                'contrato_centro_custo'=> "required",
+                'centro_custo'=> "required",
                 'user'=> "",
+
                 'nome' => "required",
+                'ativo' => "nullable",
             ]
         );
         $colaborador->update(
@@ -118,6 +124,7 @@ class ColaboradorController extends Controller
         );
         return $colaborador;
     }
+
 
     /**
      * Remove the specified resource from storage.
@@ -127,6 +134,20 @@ class ColaboradorController extends Controller
      */
     public function destroy(Colaborador $colaborador)
     {
+        if (! Gate::allows('delete-colaborador', $colaborador)) {
+            abort(403);
+        }
         return $colaborador->delete();
+    }
+
+
+    /**
+     * Display a listing of the resource to a front select.
+     *
+     * @return \Illuminate\Http\Response
+    */
+    public function front_select()
+    {
+        return Colaborador::all(['id as value','descricao as text']);
     }
 }

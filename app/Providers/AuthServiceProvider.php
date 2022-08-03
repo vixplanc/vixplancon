@@ -5,6 +5,7 @@ namespace App\Providers;
 use App\Models\Consolidado;
 use App\Models\Equipamento;
 use App\Models\User;
+use App\Policies\ColaboradorPolicy;
 use App\Policies\ConsolidadoPolicy;
 use App\Policies\ContratoPolicy;
 use App\Policies\EquipamentoPolicy;
@@ -60,5 +61,12 @@ class AuthServiceProvider extends ServiceProvider
         Gate::define('create-funcao', [FuncaoPolicy::class, 'create']);
         Gate::define('update-funcao', [FuncaoPolicy::class, 'update']);
         Gate::define('delete-funcao', [FuncaoPolicy::class, 'delete']);
+
+
+        Gate::define('index-colaborador', [ColaboradorPolicy::class, 'viewAny']);
+        Gate::define('show-colaborador', [ColaboradorPolicy::class, 'view']);
+        Gate::define('create-colaborador', [ColaboradorPolicy::class, 'create']);
+        Gate::define('update-colaborador', [ColaboradorPolicy::class, 'update']);
+        Gate::define('delete-colaborador', [ColaboradorPolicy::class, 'delete']);
     }
 }
