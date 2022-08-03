@@ -106,6 +106,7 @@ class ModuloController extends Controller
         $request->validate(
             rules: [
                 'descricao' => "required",
+                'nome'=> "required"
             ]
         );
         $modulo->update(

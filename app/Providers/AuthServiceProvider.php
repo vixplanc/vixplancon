@@ -5,6 +5,7 @@ namespace App\Providers;
 use App\Models\Consolidado;
 use App\Models\Equipamento;
 use App\Models\User;
+use App\Policies\AutorizadoPolicy;
 use App\Policies\ColaboradorPolicy;
 use App\Policies\ConsolidadoPolicy;
 use App\Policies\ContratoPolicy;
@@ -84,5 +85,12 @@ class AuthServiceProvider extends ServiceProvider
         Gate::define('create-modulo', [ModuloPolicy::class, 'create']);
         Gate::define('update-modulo', [ModuloPolicy::class, 'update']);
         Gate::define('delete-modulo', [ModuloPolicy::class, 'delete']);
+
+
+        Gate::define('index-autorizado', [AutorizadoPolicy::class, 'viewAny']);
+        Gate::define('show-autorizado', [AutorizadoPolicy::class, 'view']);
+        Gate::define('create-autorizado', [AutorizadoPolicy::class, 'create']);
+        Gate::define('update-autorizado', [AutorizadoPolicy::class, 'update']);
+        Gate::define('delete-autorizado', [AutorizadoPolicy::class, 'delete']);
     }
 }

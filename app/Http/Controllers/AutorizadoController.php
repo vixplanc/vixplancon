@@ -4,9 +4,11 @@ namespace App\Http\Controllers;
 
 use App\Models\Autorizado;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Gate;
 
 class AutorizadoController extends Controller
 {
+
     /**
      * Display a listing of the resource.
      *
@@ -14,37 +16,26 @@ class AutorizadoController extends Controller
      */
     public function index()
     {
+        if (! Gate::allows('index-autorizado')) {
+            abort(403);
+        }
         return Autorizado::all();
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
 
     /**
-     * Store a newly created resource in storage.
+     * Display a listing of the resource with all relationships.
      *
-     * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function index_full()
     {
-        $request->validate(
-            rules: [
-                'colaborador'=> "required",
-                'modulo'=> "required",
-            ]
-        );
-        return Autorizado::create(
-            $request->all()
-        );
+        if (! Gate::allows('index-autorizado')) {
+            abort(403);
+        }
+        return Autorizado::all()->load('autorizado');
     }
+
 
     /**
      * Display the specified resource.
@@ -54,18 +45,49 @@ class AutorizadoController extends Controller
      */
     public function show(Autorizado $autorizado)
     {
+        if (! Gate::allows('show-autorizado', $autorizado)) {
+            abort(403);
+        }
         return $autorizado;
     }
 
+
     /**
-     * Show the form for editing the specified resource.
+     * Display the specified resource.
      *
      * @param  \App\Models\Autorizado  $autorizado
      * @return \Illuminate\Http\Response
      */
-    public function edit(Autorizado $autorizado)
+    public function show_full(Autorizado $autorizado)
     {
-        //
+        if (! Gate::allows('show-autorizado', $autorizado)) {
+            abort(403);
+        }
+        return $autorizado->load('autorizado');
+    }
+
+
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function store(Request $request)
+    {
+        if (! Gate::allows('create-autorizado')) {
+            abort(403);
+        }
+        $request->validate(
+            rules: [
+                'colaborador'=> "required",
+                'modulo'=> "required",
+            ]
+        );
+        return Autorizado::create(
+            $request->all()
+        );
     }
 
 
@@ -78,6 +100,9 @@ class AutorizadoController extends Controller
      */
     public function update(Request $request, Autorizado $autorizado)
     {
+        if (! Gate::allows('update-autorizado', $autorizado)) {
+            abort(403);
+        }
         $request->validate(
             rules: [
                 'colaborador'=> "required",
@@ -90,6 +115,7 @@ class AutorizadoController extends Controller
         return $autorizado;
     }
 
+
     /**
      * Remove the specified resource from storage.
      *
@@ -98,6 +124,20 @@ class AutorizadoController extends Controller
      */
     public function destroy(Autorizado $autorizado)
     {
-        $autorizado->delete();
+        if (! Gate::allows('delete-autorizado', $autorizado)) {
+            abort(403);
+        }
+        return $autorizado->delete();
+    }
+
+
+    /**
+     * Display a listing of the resource to a front select.
+     *
+     * @return \Illuminate\Http\Response
+    */
+    public function front_select()
+    {
+        return Autorizado::all(['id as value','descricao as text']);
     }
 }
