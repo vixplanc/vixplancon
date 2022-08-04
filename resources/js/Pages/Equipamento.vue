@@ -3,9 +3,9 @@ import AppLayout from "@/Layouts/AppLayout.vue";
 import Repository from "@/Components/CRUD/Repository.vue";
 import RepositoryModal from "@/Components/CRUD/RepositoryModal";
 //   import formSchema from "@/Utils/Schemas/equipamento";
-import { useEquipment } from "@/utils/schemas/useEquipment.js";
 import API from "../Services/api";
 import { ref, reactive, onMounted } from "vue";
+import { useEquipment } from "@/utils/schemas/useEquipment.js";
 const {schema} = useEquipment();
 const processing = ref(false);
 
