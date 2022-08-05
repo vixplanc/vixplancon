@@ -3,7 +3,7 @@ import AppLayout from "@/Layouts/AppLayout.vue";
 
 
 import { ref } from "vue";
-import MultiStepForm from "../Components/Frota/MultiStepForm.vue";
+import StepForm from "../Components/Frota/StepForm.vue";
 
 
 </script>
@@ -16,7 +16,7 @@ import MultiStepForm from "../Components/Frota/MultiStepForm.vue";
 
         <div class="py-10 bg-grey-900">
             <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-                <MultiStepForm/>
+                <StepForm/>
             </div>
         </div>
     </AppLayout>

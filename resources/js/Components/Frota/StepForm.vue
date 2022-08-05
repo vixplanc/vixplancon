@@ -1,0 +1,168 @@
+<script setup>
+import useSteps from "@/utils/schemas/useSteps.js";
+import { useFrotaSchema } from "@/utils/schemas/useFrotaSchema.js";
+import { stepBack, stepForward } from "@formkit/icons";
+const { schema, camel2title, axios } = useFrotaSchema();
+const { steps, visitedSteps, activeStep, setStep, stepPlugin } = useSteps();
+
+// NEW: helper function to check step validity on step blur
+const checkStepValidity = (stepName) => {
+    return (
+        (steps[stepName].errorCount > 0 || steps[stepName].blockingCount > 0) &&
+        visitedSteps.value.includes(stepName)
+    );
+};
+
+const submitApp = async (formData, node) => {
+    try {
+        const res = await axios.post(formData);
+        node.clearErrors();
+        alert("Your application was submitted successfully!");
+    } catch (err) {
+        node.setErrors(err.formErrors, err.fieldErrors);
+    }
+};
+</script>
+
+<template>
+    <FormKit
+        type="form"
+        #default="{ value, state: { valid } }"
+        :plugins="[stepPlugin]"
+        @submit="submitApp"
+        :actions="false"
+    >
+        <ul class="tabs cursor-pointer items-center justify-center ">
+            <!-- NEW: uses new checkStepValidity method to check validation on step blur -->
+            <div
+                v-for="(step, stepName) in steps"
+                class="font-bold"
+                :class="[
+                    'tab tab-lifted indicator',
+                    {
+                        'has-errors': checkStepValidity(stepName),
+                        'tab-active': activeStep === stepName,
+                        'dark:text-lime-400': activeStep !== stepName
+                    },
+                ]"
+                @click="activeStep = stepName"
+                :data-step-valid="step.valid && step.errorCount === 0"
+                :data-step-active="activeStep === stepName"
+            >
+                <!-- NEW: output total number of errors in a little red bubble -->
+                <span
+                    v-if="checkStepValidity(stepName)"
+                    class="indicator-item badge badge-error"
+                    v-text="step.errorCount + step.blockingCount"
+                />
+                {{ camel2title(stepName) }}
+            </div>
+        </ul>
+
+        <div class="form-body m-4 grid justify-items-center">
+            <section
+                v-for="stepForm in schema"
+                v-show="activeStep === stepForm.name"
+                class="w-96 items-center justify-center"
+            >
+                <FormKitSchema :schema="stepForm" />
+            </section>
+            <div class="btn-group w-96 items-center justify-center">
+                <!-- <button class="btn btn-ghost w-1/2">
+                    <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        class="h-5 w-5"
+                        viewBox="0 0 20 20"
+                        fill="currentColor"
+                    >
+                        <path
+                            fill-rule="evenodd"
+                            d="M10 18a8 8 0 100-16 8 8 0 000 16zm.707-10.293a1 1 0 00-1.414-1.414l-3 3a1 1 0 000 1.414l3 3a1 1 0 001.414-1.414L9.414 11H13a1 1 0 100-2H9.414l1.293-1.293z"
+                            clip-rule="evenodd"
+                        />
+                    </svg>
+                </button>
+                <button class="btn btn-ghost w-1/2">
+                    <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        class="h-6 w-6"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke="currentColor"
+                        stroke-width="2"
+                    >
+                        <path
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            d="M13 9l3 3m0 0l-3 3m3-3H8m13 0a9 9 0 11-18 0 9 9 0 0118 0z"
+                        />
+                    </svg>
+                </button> -->
+                <FormKit
+                    type="button"
+                    prefix-icon="stepBack"
+                    :disabled="activeStep == schema[0].name"
+                    :classes="{
+                        outer: { $rest: true, 'w-1/2': true },
+                        inner: { $reset: true },
+                        input: {
+                            $reset: true,
+                            'btn btn-link w-full disabled:btn-link disabled:opacity-25': true,
+                        },
+                    }"
+                    @click="setStep(-1)"
+                    class="btn btn-ghost"
+                    >Anterior</FormKit
+                >
+                <FormKit
+                    type="button"
+                    suffix-icon="stepForward"
+                    :disabled="activeStep == schema[schema.length - 1].name"
+                    :class="['btn btn-ghost ']"
+                    :classes="{
+                        outer: { $rest: true, 'w-1/2': true },
+                        inner: { $reset: true },
+                        input: {
+                            $reset: true,
+                            'btn btn-link w-full disabled:btn-link disabled:opacity-25': true,
+                        },
+                    }"
+                    @click="setStep(1)"
+                    >Próxima</FormKit
+                >
+            </div>
+            <!-- <div class="step-nav">
+                <FormKit
+                    type="button"
+                    prefix-icon="stepBack"
+                    :disabled="activeStep == schema[0].name"
+                    @click="setStep(-1)"
+                    >Anterior</FormKit
+                >
+                <FormKit
+                    type="button"
+                    class="next"
+                    suffix-icon="stepForward"
+                    :disabled="activeStep == schema[schema.length - 1].name"
+                    @click="setStep(1)"
+                    >Próxima</FormKit
+                >
+            </div> -->
+            <!-- <button class="btn btn-primary w-96">Enviar</button> -->
+            <FormKit
+                type="submit"
+                :classes="{
+                    outer: { $rest: true, 'w-96': true },
+                    inner: { $reset: true },
+                    input: {
+                        $reset: true,
+                        'btn btn-primary w-full disabled:opacity-0': true,
+                    },
+                }"
+                label="Submit Application"
+                :disabled="!valid"
+                >Enviar</FormKit
+            >
+        </div>
+    </FormKit>
+</template>

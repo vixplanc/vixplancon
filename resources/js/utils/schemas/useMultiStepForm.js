@@ -1,15 +1,15 @@
-import { ref, onMounted, watch } from "vue";
+import { ref, toRef, reactive, onMounted, watch } from "vue";
 const form = ref({
-        data_necessidade: "",
-        num_doc: "",
-        observacao: "",
-        tipo_operacao: "",
-        origem: "",
-        destino:"",
-        tipo_equipamento: "",
-        capacidade: "",
-        check_similar: false,
-    })
+    data_necessidade: "",
+    num_doc: "",
+    observacao: "",
+    tipo_operacao: "",
+    origem: "",
+    destino: "",
+    tipo_equipamento: "",
+    capacidade: "",
+    check_similar: false,
+});
 export function useMultiStepForm() {
     let schema = ref([
         {
@@ -55,7 +55,7 @@ export function useMultiStepForm() {
         },
         {
             description: "equipamento",
-            isValidated: false,
+            isValidated: true,
             formInputs: [
                 {
                     $formkit: "select",
@@ -143,16 +143,42 @@ export function useMultiStepForm() {
 
     const currentStep = ref(schema.value[0].description);
 
-    const setCurrentStep = (stepDescription) => currentStep.value = stepDescription;
+    const setCurrentStep = (stepDescription) =>
+        (currentStep.value = stepDescription);
 
-    watch(() => {currentStep.value}, console.log("teste"))
+    watch(() => {
+        currentStep.value;
+    }, console.log("teste"));
 
     onMounted(() => {});
+
+    // our plugin and our template code will make use of 'steps'
+    const steps = reactive({});
+
+    const stepPlugin = (node) => {
+        // only runs for <FormKit type="group" />
+        if (node.props.type == "group") {
+            // build up our steps object
+            steps[node.name] = steps[node.name] || {};
+
+            // add the current group's reactive validity
+            node.on("created", () => {
+                steps[node.name].valid = toRef(node.context.state, "valid");
+            });
+
+            // Stop plugin inheritance to descendant nodes.
+            // We only care about the the top-level groups
+            // that represent the steps.
+            return false;
+        }
+    };
 
     return {
         schema,
         currentStep,
         setCurrentStep,
-        form
+        form,
+        steps,
+        stepPlugin
     };
 }
