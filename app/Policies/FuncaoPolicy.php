@@ -38,23 +38,8 @@ class FuncaoPolicy
      */
     public function viewAny(User $user)
     {
-        foreach ($user->Colaboradores as $colaborador) {
-            if($colaborador->ativo){
-                foreach($colaborador->autorizados as $autorizacao){
-                    if(
-                           $autorizacao->tipo == "index-funcao"
-                        or $autorizacao->tipo == "all-funcao"
-
-                    ){
-                        return true;
-                    }
-                    foreach (FuncaoPolicy::AUTORIZACAO_EXTRA['viewAny'] as $autorizacao_extra) {
-                        if ($autorizacao->tipo == $autorizacao_extra) {
-                            return true;
-                        }
-                    }
-                }
-            }
+        if(NoPolicy::autorizacao($user, "index-funcao", "all-funcao", ModuloPolicy::AUTORIZACAO_EXTRA['viewAny'])){
+            return true;
         }
         return false;
     }
@@ -69,22 +54,8 @@ class FuncaoPolicy
      */
     public function view(User $user, Funcao $funcao)
     {
-        foreach ($user->Colaboradores as $colaborador) {
-            if($colaborador->ativo){
-                foreach($colaborador->autorizados as $autorizacao){
-                    if(
-                           $autorizacao->tipo == "show-funcao"
-                        or $autorizacao->tipo == "all-funcao"
-                    ){
-                        return true;
-                    }
-                    foreach (FuncaoPolicy::AUTORIZACAO_EXTRA['view'] as $autorizacao_extra) {
-                        if ($autorizacao->tipo == $autorizacao_extra) {
-                            return true;
-                        }
-                    }
-                }
-            }
+        if(NoPolicy::autorizacao($user, "show-funcao", "all-funcao", ModuloPolicy::AUTORIZACAO_EXTRA['view'])){
+            return true;
         }
         return false;
     }
@@ -98,22 +69,8 @@ class FuncaoPolicy
      */
     public function create(User $user)
     {
-        foreach ($user->Colaboradores as $colaborador) {
-            if($colaborador->ativo){
-                foreach($colaborador->autorizados as $autorizacao){
-                    if(
-                           $autorizacao->tipo == "create-funcao"
-                        or $autorizacao->tipo == "all-funcao"
-                    ){
-                        return true;
-                    }
-                    foreach (FuncaoPolicy::AUTORIZACAO_EXTRA['create'] as $autorizacao_extra) {
-                        if ($autorizacao->tipo == $autorizacao_extra) {
-                            return true;
-                        }
-                    }
-                }
-            }
+        if(NoPolicy::autorizacao($user, "create-funcao", "all-funcao", ModuloPolicy::AUTORIZACAO_EXTRA['create'])){
+            return true;
         }
         return false;
     }
@@ -128,22 +85,8 @@ class FuncaoPolicy
      */
     public function update(User $user, Funcao $funcao)
     {
-        foreach ($user->Colaboradores as $colaborador) {
-            if($colaborador->ativo){
-                foreach($colaborador->autorizados as $autorizacao){
-                    if(
-                           $autorizacao->tipo == "update-funcao"
-                        or $autorizacao->tipo == "all-funcao"
-                    ){
-                        return true;
-                    }
-                    foreach (FuncaoPolicy::AUTORIZACAO_EXTRA['update'] as $autorizacao_extra) {
-                        if ($autorizacao->tipo == $autorizacao_extra) {
-                            return true;
-                        }
-                    }
-                }
-            }
+        if(NoPolicy::autorizacao($user, "update-funcao", "all-funcao", ModuloPolicy::AUTORIZACAO_EXTRA['update'])){
+            return true;
         }
         return false;
     }
@@ -158,22 +101,8 @@ class FuncaoPolicy
      */
     public function delete(User $user, Funcao $funcao)
     {
-        foreach ($user->Colaboradores as $colaborador) {
-            if($colaborador->ativo){
-                foreach($colaborador->autorizados as $autorizacao){
-                    if(
-                           $autorizacao->tipo == "delete-funcao"
-                        or $autorizacao->tipo == "all-funcao"
-                    ){
-                        return true;
-                    }
-                    foreach (FuncaoPolicy::AUTORIZACAO_EXTRA['delete'] as $autorizacao_extra) {
-                        if ($autorizacao->tipo == $autorizacao_extra) {
-                            return true;
-                        }
-                    }
-                }
-            }
+        if(NoPolicy::autorizacao($user, "delete-funcao", "all-funcao", ModuloPolicy::AUTORIZACAO_EXTRA['delete'])){
+            return true;
         }
         return false;
     }
@@ -189,18 +118,6 @@ class FuncaoPolicy
     public function restore(User $user, Funcao $funcao)
     {
         return true;
-        foreach ($user->Colaboradores as $colaborador) {
-            if($colaborador->ativo){
-                foreach($colaborador->autorizados as $autorizacao){
-                    if(
-                        $autorizacao->tipo == "restore-funcao" or $autorizacao->tipo == "all-funcao"
-                    ){
-                        return Response::allow();
-                    }
-                }
-            }
-        }
-        return Response::deny(message:'comando invalido');
     }
 
 
@@ -214,17 +131,5 @@ class FuncaoPolicy
     public function forceDelete(User $user, Funcao $funcao)
     {
         return true;
-        foreach ($user->Colaboradores as $colaborador) {
-            if($colaborador->ativo){
-                foreach($colaborador->autorizados as $autorizacao){
-                    if(
-                        $autorizacao->tipo == "force-delete-funcao" or $autorizacao->tipo == "all-funcao"
-                    ){
-                        return Response::allow();
-                    }
-                }
-            }
-        }
-        return Response::deny(message:'comando invalido');
     }
 }

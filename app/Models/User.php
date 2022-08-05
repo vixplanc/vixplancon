@@ -63,7 +63,7 @@ class User extends Authenticatable
     {
         return $this->hasMany(
             Colaborador::class,
-            'user'
+            'user_id'
         );
     }
 }

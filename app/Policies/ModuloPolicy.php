@@ -38,23 +38,8 @@ class ModuloPolicy
      */
     public function viewAny(User $user)
     {
-        foreach ($user->Moduloes as $modulo) {
-            if($modulo->ativo){
-                foreach($modulo->autorizados as $autorizacao){
-                    if(
-                           $autorizacao->tipo == "index-modulo"
-                        or $autorizacao->tipo == "all-modulo"
-
-                    ){
-                        return true;
-                    }
-                    foreach (ModuloPolicy::AUTORIZACAO_EXTRA['viewAny'] as $autorizacao_extra) {
-                        if ($autorizacao->tipo == $autorizacao_extra) {
-                            return true;
-                        }
-                    }
-                }
-            }
+        if(NoPolicy::autorizacao($user, "index-modulo", "all-modulo", ModuloPolicy::AUTORIZACAO_EXTRA['viewAny'])){
+            return true;
         }
         return false;
     }
@@ -69,22 +54,8 @@ class ModuloPolicy
      */
     public function view(User $user, Modulo $modulo)
     {
-        foreach ($user->Moduloes as $modulo) {
-            if($modulo->ativo){
-                foreach($modulo->autorizados as $autorizacao){
-                    if(
-                           $autorizacao->tipo == "show-modulo"
-                        or $autorizacao->tipo == "all-modulo"
-                    ){
-                        return true;
-                    }
-                    foreach (ModuloPolicy::AUTORIZACAO_EXTRA['view'] as $autorizacao_extra) {
-                        if ($autorizacao->tipo == $autorizacao_extra) {
-                            return true;
-                        }
-                    }
-                }
-            }
+        if(NoPolicy::autorizacao($user, "show-modulo", "all-modulo", ModuloPolicy::AUTORIZACAO_EXTRA['view'])){
+            return true;
         }
         return false;
     }
@@ -98,22 +69,8 @@ class ModuloPolicy
      */
     public function create(User $user)
     {
-        foreach ($user->Moduloes as $modulo) {
-            if($modulo->ativo){
-                foreach($modulo->autorizados as $autorizacao){
-                    if(
-                           $autorizacao->tipo == "create-modulo"
-                        or $autorizacao->tipo == "all-modulo"
-                    ){
-                        return true;
-                    }
-                    foreach (ModuloPolicy::AUTORIZACAO_EXTRA['create'] as $autorizacao_extra) {
-                        if ($autorizacao->tipo == $autorizacao_extra) {
-                            return true;
-                        }
-                    }
-                }
-            }
+        if(NoPolicy::autorizacao($user, "create-modulo", "all-modulo", ModuloPolicy::AUTORIZACAO_EXTRA['create'])){
+            return true;
         }
         return false;
     }
@@ -128,22 +85,8 @@ class ModuloPolicy
      */
     public function update(User $user, Modulo $modulo)
     {
-        foreach ($user->Moduloes as $modulo) {
-            if($modulo->ativo){
-                foreach($modulo->autorizados as $autorizacao){
-                    if(
-                           $autorizacao->tipo == "update-modulo"
-                        or $autorizacao->tipo == "all-modulo"
-                    ){
-                        return true;
-                    }
-                    foreach (ModuloPolicy::AUTORIZACAO_EXTRA['update'] as $autorizacao_extra) {
-                        if ($autorizacao->tipo == $autorizacao_extra) {
-                            return true;
-                        }
-                    }
-                }
-            }
+        if(NoPolicy::autorizacao($user, "update-modulo", "all-modulo", ModuloPolicy::AUTORIZACAO_EXTRA['update'])){
+            return true;
         }
         return false;
     }
@@ -158,22 +101,8 @@ class ModuloPolicy
      */
     public function delete(User $user, Modulo $modulo)
     {
-        foreach ($user->Moduloes as $modulo) {
-            if($modulo->ativo){
-                foreach($modulo->autorizados as $autorizacao){
-                    if(
-                           $autorizacao->tipo == "delete-modulo"
-                        or $autorizacao->tipo == "all-modulo"
-                    ){
-                        return true;
-                    }
-                    foreach (ModuloPolicy::AUTORIZACAO_EXTRA['delete'] as $autorizacao_extra) {
-                        if ($autorizacao->tipo == $autorizacao_extra) {
-                            return true;
-                        }
-                    }
-                }
-            }
+        if(NoPolicy::autorizacao($user, "delete-modulo", "all-modulo", ModuloPolicy::AUTORIZACAO_EXTRA['delete'])){
+            return true;
         }
         return false;
     }
@@ -189,18 +118,6 @@ class ModuloPolicy
     public function restore(User $user, Modulo $modulo)
     {
         return true;
-        foreach ($user->Moduloes as $modulo) {
-            if($modulo->ativo){
-                foreach($modulo->autorizados as $autorizacao){
-                    if(
-                        $autorizacao->tipo == "restore-modulo" or $autorizacao->tipo == "all-modulo"
-                    ){
-                        return Response::allow();
-                    }
-                }
-            }
-        }
-        return Response::deny(message:'comando invalido');
     }
 
 
@@ -214,17 +131,5 @@ class ModuloPolicy
     public function forceDelete(User $user, Modulo $modulo)
     {
         return true;
-        foreach ($user->Moduloes as $modulo) {
-            if($modulo->ativo){
-                foreach($modulo->autorizados as $autorizacao){
-                    if(
-                        $autorizacao->tipo == "force-delete-modulo" or $autorizacao->tipo == "all-modulo"
-                    ){
-                        return Response::allow();
-                    }
-                }
-            }
-        }
-        return Response::deny(message:'comando invalido');
     }
 }

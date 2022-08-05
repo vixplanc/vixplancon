@@ -81,11 +81,7 @@ class FuncaoController extends Controller
         }
         $request->validate(
             rules: [
-                'perfil_id' => "required",
                 'descricao' => "required",
-                'centro_custo' => "required",
-                'data_inicio' => "required",
-                'data_fim' => "required",
             ]
         );
         return Funcao::create(
@@ -108,11 +104,7 @@ class FuncaoController extends Controller
         }
         $request->validate(
             rules: [
-                'perfil_id' => "required",
                 'descricao' => "required",
-                'centro_custo' => "required",
-                'data_inicio' => "required",
-                'data_fim' => "required",
             ]
         );
         $funcao->update(

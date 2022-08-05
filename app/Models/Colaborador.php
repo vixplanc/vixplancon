@@ -47,7 +47,7 @@ class Colaborador extends Model
         return $this->belongsTo(
             User::class,
             'id',
-            'user'
+            'user_id'
         );
     }
 
