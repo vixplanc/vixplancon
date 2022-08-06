@@ -14,24 +14,23 @@
       </div>
     </Switch>
 </template>
-<script>
-import { computed } from 'vue'
+<script setup>
+import { computed, onMounted } from 'vue'
 import { Switch } from '@headlessui/vue'
 import { useStore } from 'vuex'
 import { SunIcon, MoonIcon } from '@heroicons/vue/outline'
-export default {
-  components: { Switch, SunIcon, MoonIcon },
-  setup() {
-    const store = useStore()
-    const theme = computed(() => store.getters.theme);
+  
+const store = useStore()
+const theme = computed(() => store.getters.theme);
+const enabledDarkMode = computed({
+    get: () => theme.value === 'dark',
+    set: () => {
+    store.dispatch('toggleTheme');
+    }
+});
 
-    const enabledDarkMode = computed({
-      get: () => theme.value === 'dark',
-      set: () => {
-        store.dispatch('toggleTheme');
-      }
-    });
-    return { enabledDarkMode }
-  },
-};
+onMounted(() => {
+    store.dispatch('initTheme')
+});
+
 </script>

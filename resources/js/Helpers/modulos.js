@@ -3,7 +3,7 @@ export const cards = [{
     name:"Frota",
     description: "Gerenciamento de frota",
     uri_crud: "frota",
-    uri_app: "app/frota",
+    uri_app: "frota",
     img:"frotas.jpg",
     disabled: false
 },

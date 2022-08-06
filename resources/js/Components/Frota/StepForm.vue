@@ -1,7 +1,6 @@
 <script setup>
 import useSteps from "@/utils/schemas/useSteps.js";
 import { useFrotaSchema } from "@/utils/schemas/useFrotaSchema.js";
-import { stepBack, stepForward } from "@formkit/icons";
 const { schema, camel2title, axios } = useFrotaSchema();
 const { steps, visitedSteps, activeStep, setStep, stepPlugin } = useSteps();
 
@@ -32,7 +31,7 @@ const submitApp = async (formData, node) => {
         @submit="submitApp"
         :actions="false"
     >
-        <ul class="tabs cursor-pointer items-center justify-center ">
+        <ul class="tabs cursor-pointer items-center justify-center">
             <!-- NEW: uses new checkStepValidity method to check validation on step blur -->
             <div
                 v-for="(step, stepName) in steps"
@@ -42,7 +41,7 @@ const submitApp = async (formData, node) => {
                     {
                         'has-errors': checkStepValidity(stepName),
                         'tab-active': activeStep === stepName,
-                        'dark:text-lime-400': activeStep !== stepName
+                        'dark:text-lime-400': activeStep !== stepName,
                     },
                 ]"
                 @click="activeStep = stepName"
@@ -65,39 +64,24 @@ const submitApp = async (formData, node) => {
                 v-show="activeStep === stepForm.name"
                 class="w-96 items-center justify-center"
             >
-                <FormKitSchema :schema="stepForm" />
+                <FormKitSchema
+                    :schema="stepForm"
+                    :classes="{
+                        wrapper: { $rest: true, 'w-max-w-full/2': true },
+                        input: {
+                            $reset: true,
+                            'bg-white text-grey-50': true,
+                        },
+                    }"
+                    :config="{
+                        classes: {
+                            label: 'super-red',
+                            input: 'super-red',
+                        },
+                    }"
+                />
             </section>
             <div class="btn-group w-96 items-center justify-center">
-                <!-- <button class="btn btn-ghost w-1/2">
-                    <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        class="h-5 w-5"
-                        viewBox="0 0 20 20"
-                        fill="currentColor"
-                    >
-                        <path
-                            fill-rule="evenodd"
-                            d="M10 18a8 8 0 100-16 8 8 0 000 16zm.707-10.293a1 1 0 00-1.414-1.414l-3 3a1 1 0 000 1.414l3 3a1 1 0 001.414-1.414L9.414 11H13a1 1 0 100-2H9.414l1.293-1.293z"
-                            clip-rule="evenodd"
-                        />
-                    </svg>
-                </button>
-                <button class="btn btn-ghost w-1/2">
-                    <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        class="h-6 w-6"
-                        fill="none"
-                        viewBox="0 0 24 24"
-                        stroke="currentColor"
-                        stroke-width="2"
-                    >
-                        <path
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
-                            d="M13 9l3 3m0 0l-3 3m3-3H8m13 0a9 9 0 11-18 0 9 9 0 0118 0z"
-                        />
-                    </svg>
-                </button> -->
                 <FormKit
                     type="button"
                     prefix-icon="stepBack"
@@ -131,24 +115,6 @@ const submitApp = async (formData, node) => {
                     >Próxima</FormKit
                 >
             </div>
-            <!-- <div class="step-nav">
-                <FormKit
-                    type="button"
-                    prefix-icon="stepBack"
-                    :disabled="activeStep == schema[0].name"
-                    @click="setStep(-1)"
-                    >Anterior</FormKit
-                >
-                <FormKit
-                    type="button"
-                    class="next"
-                    suffix-icon="stepForward"
-                    :disabled="activeStep == schema[schema.length - 1].name"
-                    @click="setStep(1)"
-                    >Próxima</FormKit
-                >
-            </div> -->
-            <!-- <button class="btn btn-primary w-96">Enviar</button> -->
             <FormKit
                 type="submit"
                 :classes="{

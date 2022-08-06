@@ -14,8 +14,8 @@ import StepForm from "../Components/Frota/StepForm.vue";
             <h2 class="font-bold text-xl text-white leading-tight">Frota</h2>
         </template>
 
-        <div class="py-10 bg-grey-900">
-            <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+        <div class="bg-grey-900">
+            <div class="">
                 <StepForm/>
             </div>
         </div>

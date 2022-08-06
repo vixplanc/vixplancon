@@ -1,15 +1,15 @@
 <template>
-  <div class="p-5 h-screen bg-gray-100">
+  <div class="">
     <!-- Title -->
-    <h1 class="text-xl mb-2">{{ props.title }}</h1>
-    <div class="overflow-auto rounded-lg shadow">
-      <table class="w-full">
+    <h1 class="text-xl text-bold mb-2">{{ props.title }}</h1>
+    <div class="overflow-auto rounded-lg shadow-lg shadow-gray-800">
+      <table class="w-full bg-gray-900">
         <!-- Columns -->
-        <thead class="bg-gray-50 border-b-2 border-gray-200">
+        <thead class="bg-gray-600 border-b-2 border-gray-200">
           <tr>
             <th
               v-for="column in columns"
-              class="p-3 text-sm font-semibold tracking-wide text-left"
+              class="p-3 text-sm text-white font-semibold tracking-wide text-left"
             >
               {{ column.title }}
             </th>
@@ -24,9 +24,9 @@
           </tr>
         </thead>
         <!-- Rows -->
-        <tbody class="divide-y divide-gray-100">
-          <tr class="bg-white" v-for="row in rows">
-            <td v-for="cell in row" :key="row.id" class="p-3 text-sm text-gray-700">
+        <tbody class="divide-y divide-gray-400">
+          <tr class="bg-gray-200 text-gray-700 hover:bg-gray-400" v-for="row in rows">
+            <td v-for="cell in row" :key="row.id" class="p-3 text-sm ">
               {{ cell }}
             </td>
             <td class="p-3 text-sm text-gray-700 whitespace-nowrap">
