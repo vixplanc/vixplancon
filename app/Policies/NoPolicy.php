@@ -17,8 +17,9 @@ class NoPolicy
             if($colaborador->ativo){
                 foreach($colaborador->autorizados as $autorizacao){
                     if(
-                              $autorizacao->tipo == $tipo
-                           or $autorizacao->tipo == $admin_access
+                           $autorizacao->tipo == $tipo
+                        or $autorizacao->tipo == $admin_access
+                        or $autorizacao->tipo == 'all-admin'
                     ){
                         return true;
                     }
