@@ -14,15 +14,44 @@ return new class extends Migration
     public function up()
     {
         Schema::create('users', function (Blueprint $table) {
-            $table->id();
-            $table->string('name');
-            $table->string('email')->unique();
-            $table->timestamp('email_verified_at')->nullable();
-            $table->string('password');
-            $table->rememberToken();
-            $table->foreignId('current_team_id')->nullable();
-            $table->string('profile_photo_path', 2048)->nullable();
-            $table->timestamps();
+            $table
+                ->id();
+            $table
+                ->foreignId('employee_role_id')
+                ->nullOnDelete()
+                ->constrained('employee_roles')
+            ;
+            $table
+                ->foreignId('contract_id')
+                ->nullOnDelete()
+                ->constrained('contracts')
+                ;
+            $table
+                ->foreignId('cost_center_contract')
+                ->nullOnDelete()
+                ->constrained('contracts')
+                ;
+            $table->foreignId('current_team_id')
+                ->nullable()
+                ;
+            $table->string('name')
+                ;
+            $table->string('password')
+                ;
+            $table->rememberToken()
+                ;
+            $table->string('email')
+                ->unique()
+                ;
+            $table->timestamp('email_verified_at')
+                ->nullable()
+                ;
+            $table->string('profile_photo_path', 2048)
+                ->nullable()
+                ;
+            $table
+            ->timestamps()
+            ;
         });
     }
 

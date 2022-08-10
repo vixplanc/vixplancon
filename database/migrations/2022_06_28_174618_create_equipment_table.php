@@ -13,14 +13,13 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('contratos', function (Blueprint $table) {
+        Schema::create('equipment', function (Blueprint $table) {
             $table->id();
-            $table->foreignId(column:'perfil_id');
-            $table->foreign('perfil_id')->references('id')->on('perfils');
-            $table->string(column:'descricao');
-            $table->string(column:'centro_custo');
-            $table->date(column:'data_inicio');
-            $table->date(column:'data_fim');
+            $table->foreignId(column:'equipment_model_id');
+            $table->foreign('equipment_model_id')->references('id')->on('equipment_model');
+            $table->string(column:'name');
+            $table->string(column:'plate');
+            $table->string(column:'chassi_number');
             $table->timestamps();
         });
     }
@@ -32,6 +31,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('contratos');
+        Schema::dropIfExists('equipment');
     }
 };

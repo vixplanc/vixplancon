@@ -13,12 +13,13 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('modulos', function (Blueprint $table) {
+        Schema::create('equipment_model', function (Blueprint $table) {
             $table->id();
-            $table->string(column:'nome');
-            $table->string(column:'descricao');
-            $table->string(column:'link_funcionalidade');
-            $table->string(column:'link_gerenciamento');
+
+            $table->string(column:'description');
+            $table->float(column:'capacity');
+            $table->string(column:'type');
+            $table->string(column:'subtype');
 
             $table->timestamps();
         });
@@ -31,6 +32,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('modulos');
+        Schema::dropIfExists('equipment_model');
     }
 };

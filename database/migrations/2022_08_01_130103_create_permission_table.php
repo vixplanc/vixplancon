@@ -13,12 +13,17 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('modelos', function (Blueprint $table) {
+        Schema::create('permissions', function (Blueprint $table) {
+
             $table->id();
-            $table->string(column:'descricao');
-            $table->float(column:'capacidade');
-            $table->string(column:'tipo');
-            $table->string(column:'subtipo');
+            $table->foreignId(column:'user_id');
+            $table->foreignId(column:'system_module_id');
+
+
+            $table->foreign('user_id')->references('id')->on('users');
+            $table->foreign('system_module_id')->references('id')->on('system_module');
+
+            $table->string(column:'type');
             $table->timestamps();
         });
     }
@@ -30,6 +35,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('modelos');
+        Schema::dropIfExists('autorizados');
     }
 };

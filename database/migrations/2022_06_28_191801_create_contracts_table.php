@@ -13,17 +13,14 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('autorizados', function (Blueprint $table) {
-
+        Schema::create('contracts', function (Blueprint $table) {
             $table->id();
-            $table->foreignId(column:'colaborador');
-            $table->foreignId(column:'modulo');
-
-
-            $table->foreign('colaborador')->references('id')->on('colaboradors');
-            $table->foreign('modulo')->references('id')->on('modulos');
-
-            $table->string(column:'tipo');
+            $table->foreignId(column:'contract_profile_id');
+            $table->foreign('contract_profile_id')->references('id')->on('contract_profile');
+            $table->string(column:'description');
+            $table->string(column:'cost_center');
+            $table->date(column:'begin');
+            $table->date(column:'end');
             $table->timestamps();
         });
     }
@@ -35,6 +32,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('autorizados');
+        Schema::dropIfExists('contracts');
     }
 };

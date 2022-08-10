@@ -13,8 +13,8 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::table('colaboradors', function (Blueprint $table) {
-            $table->boolean(column:'ativo');
+        Schema::table('users', function (Blueprint $table) {
+            $table->boolean(column:'active');
         });
     }
 
@@ -26,7 +26,7 @@ return new class extends Migration
     public function down()
     {
         Schema::table('colaboradors', function (Blueprint $table) {
-            $table->dropColumn(columns:'ativo');
+            $table->dropColumn(columns:'active');
         });
     }
 };
