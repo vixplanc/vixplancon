@@ -13,29 +13,36 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('contract_items', function (Blueprint $table) {
-            $table->id();
+        if(!Schema::hasTable('personal_access_tokens')){
+            Schema::create('contract_items', function (Blueprint $table) {
+                $table->id();
 
-            $table->foreignId(column:'equipment_model_id');
-            $table->foreignId(column:'equipment_id')->nullable();
-            $table->foreignId(column:'contract');
-            $table->foreignId(column:'cost_center');
-
-
-            $table->foreign('equipment_model_id')->references('id')->on('equipment_models');
-            $table->foreign('contract')->references('id')->on('contracts');
-            $table->foreign('cost_center')->references('id')->on('contracts');
-            $table->foreign('equipment_id')->references('id')->on('equipments');
-
-            $table->string(column:'status');
-            $table->boolean(column:'contractual');
-            $table->string(column:'prefix');
-            $table->string(column:'contract_regime');
-            $table->string(column:'sap_code');
+                // $table->foreignId(column:'equipment_model_id');
+                $table
+                    ->foreignId('equipment_model_id')
+                    ->nullOnDelete()
+                    ->constrained('equipament_models')
+                    ;
+                $table->foreignId(column:'equipment_id')->nullable();
+                $table->foreignId(column:'contract');
+                $table->foreignId(column:'cost_center');
 
 
-            $table->timestamps();
-        });
+                // $table->foreign('equipment_model_id')->references('id')->on('equipment_models');
+                $table->foreign('contract')->references('id')->on('contracts');
+                $table->foreign('cost_center')->references('id')->on('contracts');
+                $table->foreign('equipment_id')->references('id')->on('equipments');
+
+                $table->string(column:'status');
+                $table->boolean(column:'contractual');
+                $table->string(column:'prefix');
+                $table->string(column:'contract_regime');
+                $table->string(column:'sap_code');
+
+
+                $table->timestamps();
+            });
+        }
     }
 
     /**

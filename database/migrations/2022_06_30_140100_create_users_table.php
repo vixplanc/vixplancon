@@ -17,19 +17,22 @@ return new class extends Migration
             $table
                 ->id();
             $table
-                ->foreignId('employee_role_id')
+                ->foreignId('employee_role_id')->nullable()
                 ->nullOnDelete()
                 ->constrained('employee_roles')
+
             ;
             $table
-                ->foreignId('contract_id')
+                ->foreignId('contract_id')->nullable()
                 ->nullOnDelete()
                 ->constrained('contracts')
+
                 ;
             $table
-                ->foreignId('cost_center_contract')
+                ->foreignId('cost_center_contract')->nullable()
                 ->nullOnDelete()
                 ->constrained('contracts')
+
                 ;
             $table->foreignId('current_team_id')
                 ->nullable()

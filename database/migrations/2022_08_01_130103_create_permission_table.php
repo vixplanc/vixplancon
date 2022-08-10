@@ -17,11 +17,16 @@ return new class extends Migration
 
             $table->id();
             $table->foreignId(column:'user_id');
-            $table->foreignId(column:'system_module_id');
+            // $table->foreignId(column:'system_module_id');
+            $table
+                    ->foreignId('system_module_id')
+                    ->nullOnDelete()
+                    ->constrained('system_modules')
+                    ;
 
 
             $table->foreign('user_id')->references('id')->on('users');
-            $table->foreign('system_module_id')->references('id')->on('system_module');
+            // $table->foreign('system_module_id')->references('id')->on('system_module');
 
             $table->string(column:'type');
             $table->timestamps();

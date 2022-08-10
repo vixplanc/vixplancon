@@ -14,7 +14,10 @@ return new class extends Migration
     public function up()
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->boolean(column:'active');
+            $table
+                ->boolean(column:'active')
+                ->nullable()
+                ;
         });
     }
 
@@ -25,7 +28,7 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::table('colaboradors', function (Blueprint $table) {
+        Schema::table('users', function (Blueprint $table) {
             $table->dropColumn(columns:'active');
         });
     }
