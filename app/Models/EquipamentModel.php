@@ -5,16 +5,19 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Perfil extends Model
+class EquipamentModel extends Model
 {
     use HasFactory;
 
     protected $fillable = [
-        'descricao',
+        'description',
+        'capacity',
+        'type',
+        'subtype',
     ];
 
-    public function contracts()
+    public function equipment()
     {
-        return $this->hasMany(Contrato::class);
+        return $this->hasMany(Equipament::class);
     }
 }

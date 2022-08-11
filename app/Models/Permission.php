@@ -9,10 +9,12 @@ class Autorizado extends Model
 {
     use HasFactory;
 
-    public function Colaboradores()
+    public function Permission()
     {
         return $this->belongsToMany(
-            Colaborador::class,parentKey:'colaborador'
+            User::class,
+            parentKey:'user'
         );
     }
+
 }

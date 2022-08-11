@@ -5,16 +5,15 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Funcao extends Model
+class SystemModule extends Model
 {
     use HasFactory;
 
     protected $fillable = [
-        'descricao',
+        'management_link',
+        'module_link',
+        'photo_link',
+        'name',
+        'description',
     ];
-
-    public function employees()
-    {
-        return $this->hasMany(Colaborador::class);
-    }
 }
