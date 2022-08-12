@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Contrato;
+use App\Models\Contract;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Gate;
 
-class ContratoController extends Controller
+class ContractController extends Controller
 {
 
     /**
@@ -16,10 +16,10 @@ class ContratoController extends Controller
      */
     public function index()
     {
-        if (! Gate::allows('index-contrato')) {
+        if (! Gate::allows('index-contract')) {
             abort(403);
         }
-        return Contrato::all();
+        return Contract::all();
     }
 
 
@@ -30,40 +30,40 @@ class ContratoController extends Controller
      */
     public function index_full()
     {
-        if (! Gate::allows('index-contrato')) {
+        if (! Gate::allows('index-contract')) {
             abort(403);
         }
-        return Contrato::all()->load('perfil');
+        return Contract::all()->load('ContractProfile');
     }
 
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Contrato  $contrato
+     * @param  \App\Models\Contract  $contract
      * @return \Illuminate\Http\Response
      */
-    public function show(Contrato $contrato)
+    public function show(Contract $contract)
     {
-        if (! Gate::allows('show-contrato', $contrato)) {
+        if (! Gate::allows('show-contract', $contract)) {
             abort(403);
         }
-        return $contrato;
+        return $contract;
     }
 
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Contrato  $contrato
+     * @param  \App\Models\Contract  $contract
      * @return \Illuminate\Http\Response
      */
-    public function show_full(Contrato $contrato)
+    public function show_full(Contract $contract)
     {
-        if (! Gate::allows('show-contrato', $contrato)) {
+        if (! Gate::allows('show-contract', $contract)) {
             abort(403);
         }
-        return $contrato->load('perfil');
+        return $contract->load('ContractProfile');
     }
 
 
@@ -76,19 +76,19 @@ class ContratoController extends Controller
      */
     public function store(Request $request)
     {
-        if (! Gate::allows('create-contrato')) {
+        if (! Gate::allows('create-contract')) {
             abort(403);
         }
         $request->validate(
             rules: [
-                'perfil_id' => "required",
-                'descricao' => "required",
-                'centro_custo' => "required",
-                'data_inicio' => "required",
-                'data_fim' => "required",
+                'contract_profile_id' => "required",
+                'description' => "required",
+                'cost_center' => "required",
+                'begin' => "required",
+                'end' => "required",
             ]
         );
-        return Contrato::create(
+        return Contract::create(
             $request->all()
         );
     }
@@ -98,42 +98,42 @@ class ContratoController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Contrato  $contrato
+     * @param  \App\Models\Contract  $contract
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Contrato $contrato)
+    public function update(Request $request, Contract $contract)
     {
-        if (! Gate::allows('update-contrato', $contrato)) {
+        if (! Gate::allows('update-contract', $contract)) {
             abort(403);
         }
         $request->validate(
             rules: [
-                'perfil_id' => "required",
-                'descricao' => "required",
-                'centro_custo' => "required",
-                'data_inicio' => "required",
-                'data_fim' => "required",
+                'contract_profile_id' => "required",
+                'description' => "required",
+                'cost_center' => "required",
+                'begin' => "required",
+                'end' => "required",
             ]
         );
-        $contrato->update(
+        $contract->update(
             $request->all()
         );
-        return $contrato;
+        return $contract;
     }
 
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Contrato  $contrato
+     * @param  \App\Models\Contract  $contract
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Contrato $contrato)
+    public function destroy(Contract $contract)
     {
-        if (! Gate::allows('delete-contrato', $contrato)) {
+        if (! Gate::allows('delete-contract', $contract)) {
             abort(403);
         }
-        return $contrato->delete();
+        return $contract->delete();
     }
 
 
@@ -144,6 +144,6 @@ class ContratoController extends Controller
     */
     public function front_select()
     {
-        return Contrato::all(['id as value','descricao as text']);
+        return Contract::all(['id as value','descricao as text']);
     }
 }
