@@ -16,7 +16,7 @@ class Equipment extends Model
         'chassi_number',
     ];
 
-    public function modelo()
+    public function EquipmentModel()
     {
         return $this->belongsTo(EquipamentModel::class);
     }

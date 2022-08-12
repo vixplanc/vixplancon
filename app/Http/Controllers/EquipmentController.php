@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Equipamento;
+use App\Models\Equipment;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Gate;
 
-class EquipamentoController extends Controller
+class EquipmentController extends Controller
 {
 
     /**
@@ -16,10 +16,10 @@ class EquipamentoController extends Controller
      */
     public function index()
     {
-        if (! Gate::allows('index-equipamento')) {
+        if (! Gate::allows('index-equipment')) {
             abort(403);
         }
-        return Equipamento::all();
+        return Equipment::all();
     }
 
 
@@ -30,40 +30,40 @@ class EquipamentoController extends Controller
      */
     public function index_full()
     {
-        if (! Gate::allows('index-equipamento')) {
+        if (! Gate::allows('index-equipment')) {
             abort(403);
         }
-        return Equipamento::all()->load('modelo');
+        return Equipment::all()->load('EquipmentModel');
     }
 
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Equipamento  $equipamento
+     * @param  \App\Models\Equipment  $equipment
      * @return \Illuminate\Http\Response
      */
-    public function show(Equipamento $equipamento)
+    public function show(Equipment $equipment)
     {
-        if (! Gate::allows('show-equipamento', $equipamento)) {
+        if (! Gate::allows('show-equipment', $equipment)) {
             abort(403);
         }
-        return $equipamento;
+        return $equipment;
     }
 
 
     /**
      * Display the specified resource with all relationships.
      *
-     * @param  \App\Models\Equipamento  $equipamento
+     * @param  \App\Models\Equipment  $equipment
      * @return \Illuminate\Http\Response
      */
-    public function show_full(Equipamento $equipamento)
+    public function show_full(Equipment $equipment)
     {
-        if (! Gate::allows('show-equipamento', $equipamento)) {
+        if (! Gate::allows('show-equipment', $equipment)) {
             abort(403);
         }
-        return $equipamento->load('modelo');
+        return $equipment->load('EquipmentModel');
     }
 
 
@@ -76,18 +76,18 @@ class EquipamentoController extends Controller
      */
     public function store(Request $request)
     {
-        if (! Gate::allows('create-equipamento')) {
+        if (! Gate::allows('create-equipment')) {
             abort(403);
         }
         $request->validate(
             rules: [
-                'modelo_id' => "required",
-                'denominacao' => "required",
-                'placa' => "required",
-                'chassi' => "required",
+                'equipment_model_id' => "required",
+                'name' => "required",
+                'plate' => "required",
+                'chassi_number' => "required",
             ]
         );
-        return Equipamento::create(
+        return Equipment::create(
             $request->all()
         );
     }
@@ -97,41 +97,41 @@ class EquipamentoController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Equipamento  $equipamento
+     * @param  \App\Models\Equipment  $equipment
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Equipamento $equipamento)
+    public function update(Request $request, Equipment $equipment)
     {
-        if (! Gate::allows('update-equipamento', $equipamento)) {
+        if (! Gate::allows('update-equipment', $equipment)) {
             abort(403);
         }
         $request->validate(
             rules: [
-                'modelo_id' => "required",
-                'denominacao' => "required",
-                'placa' => "required",
-                'chassi' => "required",
+                'equipment_model_id' => "required",
+                'name' => "required",
+                'plate' => "required",
+                'chassi_number' => "required",
             ]
         );
-        $equipamento->update(
+        $equipment->update(
             $request->all()
         );
-        return $equipamento;
+        return $equipment;
     }
 
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Equipamento  $equipamento
+     * @param  \App\Models\Equipment  $equipment
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Equipamento $equipamento)
+    public function destroy(Equipment $equipment)
     {
-        if (! Gate::allows('delete-equipamento', $equipamento)) {
+        if (! Gate::allows('delete-equipment', $equipment)) {
             abort(403);
         }
-        return $equipamento->delete();
+        return $equipment->delete();
     }
 
 
@@ -142,9 +142,9 @@ class EquipamentoController extends Controller
      */
     public function front_select()
     {
-        if (! Gate::allows('index-equipamento')) {
+        if (! Gate::allows('index-equipment')) {
             abort(403);
         }
-        return Equipamento::all(['id as value','denominacao as text']);
+        return Equipment::all(['id as value','name as text']);
     }
 }
