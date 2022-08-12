@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Funcao;
+use App\Models\EmployeeRole;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Gate;
 
-class FuncaoController extends Controller
+class EmployeeRoleController extends Controller
 {
 
     /**
@@ -16,10 +16,10 @@ class FuncaoController extends Controller
      */
     public function index()
     {
-        if (! Gate::allows('index-funcao')) {
+        if (! Gate::allows('index-employee-role')) {
             abort(403);
         }
-        return Funcao::all();
+        return EmployeeRole::all();
     }
 
 
@@ -30,40 +30,40 @@ class FuncaoController extends Controller
      */
     public function index_full()
     {
-        if (! Gate::allows('index-funcao')) {
+        if (! Gate::allows('index-employee-role')) {
             abort(403);
         }
-        return Funcao::all()->load('perfil');
+        return EmployeeRole::all()->load('employees');
     }
 
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Funcao  $funcao
+     * @param  \App\Models\EmployeeRole  $employee_role
      * @return \Illuminate\Http\Response
      */
-    public function show(Funcao $funcao)
+    public function show(EmployeeRole $employee_role)
     {
-        if (! Gate::allows('show-funcao', $funcao)) {
+        if (! Gate::allows('show-employee-role', $employee_role)) {
             abort(403);
         }
-        return $funcao;
+        return $employee_role;
     }
 
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Funcao  $funcao
+     * @param  \App\Models\EmployeeRole  $employee_role
      * @return \Illuminate\Http\Response
      */
-    public function show_full(Funcao $funcao)
+    public function show_full(EmployeeRole $employee_role)
     {
-        if (! Gate::allows('show-funcao', $funcao)) {
+        if (! Gate::allows('show-employee-role', $employee_role)) {
             abort(403);
         }
-        return $funcao->load('perfil');
+        return $employee_role->load('employees');
     }
 
 
@@ -76,19 +76,15 @@ class FuncaoController extends Controller
      */
     public function store(Request $request)
     {
-        if (! Gate::allows('create-funcao')) {
+        if (! Gate::allows('create-employee-role')) {
             abort(403);
         }
         $request->validate(
             rules: [
-                'perfil_id' => "required",
-                'descricao' => "required",
-                'centro_custo' => "required",
-                'data_inicio' => "required",
-                'data_fim' => "required",
+                'description' => "required",
             ]
         );
-        return Funcao::create(
+        return EmployeeRole::create(
             $request->all()
         );
     }
@@ -98,42 +94,38 @@ class FuncaoController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Funcao  $funcao
+     * @param  \App\Models\EmployeeRole  $employee_role
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Funcao $funcao)
+    public function update(Request $request, EmployeeRole $employee_role)
     {
-        if (! Gate::allows('update-funcao', $funcao)) {
+        if (! Gate::allows('update-employee-role', $employee_role)) {
             abort(403);
         }
         $request->validate(
             rules: [
-                'perfil_id' => "required",
-                'descricao' => "required",
-                'centro_custo' => "required",
-                'data_inicio' => "required",
-                'data_fim' => "required",
+                'description' => "required",
             ]
         );
-        $funcao->update(
+        $employee_role->update(
             $request->all()
         );
-        return $funcao;
+        return $employee_role;
     }
 
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Funcao  $funcao
+     * @param  \App\Models\EmployeeRole  $employee_role
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Funcao $funcao)
+    public function destroy(EmployeeRole $employee_role)
     {
-        if (! Gate::allows('delete-funcao', $funcao)) {
+        if (! Gate::allows('delete-employee-role', $employee_role)) {
             abort(403);
         }
-        return $funcao->delete();
+        return $employee_role->delete();
     }
 
 
@@ -144,6 +136,6 @@ class FuncaoController extends Controller
     */
     public function front_select()
     {
-        return Funcao::all(['id as value','descricao as text']);
+        return EmployeeRole::all(['id as value','description as text']);
     }
 }
