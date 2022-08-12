@@ -2,12 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Consolidado;
+use App\Models\ContractItem;
 use App\Policies\ConsolidadoPolicy;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Http\Request;
 
-class ConsolidadoController extends Controller
+class ContractItemController extends Controller
 {
 
     /**
@@ -20,7 +20,7 @@ class ConsolidadoController extends Controller
         if (! Gate::allows('index-consolidado')) {
             abort(403);
         }
-        return Consolidado::all();
+        return ContractItem::all();
     }
 
 
@@ -34,37 +34,37 @@ class ConsolidadoController extends Controller
         if (! Gate::allows('index-consolidado')) {
             abort(403);
         }
-        return Consolidado::all()->load(['modelo', 'contrato', 'centro_custo', 'equipamento']);
+        return ContractItem::all()->load(['modelo', 'contrato', 'centro_custo', 'equipamento']);
     }
 
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Consolidado  $consolidado
+     * @param  \App\Models\Consolidado  $contractitem
      * @return \Illuminate\Http\Response
      */
-    public function show(Consolidado $consolidado)
+    public function show(ContractItem $contractitem)
     {
-        if (! Gate::allows('show-consolidado', $consolidado)) {
+        if (! Gate::allows('show-consolidado', $contractitem)) {
             abort(403);
         }
-        return $consolidado;
+        return $contractitem;
     }
 
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Consolidado  $consolidado
+     * @param  \App\Models\Consolidado  $contractitem
      * @return \Illuminate\Http\Response
      */
-    public function show_full(Consolidado $consolidado)
+    public function show_full(ContractItem $contractitem)
     {
-        if (! Gate::allows('show-consolidado', $consolidado)) {
+        if (! Gate::allows('show-consolidado', $contractitem)) {
             abort(403);
         }
-        return $consolidado->load(['modelo', 'contrato', 'centro_custo', 'equipamento']);
+        return $contractitem->load(['modelo', 'contrato', 'centro_custo', 'equipamento']);
     }
 
 
@@ -81,21 +81,20 @@ class ConsolidadoController extends Controller
         }
         $request->validate(
             rules: [
-                'modelo'=> 'required',
-                'contrato'=> 'required',
-                'contrato_centro_custo'=> 'required',
-                'equipamento'=> '',
+                'equipment_model_id'=> 'required',
+                'contract'=> 'required',
+                'cost_center'=> 'required',
+                'equipment_id'=> 'required',
                 'status'=> 'required',
-                // 'contratual'=> '',
-                'contratual'=> 'required',
-                'prefixo'=> 'required',
-                'regime'=> 'required',
-                'codigo_sap'=> 'required',
+                'contractual'=> 'required',
+                'prefix'=> 'required',
+                'contract_regime'=> 'required',
+                'sap_code'=> 'required',
             ]
         );
         // $input = $request->all();
         // $input['contratual'] = true;
-        return Consolidado::create(
+        return ContractItem::create(
             // $input
             $request->all()
         );
@@ -106,46 +105,46 @@ class ConsolidadoController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Consolidado  $consolidado
+     * @param  \App\Models\Consolidado  $contractitem
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Consolidado $consolidado)
+    public function update(Request $request, ContractItem $contractitem)
     {
-        if (! Gate::allows('update-consolidado', $consolidado)) {
+        if (! Gate::allows('update-consolidado', $contractitem)) {
             abort(403);
         }
         $request->validate(
             rules: [
-                'modelo'=> 'required',
-                'contrato'=> 'required',
-                'contrato_centro_custo'=> 'required',
-                'equipamento'=> '',
+                'equipment_model_id'=> 'required',
+                'contract'=> 'required',
+                'cost_center'=> 'required',
+                'equipment_id'=> 'required',
                 'status'=> 'required',
-                'contratual'=> 'required',
-                'prefixo'=> 'required',
-                'regime'=> 'required',
-                'codigo_sap'=> 'required',
+                'contractual'=> 'required',
+                'prefix'=> 'required',
+                'contract_regime'=> 'required',
+                'sap_code'=> 'required',
             ]
         );
-        $consolidado->update(
+        $contractitem->update(
             $request->all()
         );
-        return $consolidado;
+        return $contractitem;
     }
 
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Consolidado  $consolidado
+     * @param  \App\Models\Consolidado  $contractitem
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Consolidado $consolidado)
+    public function destroy(ContractItem $contractitem)
     {
-        if (! Gate::allows('delete-consolidado', $consolidado)) {
+        if (! Gate::allows('delete-consolidado', $contractitem)) {
             abort(403);
         }
-        $consolidado->delete();
+        $contractitem->delete();
     }
 
 
@@ -159,6 +158,6 @@ class ConsolidadoController extends Controller
         if (! Gate::allows('index-consolidado')) {
             abort(403);
         }
-        return Consolidado::all(['id as value','prefixo as text']);
+        return ContractItem::all(['id as value','prefixo as text']);
     }
 }

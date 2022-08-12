@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Autorizado;
+use App\Models\Permission;
 use Illuminate\Http\Request;
 
-class AutorizadoController extends Controller
+class PermissionController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,7 +14,7 @@ class AutorizadoController extends Controller
      */
     public function index()
     {
-        return Autorizado::all();
+        return Permission::all();
     }
 
     /**
@@ -37,11 +37,11 @@ class AutorizadoController extends Controller
     {
         $request->validate(
             rules: [
-                'colaborador'=> "required",
-                'modulo'=> "required",
+                'user_id'=> "required",
+                'system_module_id'=> "required",
             ]
         );
-        return Autorizado::create(
+        return Permission::create(
             $request->all()
         );
     }
@@ -49,21 +49,21 @@ class AutorizadoController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Autorizado  $autorizado
+     * @param  \App\Models\Autorizado  $permission
      * @return \Illuminate\Http\Response
      */
-    public function show(Autorizado $autorizado)
+    public function show(Permission $permission)
     {
-        return $autorizado;
+        return $permission;
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Autorizado  $autorizado
+     * @param  \App\Models\Autorizado  $permission
      * @return \Illuminate\Http\Response
      */
-    public function edit(Autorizado $autorizado)
+    public function edit(Permission $permission)
     {
         //
     }
@@ -73,31 +73,31 @@ class AutorizadoController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Autorizado  $autorizado
+     * @param  \App\Models\Autorizado  $permission
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Autorizado $autorizado)
+    public function update(Request $request, Permission $permission)
     {
         $request->validate(
             rules: [
-                'colaborador'=> "required",
-                'modulo'=> "required",
+                'user_id'=> "required",
+                'system_module_id'=> "required",
             ]
         );
-        $autorizado->update(
+        $permission->update(
             $request->all()
         );
-        return $autorizado;
+        return $permission;
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Autorizado  $autorizado
+     * @param  \App\Models\Autorizado  $permission
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Autorizado $autorizado)
+    public function destroy(Permission $permission)
     {
-        $autorizado->delete();
+        $permission->delete();
     }
 }
