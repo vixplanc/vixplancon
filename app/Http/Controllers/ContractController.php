@@ -16,9 +16,9 @@ class ContractController extends Controller
      */
     public function index()
     {
-        if (! Gate::allows('index-contract')) {
-            abort(403);
-        }
+        // if (! Gate::allows('index-contract')) {
+        //     abort(403);
+        // }
         return Contract::all();
     }
 
@@ -30,9 +30,9 @@ class ContractController extends Controller
      */
     public function index_full()
     {
-        if (! Gate::allows('index-contract')) {
-            abort(403);
-        }
+        // if (! Gate::allows('index-contract')) {
+        //     abort(403);
+        // }
         return Contract::all()->load('ContractProfile');
     }
 
@@ -45,9 +45,9 @@ class ContractController extends Controller
      */
     public function show(Contract $contract)
     {
-        if (! Gate::allows('show-contract', $contract)) {
-            abort(403);
-        }
+        // if (! Gate::allows('show-contract', $contract)) {
+        //     abort(403);
+        // }
         return $contract;
     }
 
@@ -60,9 +60,9 @@ class ContractController extends Controller
      */
     public function show_full(Contract $contract)
     {
-        if (! Gate::allows('show-contract', $contract)) {
-            abort(403);
-        }
+        // if (! Gate::allows('show-contract', $contract)) {
+        //     abort(403);
+        // }
         return $contract->load('ContractProfile');
     }
 
@@ -76,9 +76,9 @@ class ContractController extends Controller
      */
     public function store(Request $request)
     {
-        if (! Gate::allows('create-contract')) {
-            abort(403);
-        }
+        // if (! Gate::allows('create-contract')) {
+        //     abort(403);
+        // }
         $request->validate(
             rules: [
                 'contract_profile_id' => "required",
@@ -103,9 +103,9 @@ class ContractController extends Controller
      */
     public function update(Request $request, Contract $contract)
     {
-        if (! Gate::allows('update-contract', $contract)) {
-            abort(403);
-        }
+        // if (! Gate::allows('update-contract', $contract)) {
+        //     abort(403);
+        // }
         $request->validate(
             rules: [
                 'contract_profile_id' => "required",
@@ -144,6 +144,6 @@ class ContractController extends Controller
     */
     public function front_select()
     {
-        return Contract::all(['id as value','descricao as text']);
+        return Contract::all(['id as value','description as text']);
     }
 }

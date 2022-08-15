@@ -13,7 +13,7 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('contract_profile', function (Blueprint $table) {
+        Schema::create('contract_profiles', function (Blueprint $table) {
             $table->id();
             $table->string(column:'description');
             $table->timestamps();
@@ -27,6 +27,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('contract_profile');
+        Schema::dropIfExists('contract_profiles');
     }
 };
