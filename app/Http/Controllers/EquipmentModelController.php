@@ -37,14 +37,24 @@ class EquipmentModelController extends Controller
     {
         $request->validate(
             rules: [
-                'description' => "",
-                'capacity' => "",
-                'type' => "",
-                'subtype' => "",
+                'descricao' => "required",
+                'capacidade' => "required",
+                'tipo' => "required",
+                'subtipo' => "required",
             ]
         );
+
+        $payload = $request->all();
+        // dd($payload);
+        $data = [
+            "description"=>$payload["descricao"],
+            "capacity"=>$payload["capacidade"],
+            "type"=>$payload["tipo"],
+            "subtype"=>$payload["subtipo"],
+        ];
         return EquipmentModel::create(
-            $request->all()
+            // $request->all()
+            $data
         );
     }
 
@@ -70,14 +80,24 @@ class EquipmentModelController extends Controller
     {
         $request->validate(
             rules: [
-                'description' => "",
-                'capacity' => "",
-                'type' => "",
-                'subtype' => "",
+                'descricao' => "required",
+                'capacidade' => "required",
+                'tipo' => "required",
+                'subtipo' => "required",
             ]
         );
+
+        $payload = $request->all();
+        // dd($payload);
+        $data = [
+            "description"=>$payload["descricao"],
+            "capacity"=>$payload["capacidade"],
+            "type"=>$payload["tipo"],
+            "subtype"=>$payload["subtipo"],
+        ];
         $equipment_model->update(
-            $request->all()
+            // $request->all()
+            $data
         );
         return $equipment_model;
     }
