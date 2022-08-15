@@ -5,17 +5,9 @@ use App\Http\Controllers\ConsolidadoController;
 use App\Http\Controllers\ContractController;
 use App\Http\Controllers\ContractItemController;
 use App\Http\Controllers\ContractProfileController;
-use App\Http\Controllers\ContratoController;
 use App\Http\Controllers\EmployeeRoleController;
-use App\Http\Controllers\EquipamentoController;
 use App\Http\Controllers\EquipmentController;
-use App\Http\Controllers\FuncaoController;
-use App\Http\Controllers\ModeloController;
-use App\Http\Controllers\PerfilController;
-use App\Models\ContractItem;
-use App\Models\EquipamentModel;
-use App\Models\Equipment;
-use App\Models\Modelo;
+use App\Http\Controllers\EquipmentModelController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
@@ -98,7 +90,7 @@ Route::middleware([
         Route::delete('equipamentos/{equipamento}', 'destroy');
     });
 
-    Route::controller(EquipamentModel::class)->group(function () {
+    Route::controller(EquipmentModelController::class)->group(function () {
         Route::get('modelos/select', 'front_select');
         Route::get('modelos/', 'index');
         Route::get('modelos/{modelo}', 'show');

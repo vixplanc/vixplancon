@@ -24,7 +24,7 @@ class ContractItem extends Model
     public function equipment_model()
     {
         return $this->belongsTo(
-            EquipamentModel::class,
+            EquipmentModel::class,
             'equipment_model_id',
         );
     }
@@ -48,7 +48,7 @@ class ContractItem extends Model
     public function equipment()
     {
         return $this->belongsTo(
-            Equipament::class,
+            Equipment::class,
             'equipment_id',
         );
     }

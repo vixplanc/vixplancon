@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class EquipamentModel extends Model
+class EquipmentModel extends Model
 {
     use HasFactory;
 
@@ -18,6 +18,6 @@ class EquipamentModel extends Model
 
     public function equipment()
     {
-        return $this->hasMany(Equipament::class);
+        return $this->hasMany(Equipment::class);
     }
 }

@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\EquipamentModel;
+use App\Models\EquipmentModel;
 use Illuminate\Http\Request;
 
-class EquipamentModelController extends Controller
+class EquipmentModelController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,7 +14,7 @@ class EquipamentModelController extends Controller
      */
     public function index()
     {
-        return EquipamentModel::all();
+        return EquipmentModel::all();
     }
 
             /**
@@ -24,7 +24,7 @@ class EquipamentModelController extends Controller
      */
     public function front_select()
     {
-        return EquipamentModel::all(['id as value','description as label']);
+        return EquipmentModel::all(['id as value','description as label']);
     }
 
     /**
@@ -37,13 +37,13 @@ class EquipamentModelController extends Controller
     {
         $request->validate(
             rules: [
-                'description' => "required",
-                'capacity' => "required",
-                'type' => "required",
+                'description' => "",
+                'capacity' => "",
+                'type' => "",
                 'subtype' => "",
             ]
         );
-        return EquipamentModel::create(
+        return EquipmentModel::create(
             $request->all()
         );
     }
@@ -51,45 +51,45 @@ class EquipamentModelController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\EquipamentModel  $equipament_model
+     * @param  \App\Models\EquipmentModel  $equipment_model
      * @return \Illuminate\Http\Response
      */
-    public function show(EquipamentModel $equipament_model)
+    public function show(EquipmentModel $equipment_model)
     {
-        return $equipament_model;
+        return $equipment_model;
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\EquipamentModel  $equipament_model
+     * @param  \App\Models\EquipmentModel  $equipment_model
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, EquipamentModel $equipament_model)
+    public function update(Request $request, EquipmentModel $equipment_model)
     {
         $request->validate(
             rules: [
-                'description' => "required",
-                'capacity' => "required",
-                'type' => "required",
+                'description' => "",
+                'capacity' => "",
+                'type' => "",
                 'subtype' => "",
             ]
         );
-        $equipament_model->update(
+        $equipment_model->update(
             $request->all()
         );
-        return $equipament_model;
+        return $equipment_model;
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\EquipamentModel  $equipament_model
+     * @param  \App\Models\EquipmentModel  $equipment_model
      * @return \Illuminate\Http\Response
      */
-    public function destroy(EquipamentModel $equipament_model)
+    public function destroy(EquipmentModel $equipment_model)
     {
-        return $equipament_model->delete();
+        return $equipment_model->delete();
     }
 }
