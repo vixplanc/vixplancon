@@ -56,7 +56,10 @@ class ContractProfileController extends Controller
      */
     public function show(ContractProfile $contract_profile)
     {
-        return $contract_profile;
+        return [
+            'id' => $contract_profile->id,
+            'descricao' => $contract_profile->description
+        ];
     }
 
     /**

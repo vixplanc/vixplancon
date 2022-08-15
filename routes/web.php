@@ -115,10 +115,10 @@ Route::middleware([
     Route::controller(ContractProfileController::class)->group(function () {
         Route::get('perfis/', 'index');
         Route::get('perfis/select', 'front_select');
-        Route::get('perfis/{perfil}', 'show');
+        Route::get('perfis/{contract_profile}', 'show');
         Route::post('perfis/', 'store');
-        Route::put('perfis/{perfil}', 'update');
-        Route::delete('perfis/{perfil}', 'destroy');
+        Route::put('perfis/{contract_profile}', 'update');
+        Route::delete('perfis/{contract_profile}', 'destroy');
     });
 
     Route::controller(EmployeeRoleController::class)->group(function () {

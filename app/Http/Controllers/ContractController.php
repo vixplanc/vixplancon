@@ -51,7 +51,7 @@ class ContractController extends Controller
         // dd($contract);
         return [
             'id' => $contract->id,
-            'perfil_id' => $contract->ContractProfile,
+            'perfil_id' => $contract->contract_profiles_id,
             'descricao' => $contract->description,
             'centro_custo' => $contract->cost_center,
             'data_inicio' => $contract->begin,
@@ -71,7 +71,16 @@ class ContractController extends Controller
         // if (! Gate::allows('show-contract', $contract)) {
         //     abort(403);
         // }
-        return $contract->load('ContractProfile');
+        $contract = $contract->load('ContractProfile');
+        // dd($contract);
+        return [
+            'id' => $contract->id,
+            'perfil_id' => $contract->contract_profiles_id,
+            'descricao' => $contract->description,
+            'centro_custo' => $contract->cost_center,
+            'data_inicio' => $contract->begin,
+            'data_fim' => $contract->end,
+        ];
     }
 
 
