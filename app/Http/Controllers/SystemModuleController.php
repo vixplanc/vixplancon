@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\modulo;
+use App\Models\SystemModule;
 use Illuminate\Http\Request;
 
 class ModuloController extends Controller
@@ -44,7 +44,7 @@ class ModuloController extends Controller
      * @param  \App\Models\modulo  $modulo
      * @return \Illuminate\Http\Response
      */
-    public function show(modulo $modulo)
+    public function show(SystemModule $system_module)
     {
         //
     }
@@ -55,7 +55,7 @@ class ModuloController extends Controller
      * @param  \App\Models\modulo  $modulo
      * @return \Illuminate\Http\Response
      */
-    public function edit(modulo $modulo)
+    public function edit(SystemModule $system_module)
     {
         //
     }
@@ -67,7 +67,7 @@ class ModuloController extends Controller
      * @param  \App\Models\modulo  $modulo
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, modulo $modulo)
+    public function update(Request $request, SystemModule $system_module)
     {
         //
     }
@@ -78,7 +78,7 @@ class ModuloController extends Controller
      * @param  \App\Models\modulo  $modulo
      * @return \Illuminate\Http\Response
      */
-    public function destroy(modulo $modulo)
+    public function destroy(SystemModule $system_module)
     {
         //
     }
