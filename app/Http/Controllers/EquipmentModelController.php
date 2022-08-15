@@ -67,6 +67,7 @@ class EquipmentModelController extends Controller
     public function show(EquipmentModel $equipment_model)
     {
         return [
+            'id' => $equipment_model->id,
             'descricao' => $equipment_model->description,
             'capacidade' => $equipment_model->capacity,
             'tipo' => $equipment_model->type,
