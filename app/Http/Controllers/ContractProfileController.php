@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Perfil;
+use App\Models\ContractProfile;
 use Illuminate\Http\Request;
 
-class PerfilController extends Controller
+class ContractProfileController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,7 +14,7 @@ class PerfilController extends Controller
      */
     public function index()
     {
-        return Perfil::all();
+        return ContractProfile::all();
     }
 
 
@@ -25,7 +25,7 @@ class PerfilController extends Controller
     */
     public function front_select()
     {
-        return Perfil::all(['id as value','descricao as label']);
+        return ContractProfile::all(['id as value','description as text']);
     }
 
     /**
@@ -38,10 +38,10 @@ class PerfilController extends Controller
     {
         $request->validate(
             rules: [
-                'descricao' => "required",
+                'description' => "required",
             ]
         );
-        return Perfil::create(
+        return ContractProfile::create(
             $request->all()
         );
     }
@@ -49,42 +49,42 @@ class PerfilController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Perfil  $perfil
+     * @param  \App\Models\ContractProfile  $contract_profile
      * @return \Illuminate\Http\Response
      */
-    public function show(Perfil $perfil)
+    public function show(ContractProfile $contract_profile)
     {
-        return $perfil;
+        return $contract_profile;
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Perfil  $perfil
+     * @param  \App\Models\ContractProfile  $contract_profile
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Perfil $perfil)
+    public function update(Request $request, ContractProfile $contract_profile)
     {
         $request->validate(
             rules: [
-                'descricao' => "required",
+                'description' => "required",
             ]
         );
-        $perfil->update(
+        $contract_profile->update(
             $request->all()
         );
-        return $perfil;
+        return $contract_profile;
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Perfil  $perfil
+     * @param  \App\Models\ContractProfile  $contract_profile
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Perfil $perfil)
+    public function destroy(ContractProfile $contract_profile)
     {
-        return $perfil->delete();
+        return $contract_profile->delete();
     }
 }
