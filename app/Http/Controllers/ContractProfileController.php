@@ -38,11 +38,13 @@ class ContractProfileController extends Controller
     {
         $request->validate(
             rules: [
-                'description' => "required",
+                'descricao' => "required",
             ]
         );
         return ContractProfile::create(
-            $request->all()
+            [
+                'description' => $request->all()["descricao"]
+            ]
         );
     }
 
@@ -68,11 +70,13 @@ class ContractProfileController extends Controller
     {
         $request->validate(
             rules: [
-                'description' => "required",
+                'descricao' => "required",
             ]
         );
         $contract_profile->update(
-            $request->all()
+            [
+                'description' => $request->all()["descricao"]
+            ]
         );
         return $contract_profile;
     }

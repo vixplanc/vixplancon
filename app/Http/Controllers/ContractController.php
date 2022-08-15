@@ -81,15 +81,24 @@ class ContractController extends Controller
         // }
         $request->validate(
             rules: [
-                'contract_profile_id' => "required",
-                'description' => "required",
-                'cost_center' => "required",
-                'begin' => "required",
-                'end' => "required",
+                'perfil_id' => "required",
+                'descricao' => "required",
+                'centro_custo' => "required",
+                'data_inicio' => "required",
+                'data_fim' => "required",
             ]
         );
+        $payload = $request->all();
+        // dd($payload);
+
         return Contract::create(
-            $request->all()
+            [
+                'contract_profiles_id' => $payload['perfil_id'],
+                'description' => $payload['descricao'],
+                'cost_center' => $payload['centro_custo'],
+                'begin' => $payload['data_inicio'],
+                'end' => $payload['data_fim'],
+            ]
         );
     }
 
@@ -115,8 +124,17 @@ class ContractController extends Controller
                 'end' => "required",
             ]
         );
+
+        $payload = $request->all();
+
         $contract->update(
-            $request->all()
+            [
+                'contract_profiles_id' => $payload['perfil_id'],
+                'description' => $payload['descricao'],
+                'cost_center' => $payload['centro_custo'],
+                'begin' => $payload['data_inicio'],
+                'end' => $payload['data_fim'],
+            ]
         );
         return $contract;
     }

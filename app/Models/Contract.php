@@ -10,7 +10,7 @@ class Contract extends Model
     use HasFactory;
 
     protected $fillable = [
-        'contract_profile_id',
+        'contract_profiles_id',
         'description',
         'cost_center',
         'begin',

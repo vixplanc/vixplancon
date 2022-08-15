@@ -15,8 +15,8 @@ return new class extends Migration
     {
         Schema::create('contracts', function (Blueprint $table) {
             $table->id();
-            $table->foreignId(column:'contract_profile_id');
-            $table->foreign('contract_profile_id')->references('id')->on('contract_profile');
+            $table->foreignId(column:'contract_profiles_id');
+            $table->foreign('contract_profiles_id')->references('id')->on('contract_profiles');
             $table->string(column:'description');
             $table->string(column:'cost_center');
             $table->date(column:'begin');
