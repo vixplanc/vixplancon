@@ -145,14 +145,14 @@ Route::middleware([
 
     Route::controller(ContractItemController::class)->group(function () {
         Route::get('consolidados/full', 'index_full');
-        Route::get('consolidados/full/{consolidado}', 'show_full');
+        Route::get('consolidados/full/{contractitem}', 'show_full');
         Route::get('consolidados/select', 'front_select');
 
         Route::get('consolidados/', 'index');
-        Route::get('consolidados/{consolidado}', 'show');
+        Route::get('consolidados/{contractitem}', 'show');
         Route::post('consolidados/', 'store');
-        Route::put('consolidados/{consolidado}', 'update');
-        Route::delete('consolidados/{consolidado}', 'destroy');
+        Route::put('consolidados/{contractitem}', 'update');
+        Route::delete('consolidados/{contractitem}', 'destroy');
     });
 
 });

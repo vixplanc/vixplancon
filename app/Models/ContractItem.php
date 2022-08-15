@@ -10,10 +10,10 @@ class ContractItem extends Model
     use HasFactory;
 
     protected $fillable = [
-        'equipment_model_id',
+        'equipment_models_id',
         'contract',
         'cost_center',
-        'equipment_id',
+        'equipments_id',
         'status',
         'contractual',
         'prefix',
@@ -25,7 +25,7 @@ class ContractItem extends Model
     {
         return $this->belongsTo(
             EquipmentModel::class,
-            'equipment_model_id',
+            'equipment_models_id',
         );
     }
 

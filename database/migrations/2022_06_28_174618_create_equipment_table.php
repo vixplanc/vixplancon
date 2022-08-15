@@ -13,7 +13,7 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('equipment', function (Blueprint $table) {
+        Schema::create('equipments', function (Blueprint $table) {
             $table->id();
             $table->foreignId(column:'equipment_models_id');
             $table->foreign('equipment_models_id')->references('id')->on('equipment_models');
@@ -31,6 +31,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('equipment');
+        Schema::dropIfExists('equipments');
     }
 };

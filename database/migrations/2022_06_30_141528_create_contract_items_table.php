@@ -13,7 +13,7 @@ return new class extends Migration
      */
     public function up()
     {
-        if(!Schema::hasTable('personal_access_tokens')){
+        if(!Schema::hasTable('contract_items')){
             Schema::create('contract_items', function (Blueprint $table) {
                 $table->id();
 
@@ -24,12 +24,12 @@ return new class extends Migration
                     ->constrained('equipment_models')
                     ;
                 $table->foreignId(column:'equipment_id')->nullable();
-                $table->foreignId(column:'contract');
+                $table->foreignId(column:'contract_id');
                 $table->foreignId(column:'cost_center');
 
 
                 // $table->foreign('equipment_model_id')->references('id')->on('equipment_models');
-                $table->foreign('contract')->references('id')->on('contracts');
+                $table->foreign('contract_id')->references('id')->on('contracts');
                 $table->foreign('cost_center')->references('id')->on('contracts');
                 $table->foreign('equipment_id')->references('id')->on('equipments');
 
