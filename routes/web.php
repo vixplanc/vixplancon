@@ -79,37 +79,37 @@ Route::middleware([
 
     Route::controller(EquipmentController::class)->group(function () {
         Route::get('equipamentos/full', 'index_full');
-        Route::get('equipamentos/full/{equipamento}', 'show_full');
+        Route::get('equipamentos/full/{equipment}', 'show_full');
         Route::get('equipamentos/select', 'front_select');
 
 
         Route::get('equipamentos/', 'index');
-        Route::get('equipamentos/{equipamento}', 'show');
+        Route::get('equipamentos/{equipment}', 'show');
         Route::post('equipamentos/', 'store');
-        Route::put('equipamentos/{equipamento}', 'update');
-        Route::delete('equipamentos/{equipamento}', 'destroy');
+        Route::put('equipamentos/{equipment}', 'update');
+        Route::delete('equipamentos/{equipment}', 'destroy');
     });
 
     Route::controller(EquipmentModelController::class)->group(function () {
         Route::get('modelos/select', 'front_select');
         Route::get('modelos/', 'index');
-        Route::get('modelos/{modelo}', 'show');
+        Route::get('modelos/{equipment_model}', 'show');
         Route::post('modelos/', 'store');
-        Route::put('modelos/{modelo}', 'update');
-        Route::delete('modelos/{modelo}', 'destroy');
+        Route::put('modelos/{equipment_model}', 'update');
+        Route::delete('modelos/{equipment_model}', 'destroy');
     });
 
     Route::controller(ContractController::class)->group(function () {
         Route::get('contratos/full', 'index_full');
-        Route::get('contratos/full/{contrato}', 'show_full');
+        Route::get('contratos/full/{contract}', 'show_full');
         Route::get('contratos/select', 'front_select');
 
 
         Route::get('contratos/', 'index');
-        Route::get('contratos/{contrato}', 'show');
+        Route::get('contratos/{contract}', 'show');
         Route::post('contratos/', 'store');
-        Route::put('contratos/{contrato}', 'update');
-        Route::delete('contratos/{contrato}', 'destroy');
+        Route::put('contratos/{contract}', 'update');
+        Route::delete('contratos/{contract}', 'destroy');
     });
 
     Route::controller(ContractProfileController::class)->group(function () {

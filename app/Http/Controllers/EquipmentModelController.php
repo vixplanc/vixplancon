@@ -66,7 +66,12 @@ class EquipmentModelController extends Controller
      */
     public function show(EquipmentModel $equipment_model)
     {
-        return $equipment_model;
+        return [
+            'descricao' => $equipment_model->description,
+            'capacidade' => $equipment_model->capacity,
+            'tipo' => $equipment_model->type,
+            'subtipo' => $equipment_model->subtype,
+        ];
     }
 
     /**

@@ -48,7 +48,15 @@ class ContractController extends Controller
         // if (! Gate::allows('show-contract', $contract)) {
         //     abort(403);
         // }
-        return $contract;
+        // dd($contract);
+        return [
+            'id' => $contract->id,
+            'perfil_id' => $contract->ContractProfile,
+            'descricao' => $contract->description,
+            'centro_custo' => $contract->cost_center,
+            'data_inicio' => $contract->begin,
+            'data_fim' => $contract->end,
+        ];
     }
 
 
@@ -117,14 +125,13 @@ class ContractController extends Controller
         // }
         $request->validate(
             rules: [
-                'contract_profile_id' => "required",
-                'description' => "required",
-                'cost_center' => "required",
-                'begin' => "required",
-                'end' => "required",
+                'perfil_id' => "required",
+                'descricao' => "required",
+                'centro_custo' => "required",
+                'data_inicio' => "required",
+                'data_fim' => "required",
             ]
         );
-
         $payload = $request->all();
 
         $contract->update(
@@ -148,9 +155,9 @@ class ContractController extends Controller
      */
     public function destroy(Contract $contract)
     {
-        if (! Gate::allows('delete-contract', $contract)) {
-            abort(403);
-        }
+        // if (! Gate::allows('delete-contract', $contract)) {
+        //     abort(403);
+        // }
         return $contract->delete();
     }
 

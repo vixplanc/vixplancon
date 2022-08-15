@@ -16,9 +16,9 @@ class EquipmentController extends Controller
      */
     public function index()
     {
-        if (! Gate::allows('index-equipment')) {
-            abort(403);
-        }
+        // if (! Gate::allows('index-equipment')) {
+        //     abort(403);
+        // }
         return Equipment::all();
     }
 
@@ -30,9 +30,9 @@ class EquipmentController extends Controller
      */
     public function index_full()
     {
-        if (! Gate::allows('index-equipment')) {
-            abort(403);
-        }
+        // if (! Gate::allows('index-equipment')) {
+        //     abort(403);
+        // }
         return Equipment::all()->load('EquipmentModel');
     }
 
@@ -45,10 +45,16 @@ class EquipmentController extends Controller
      */
     public function show(Equipment $equipment)
     {
-        if (! Gate::allows('show-equipment', $equipment)) {
-            abort(403);
-        }
-        return $equipment;
+        // if (! Gate::allows('show-equipment', $equipment)) {
+        //     abort(403);
+        // }
+        return [
+            'id' => $equipment->id,
+            'modelo_id' => $equipment->equipment_models_id,
+            'denominacao' => $equipment->name,
+            'placa' => $equipment->plate,
+            'chassi' => $equipment->chassi_number,
+        ];
     }
 
 
@@ -60,9 +66,9 @@ class EquipmentController extends Controller
      */
     public function show_full(Equipment $equipment)
     {
-        if (! Gate::allows('show-equipment', $equipment)) {
-            abort(403);
-        }
+        // if (! Gate::allows('show-equipment', $equipment)) {
+        //     abort(403);
+        // }
         return $equipment->load('EquipmentModel');
     }
 
@@ -76,19 +82,26 @@ class EquipmentController extends Controller
      */
     public function store(Request $request)
     {
-        if (! Gate::allows('create-equipment')) {
-            abort(403);
-        }
+        // if (! Gate::allows('create-equipment')) {
+        //     abort(403);
+        // }
         $request->validate(
             rules: [
-                'equipment_model_id' => "required",
-                'name' => "required",
-                'plate' => "required",
-                'chassi_number' => "required",
+                'modelo_id' => "required",
+                'denominacao' => "required",
+                'placa' => "required",
+                'chassi' => "required",
             ]
         );
+        $payload = $request->all();
+        // dd($payload);
         return Equipment::create(
-            $request->all()
+            [
+                'equipment_models_id' => $payload['modelo_id'],
+                'name' => $payload['denominacao'],
+                'plate' => $payload['placa'],
+                'chassi_number' => $payload['chassi'],
+            ]
         );
     }
 
@@ -102,19 +115,25 @@ class EquipmentController extends Controller
      */
     public function update(Request $request, Equipment $equipment)
     {
-        if (! Gate::allows('update-equipment', $equipment)) {
-            abort(403);
-        }
+        // if (! Gate::allows('update-equipment', $equipment)) {
+        //     abort(403);
+        // }
         $request->validate(
             rules: [
-                'equipment_model_id' => "required",
-                'name' => "required",
-                'plate' => "required",
-                'chassi_number' => "required",
+                'modelo_id' => "required",
+                'denominacao' => "required",
+                'placa' => "required",
+                'chassi' => "required",
             ]
         );
+        $payload = $request->all();
         $equipment->update(
-            $request->all()
+            [
+                'equipment_models_id' => $payload['modelo_id'],
+                'name' => $payload['denominacao'],
+                'plate' => $payload['placa'],
+                'chassi_number' => $payload['chassi'],
+            ]
         );
         return $equipment;
     }
@@ -128,9 +147,9 @@ class EquipmentController extends Controller
      */
     public function destroy(Equipment $equipment)
     {
-        if (! Gate::allows('delete-equipment', $equipment)) {
-            abort(403);
-        }
+        // if (! Gate::allows('delete-equipment', $equipment)) {
+        //     abort(403);
+        // }
         return $equipment->delete();
     }
 
@@ -142,9 +161,9 @@ class EquipmentController extends Controller
      */
     public function front_select()
     {
-        if (! Gate::allows('index-equipment')) {
-            abort(403);
-        }
+        // if (! Gate::allows('index-equipment')) {
+        //     abort(403);
+        // }
         return Equipment::all(['id as value','name as text']);
     }
 }
