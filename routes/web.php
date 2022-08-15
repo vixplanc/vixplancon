@@ -2,11 +2,19 @@
 
 use App\Http\Controllers\ColaboradorController;
 use App\Http\Controllers\ConsolidadoController;
+use App\Http\Controllers\ContractController;
+use App\Http\Controllers\ContractItemController;
+use App\Http\Controllers\ContractProfileController;
 use App\Http\Controllers\ContratoController;
+use App\Http\Controllers\EmployeeRoleController;
 use App\Http\Controllers\EquipamentoController;
+use App\Http\Controllers\EquipmentController;
 use App\Http\Controllers\FuncaoController;
 use App\Http\Controllers\ModeloController;
 use App\Http\Controllers\PerfilController;
+use App\Models\ContractItem;
+use App\Models\EquipamentModel;
+use App\Models\Equipment;
 use App\Models\Modelo;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
@@ -77,7 +85,7 @@ Route::middleware([
 ->prefix("api")
 ->group(function () {
 
-    Route::controller(EquipamentoController::class)->group(function () {
+    Route::controller(EquipmentController::class)->group(function () {
         Route::get('equipamentos/full', 'index_full');
         Route::get('equipamentos/full/{equipamento}', 'show_full');
         Route::get('equipamentos/select', 'front_select');
@@ -90,7 +98,7 @@ Route::middleware([
         Route::delete('equipamentos/{equipamento}', 'destroy');
     });
 
-    Route::controller(ModeloController::class)->group(function () {
+    Route::controller(EquipamentModel::class)->group(function () {
         Route::get('modelos/select', 'front_select');
         Route::get('modelos/', 'index');
         Route::get('modelos/{modelo}', 'show');
@@ -99,7 +107,7 @@ Route::middleware([
         Route::delete('modelos/{modelo}', 'destroy');
     });
 
-    Route::controller(ContratoController::class)->group(function () {
+    Route::controller(ContractController::class)->group(function () {
         Route::get('contratos/full', 'index_full');
         Route::get('contratos/full/{contrato}', 'show_full');
         Route::get('contratos/select', 'front_select');
@@ -112,7 +120,7 @@ Route::middleware([
         Route::delete('contratos/{contrato}', 'destroy');
     });
 
-    Route::controller(PerfilController::class)->group(function () {
+    Route::controller(ContractProfileController::class)->group(function () {
         Route::get('perfis/', 'index');
         Route::get('perfis/select', 'front_select');
         Route::get('perfis/{perfil}', 'show');
@@ -121,7 +129,7 @@ Route::middleware([
         Route::delete('perfis/{perfil}', 'destroy');
     });
 
-    Route::controller(FuncaoController::class)->group(function () {
+    Route::controller(EmployeeRoleController::class)->group(function () {
         Route::get('funcoes/', 'index');
         Route::get('funcoes/select', 'front_select');
         Route::get('funcoes/{funcao}', 'show');
@@ -143,7 +151,7 @@ Route::middleware([
         Route::delete('colaboradores/{colaborador}', 'destroy');
     });
 
-    Route::controller(ConsolidadoController::class)->group(function () {
+    Route::controller(ContractItemController::class)->group(function () {
         Route::get('consolidados/full', 'index_full');
         Route::get('consolidados/full/{consolidado}', 'show_full');
         Route::get('consolidados/select', 'front_select');
