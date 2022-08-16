@@ -25,7 +25,7 @@ class ContractProfileController extends Controller
     */
     public function front_select()
     {
-        return ContractProfile::all(['id as value','description as text']);
+        return ContractProfile::all(['id as value','description as label']);
     }
 
     /**

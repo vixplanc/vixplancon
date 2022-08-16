@@ -189,6 +189,6 @@ class ContractItemController extends Controller
         // if (! Gate::allows('index-consolidado')) {
         //     abort(403);
         // }
-        return ContractItem::all(['id as value','prefix as text']);
+        return ContractItem::all(['id as value','prefix as label']);
     }
 }

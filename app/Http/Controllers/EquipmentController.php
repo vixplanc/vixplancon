@@ -164,6 +164,6 @@ class EquipmentController extends Controller
         // if (! Gate::allows('index-equipment')) {
         //     abort(403);
         // }
-        return Equipment::all(['id as value','name as text']);
+        return Equipment::all(['id as value','name as label']);
     }
 }

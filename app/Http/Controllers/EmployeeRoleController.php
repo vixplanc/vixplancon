@@ -148,6 +148,6 @@ class EmployeeRoleController extends Controller
     */
     public function front_select()
     {
-        return EmployeeRole::all(['id as value','description as text']);
+        return EmployeeRole::all(['id as value','description as label']);
     }
 }

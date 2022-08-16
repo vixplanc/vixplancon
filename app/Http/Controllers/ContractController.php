@@ -178,6 +178,6 @@ class ContractController extends Controller
     */
     public function front_select()
     {
-        return Contract::all(['id as value','description as text']);
+        return Contract::all(['id as value','description as label']);
     }
 }
