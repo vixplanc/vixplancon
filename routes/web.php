@@ -124,10 +124,10 @@ Route::middleware([
     Route::controller(EmployeeRoleController::class)->group(function () {
         Route::get('funcoes/', 'index');
         Route::get('funcoes/select', 'front_select');
-        Route::get('funcoes/{funcao}', 'show');
+        Route::get('funcoes/{employee_role}', 'show');
         Route::post('funcoes/', 'store');
-        Route::put('funcoes/{funcao}', 'update');
-        Route::delete('funcoes/{funcao}', 'destroy');
+        Route::put('funcoes/{employee_role}', 'update');
+        Route::delete('funcoes/{employee_role}', 'destroy');
     });
 
     Route::controller(ColaboradorController::class)->group(function () {

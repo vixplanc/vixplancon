@@ -16,9 +16,9 @@ class EmployeeRoleController extends Controller
      */
     public function index()
     {
-        if (! Gate::allows('index-employee-role')) {
-            abort(403);
-        }
+        // if (! Gate::allows('index-employee-role')) {
+        //     abort(403);
+        // }
         return EmployeeRole::all();
     }
 
@@ -30,9 +30,9 @@ class EmployeeRoleController extends Controller
      */
     public function index_full()
     {
-        if (! Gate::allows('index-employee-role')) {
-            abort(403);
-        }
+        // if (! Gate::allows('index-employee-role')) {
+        //     abort(403);
+        // }
         return EmployeeRole::all()->load('employees');
     }
 
@@ -45,10 +45,16 @@ class EmployeeRoleController extends Controller
      */
     public function show(EmployeeRole $employee_role)
     {
-        if (! Gate::allows('show-employee-role', $employee_role)) {
-            abort(403);
-        }
-        return $employee_role;
+        // if (! Gate::allows('show-employee-role', $employee_role)) {
+        //     abort(403);
+        // }
+        // dd($employee_role);
+        return [
+            'id' => $employee_role->id,
+            'descricao' => $employee_role->description,
+        ];
+
+        $employee_role;
     }
 
 
@@ -60,9 +66,9 @@ class EmployeeRoleController extends Controller
      */
     public function show_full(EmployeeRole $employee_role)
     {
-        if (! Gate::allows('show-employee-role', $employee_role)) {
-            abort(403);
-        }
+        // if (! Gate::allows('show-employee-role', $employee_role)) {
+        //     abort(403);
+        // }
         return $employee_role->load('employees');
     }
 
@@ -76,16 +82,19 @@ class EmployeeRoleController extends Controller
      */
     public function store(Request $request)
     {
-        if (! Gate::allows('create-employee-role')) {
-            abort(403);
-        }
+        // if (! Gate::allows('create-employee-role')) {
+        //     abort(403);
+        // }
         $request->validate(
             rules: [
-                'description' => "required",
+                'descricao' => "required",
             ]
         );
+        $payload = $request->all();
         return EmployeeRole::create(
-            $request->all()
+            [
+                'description' => $payload['descricao'],
+            ]
         );
     }
 
@@ -99,16 +108,19 @@ class EmployeeRoleController extends Controller
      */
     public function update(Request $request, EmployeeRole $employee_role)
     {
-        if (! Gate::allows('update-employee-role', $employee_role)) {
-            abort(403);
-        }
+        // if (! Gate::allows('update-employee-role', $employee_role)) {
+        //     abort(403);
+        // }
         $request->validate(
             rules: [
-                'description' => "required",
+                'descricao' => "required",
             ]
         );
+        $payload = $request->all();
         $employee_role->update(
-            $request->all()
+            [
+                'description'=>$payload['descricao'],
+            ]
         );
         return $employee_role;
     }
@@ -122,9 +134,9 @@ class EmployeeRoleController extends Controller
      */
     public function destroy(EmployeeRole $employee_role)
     {
-        if (! Gate::allows('delete-employee-role', $employee_role)) {
-            abort(403);
-        }
+        // if (! Gate::allows('delete-employee-role', $employee_role)) {
+        //     abort(403);
+        // }
         return $employee_role->delete();
     }
 
