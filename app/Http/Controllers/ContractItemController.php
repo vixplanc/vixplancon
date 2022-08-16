@@ -49,7 +49,22 @@ class ContractItemController extends Controller
         // if (! Gate::allows('show-consolidado', $contractitem)) {
         //     abort(403);
         // }
-        return $contractitem;
+        // dd($contractitem);
+        return [
+            'id'=> $contractitem->id,
+            'modelo_id'=> $contractitem->equipment_model_id,
+            'contrato'=> $contractitem->contract_id,
+            'contrato_centro_custo'=> $contractitem->cost_center,
+            'equipamento'=> $contractitem->equipments_id,
+            'status'=> $contractitem->status,
+            'contratual'=> $contractitem->contractual,
+            'prefixo'=> $contractitem->prefix,
+            'regime'=> $contractitem->contract_regime,
+            'codigo_sap'=> $contractitem->sap_code,
+        ];
+
+
+        // $contractitem;
     }
 
 
@@ -101,11 +116,11 @@ class ContractItemController extends Controller
         return ContractItem::create(
             [
                 'equipment_model_id'=> $payload["modelo_id"],
-                'contract'=> $payload["contrato"],
+                'contract_id'=> $payload["contrato"],
                 'cost_center'=> $payload["contrato_centro_custo"],
                 'equipment_id'=> $payload["equipamento"],
                 'status'=> $payload["status"],
-                'contractual'=> $payload["contratual"],
+                'contractual'=> $payload["contratual"]?true:false,
                 'prefix'=> $payload["prefixo"],
                 'contract_regime'=> $payload["regime"],
                 'sap_code'=> $payload["codigo_sap"],
@@ -126,21 +141,24 @@ class ContractItemController extends Controller
         // if (! Gate::allows('update-consolidado', $contractitem)) {
         //     abort(403);
         // }
+        // dd($request->all());
         $request->validate(
             rules: [
-                'equipment_model_id'=> 'required',
-                'contract'=> 'required',
-                'cost_center'=> 'required',
-                'equipment_id'=> 'required',
-                'status'=> 'required',
-                'contractual'=> 'required',
-                'prefix'=> 'required',
-                'contract_regime'=> 'required',
-                'sap_code'=> 'required',
             ]
         );
+        $payload = $request->all();
         $contractitem->update(
-            $request->all()
+            [
+                'equipment_model_id'=> $payload["modelo_id"],
+                'contract_id'=> $payload["contrato"],
+                'cost_center'=> $payload["contrato_centro_custo"],
+                'equipment_id'=> $payload["equipamento"],
+                'status'=> $payload["status"],
+                'contractual'=> $payload["contratual"]?true:false,
+                'prefix'=> $payload["prefixo"],
+                'contract_regime'=> $payload["regime"],
+                'sap_code'=> $payload["codigo_sap"],
+            ]
         );
         return $contractitem;
     }
